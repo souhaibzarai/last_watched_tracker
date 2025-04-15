@@ -1,0 +1,196 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/common/cubit/button/button_state_cubit.dart';
+import 'package:last_watched_tracker/common/widgets/button/custom_reactive_button.dart';
+import 'package:last_watched_tracker/common/widgets/custom_text_field.dart';
+import 'package:last_watched_tracker/common/widgets/scaffold/custom_app_bar.dart';
+import 'package:last_watched_tracker/features/auth/data/models/user_creation.dart';
+import 'package:last_watched_tracker/features/auth/domain/usecases/sign_up.dart';
+import 'package:last_watched_tracker/features/auth/presentation/cubit/check_cubit.dart';
+import 'package:last_watched_tracker/features/auth/presentation/widgets/password_text_field.dart';
+import 'package:last_watched_tracker/features/auth/presentation/widgets/terms_and_cond.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
+import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
+import '../../../../common/app_commons.dart';
+import '../../../../common/cubit/button/button_state.dart';
+import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
+import '../widgets/custom_auth_text.dart';
+import '../widgets/under_button_text.dart';
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage>
+    with SingleTickerProviderStateMixin {
+  late TextEditingController _usernameController;
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+  late TextEditingController _confirmPasswordController;
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    _usernameController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomAuthScaffold(
+      appBar: CustomAppBar(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => CheckCubit()),
+          BlocProvider(create: (context) => ButtonStateCubit()),
+        ],
+        child: BlocListener<ButtonStateCubit, ButtonState>(
+          listener: (context, state) {
+            if (state is SuccessButtonState) {
+              AppCommons.showScaffold(context, message: 'sign up successfull');
+            } else if (state is FailureButtonState) {
+              AppCommons.showScaffold(context, message: state.errMsg);
+            }
+          },
+          child: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(12.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomAuthText(
+                      title: 'Create Account',
+                      subTitle: 'Sign up to get started',
+                    ),
+
+                    CustomTextField(
+                      controller: _usernameController,
+                      labelText: 'Username',
+                      prefixIcon: Icons.person_outline,
+                      keyboardType: TextInputType.name,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your username';
+                        }
+                        return null;
+                      },
+                    ),
+                    AppConstants.mediumSizedBox,
+
+                    CustomTextField(
+                      controller: _emailController,
+                      labelText: 'Email',
+                      prefixIcon: Icons.email_outlined,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value == null || !value.contains('@')) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
+                    AppConstants.mediumSizedBox,
+
+                    PasswordTextField(
+                      controller: _passwordController,
+                      validator: (value) {
+                        if (value == null || value.length < 6) {
+                          return 'Password must be at least 6 characters';
+                        }
+                        return null;
+                      },
+                    ),
+                    AppConstants.mediumSizedBox,
+
+                    PasswordTextField(
+                      controller: _confirmPasswordController,
+                      title: 'Confirm Password',
+                      validator: (value) {
+                        if (value != _passwordController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                    ),
+                    AppConstants.smallSizedBox,
+
+                    const TermsAndCond(),
+
+                    BlocBuilder<CheckCubit, bool>(
+                      builder: (context, isChecked) {
+                        if (isChecked) {
+                          return Column(
+                            children: [
+                              AppConstants.smallSizedBox,
+                              Builder(
+                                builder: (context) {
+                                  return CustomReactiveButton(
+                                    text: 'Sign Up',
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        await context
+                                            .read<ButtonStateCubit>()
+                                            .execute(
+                                              usecase: SignUpUseCase(),
+                                              params: UserCreation(
+                                                username:
+                                                    _usernameController.text
+                                                        .trim(),
+                                                email:
+                                                    _emailController.text
+                                                        .trim(),
+                                                password:
+                                                    _passwordController.text
+                                                        .trim(),
+                                              ),
+                                            );
+                                      }
+                                    },
+                                  );
+                                },
+                              ),
+                              AppConstants.mediumSizedBox,
+                            ],
+                          );
+                        }
+                        return const SizedBox.shrink();
+                      },
+                    ),
+
+                    UnderButtonText(
+                      text: "Already have an account?",
+                      clickableText: "Sign In",
+                      onTextClick: () {
+                        context.replace(login);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
