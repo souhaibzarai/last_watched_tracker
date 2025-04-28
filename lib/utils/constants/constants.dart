@@ -16,7 +16,7 @@ class AppConstants {
       indent: 20,
       thickness: .8,
       width: isTransparent ? 15 : 1,
-      color: isTransparent ? Colors.transparent : AppColors.buttonBgColor,
+      color: isTransparent ? Colors.transparent : AppColors.disabledColor,
     );
   }
 
@@ -26,7 +26,7 @@ class AppConstants {
       thickness: .8,
       height: isTransparent ? 10 : 1,
       endIndent: 20,
-      color: isTransparent ? Colors.transparent : AppColors.buttonBgColor,
+      color: isTransparent ? Colors.transparent : AppColors.disabledColor,
     );
   }
 
