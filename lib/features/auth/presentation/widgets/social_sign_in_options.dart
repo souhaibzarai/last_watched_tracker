@@ -16,7 +16,7 @@ class SocialSignInOptions extends StatelessWidget {
             introText,
             style: TextStyle(color: Colors.white70, fontSize: 14),
           ),
-          AppConstants.mediumSizedBox,
+          AppConstants.verticalMediumSizedBox,
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +27,7 @@ class SocialSignInOptions extends StatelessWidget {
                   // Handle Google sign in
                 },
               ),
-              AppConstants.mediumSizedBox,
+              AppConstants.verticalMediumSizedBox,
               SocialSignInButton(
                 icon: Icons.facebook,
                 onPressed: () {
