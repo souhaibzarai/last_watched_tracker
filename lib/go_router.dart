@@ -5,6 +5,7 @@ import 'package:last_watched_tracker/features/auth/presentation/pages/reset_sent
 import 'package:last_watched_tracker/features/auth/presentation/pages/sign_in.dart';
 import 'package:last_watched_tracker/features/auth/presentation/pages/sign_up.dart';
 import 'package:last_watched_tracker/features/home/presentation/pages/home.dart';
+import 'package:last_watched_tracker/features/media/presentation/pages/add_media.dart';
 import 'package:last_watched_tracker/features/splash/presentation/splash.dart';
 import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
 
@@ -13,12 +14,15 @@ import 'features/auth/presentation/cubit/check_cubit.dart';
 GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
-      path: splash,
+      path: NavigatorPath.splash,
       builder: (context, state) => const SplashPage(),
       routes: [
-        GoRoute(path: login, builder: (context, state) => const SignInPage()),
         GoRoute(
-          path: signUp,
+          path: NavigatorPath.login,
+          builder: (context, state) => const SignInPage(),
+        ),
+        GoRoute(
+          path: NavigatorPath.signUp,
           builder:
               (context, state) => BlocProvider(
                 create: (context) => CheckCubit(),
@@ -26,14 +30,21 @@ GoRouter router = GoRouter(
               ),
         ),
         GoRoute(
-          path: resetPsw,
+          path: NavigatorPath.resetPsw,
           builder: (context, state) => const ResetPasswordPage(),
         ),
         GoRoute(
-          path: resetSent,
+          path: NavigatorPath.resetSent,
           builder: (context, state) => const ResetSentPage(),
         ),
-        GoRoute(path: home, builder: (context, state) => const HomePage()),
+        GoRoute(
+          path: NavigatorPath.home,
+          builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: NavigatorPath.addMedia,
+          builder: (context, state) => const AddMediaPage(),
+        ),
       ],
     ),
   ],
