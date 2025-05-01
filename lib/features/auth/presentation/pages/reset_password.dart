@@ -47,7 +47,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         child: BlocListener<ButtonStateCubit, ButtonState>(
           listener: (context, state) {
             if (state is SuccessButtonState) {
-              context.replace(resetSent);
+              context.replace(NavigatorPath.resetSent);
             } else if (state is FailureButtonState) {
               AppCommons.showScaffold(context, message: state.errMsg);
             }
@@ -78,7 +78,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                         return null;
                       },
                     ),
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     // Reset Password Button
                     Builder(
@@ -97,14 +97,16 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       },
                     ),
 
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     // Back to Sign In Text
                     UnderButtonText(
                       text: "Remember your password?",
                       clickableText: "Sign In",
                       onTextClick: () {
-                        context.replace(login); // Navigate back to sign-in page
+                        context.replace(
+                          NavigatorPath.login,
+                        ); // Navigate back to sign-in page
                       },
                     ),
                   ],

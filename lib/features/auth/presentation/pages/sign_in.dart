@@ -54,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
           listener: (context, state) {
             if (state is SuccessButtonState) {
               AppCommons.showScaffold(context, message: 'Login succeed');
-              context.pushReplacement(home);
+              context.pushReplacement(NavigatorPath.home);
             } else if (state is FailureButtonState) {
               AppCommons.showScaffold(context, message: state.errMsg);
             }
@@ -84,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                         return null;
                       },
                     ),
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
                     // Password Field
                     PasswordTextField(
                       controller: _passwordController,
@@ -95,13 +95,13 @@ class _SignInPageState extends State<SignInPage> {
                         return null;
                       },
                     ),
-                    AppConstants.verySmallSizedBox,
+                    AppConstants.verticalVerySmallSizedBox,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
                           onPressed: () {
-                            context.push(resetPsw);
+                            context.push(NavigatorPath.resetPsw);
                           },
                           child: const Text(
                             'Forgot Password?',
@@ -114,7 +114,7 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     ),
 
-                    AppConstants.smallSizedBox,
+                    AppConstants.verticalSmallSizedBox,
 
                     // Sign In Button
                     Builder(
@@ -136,14 +136,14 @@ class _SignInPageState extends State<SignInPage> {
                       },
                     ),
 
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     // Sign Up Text
                     UnderButtonText(
                       text: "Don't have an account?",
                       clickableText: "Sign Up",
                       onTextClick: () {
-                        context.replace(signUp);
+                        context.replace(NavigatorPath.signUp);
                       },
                     ),
                   ],

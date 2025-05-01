@@ -26,7 +26,7 @@ class ResetSentPage extends StatelessWidget {
                 title: 'Password Reset Sent',
                 subTitle: CommonMessagesEn.passwordResetLinkSent,
               ),
-              AppConstants.mediumSizedBox,
+              AppConstants.verticalMediumSizedBox,
 
               // Success Message
               Container(
@@ -47,15 +47,15 @@ class ResetSentPage extends StatelessWidget {
                   ),
                 ),
               ),
-              AppConstants.mediumSizedBox,
+              AppConstants.verticalMediumSizedBox,
 
               CustomAuthButton(
                 text: 'Back To Sign In',
                 onPressed: () {
-                  context.replace(login);
+                  context.replace(NavigatorPath.login);
                 },
               ),
-              AppConstants.smallSizedBox,
+              AppConstants.verticalSmallSizedBox,
 
               // Additional Instructions
               Text(

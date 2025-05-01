@@ -95,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage>
                         return null;
                       },
                     ),
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     CustomTextField(
                       controller: _emailController,
@@ -109,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage>
                         return null;
                       },
                     ),
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     PasswordTextField(
                       controller: _passwordController,
@@ -120,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage>
                         return null;
                       },
                     ),
-                    AppConstants.mediumSizedBox,
+                    AppConstants.verticalMediumSizedBox,
 
                     PasswordTextField(
                       controller: _confirmPasswordController,
@@ -132,7 +132,7 @@ class _SignUpPageState extends State<SignUpPage>
                         return null;
                       },
                     ),
-                    AppConstants.smallSizedBox,
+                    AppConstants.verticalSmallSizedBox,
 
                     const TermsAndCond(),
 
@@ -141,7 +141,7 @@ class _SignUpPageState extends State<SignUpPage>
                         if (isChecked) {
                           return Column(
                             children: [
-                              AppConstants.smallSizedBox,
+                              AppConstants.verticalSmallSizedBox,
                               Builder(
                                 builder: (context) {
                                   return CustomReactiveButton(
@@ -169,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage>
                                   );
                                 },
                               ),
-                              AppConstants.mediumSizedBox,
+                              AppConstants.verticalMediumSizedBox,
                             ],
                           );
                         }
@@ -181,7 +181,7 @@ class _SignUpPageState extends State<SignUpPage>
                       text: "Already have an account?",
                       clickableText: "Sign In",
                       onTextClick: () {
-                        context.replace(login);
+                        context.replace(NavigatorPath.login);
                       },
                     ),
                   ],
