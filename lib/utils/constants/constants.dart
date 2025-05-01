@@ -30,15 +30,28 @@ class AppConstants {
     );
   }
 
+  static Divider getMediaItemDivider() {
+    return const Divider(
+      indent: 68,
+      thickness: .4,
+      height: 1,
+      color: AppColors.buttonBgColor,
+    );
+  }
+
   static bool isLandscape(BuildContext context) {
     return MediaQuery.of(context).orientation == Orientation.landscape;
   }
 
-  static const Widget verySmallSizedBox = SizedBox(height: 5);
+  static const Widget horizontalVerySmallSizedBox = SizedBox(height: 5);
+  static const Widget verticalVerySmallSizedBox = SizedBox(height: 5);
 
-  static const Widget smallSizedBox = SizedBox(height: 10);
+  static const Widget horizontalSmallSizedBox = SizedBox(width: 10);
+  static const Widget verticalSmallSizedBox = SizedBox(height: 10);
 
-  static const Widget mediumSizedBox = SizedBox(height: 15);
+  static const Widget horizontalMediumSizedBox = SizedBox(width: 15);
+  static const Widget verticalMediumSizedBox = SizedBox(height: 15);
 
-  static const Widget largeSizedBox = SizedBox(height: 25);
+  static const Widget horizontalLargeSizedBox = SizedBox(width: 25);
+  static const Widget verticalLargeSizedBox = SizedBox(height: 25);
 }
