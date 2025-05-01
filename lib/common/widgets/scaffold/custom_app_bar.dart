@@ -50,7 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
                   ),
-              if (title != null) AppConstants.mediumSizedBox,
+              if (title != null) AppConstants.verticalMediumSizedBox,
               if (title != null) Expanded(child: title!),
               if (actions != null) const Spacer(),
               if (actions != null) ...actions!,
