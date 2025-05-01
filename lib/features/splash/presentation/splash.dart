@@ -18,10 +18,10 @@ class SplashPage extends StatelessWidget {
         listenWhen: (current, prev) => current != prev,
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            context.go(login);
+            context.pushReplacement(NavigatorPath.login);
           }
           if (state is Authenticated) {
-            context.go(home);
+            context.pushReplacement(NavigatorPath.home);
           }
         },
         child: Scaffold(
