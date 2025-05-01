@@ -18,4 +18,9 @@ class CommonMessagesEn {
       'User connection parameters are missing';
   static const String missingUserCreationParams =
       'User creation parameters cannot be null';
+
+  static const String mediaCreatedSuccessfully = 'Media created successfully';
+
+  static const String missingMediaCreationParams =
+      'Media creation parameters cannot be null';
 }
