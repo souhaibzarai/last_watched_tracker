@@ -1,11 +1,17 @@
-const String splash = '/';
+class NavigatorPath {
+  NavigatorPath._();
 
-const String login = '/loginPage';
+  static const String splash = '/';
 
-const String signUp = '/signUpPage';
+  static const String login = '/loginPage';
 
-const String resetPsw = '/resetPsw';
+  static const String signUp = '/signUpPage';
 
-const String resetSent = '/resetSent';
+  static const String resetPsw = '/resetPsw';
 
-const String home = '/home';
+  static const String resetSent = '/resetSent';
+
+  static const String home = '/home';
+
+  static const String addMedia = '/add-media';
+}
