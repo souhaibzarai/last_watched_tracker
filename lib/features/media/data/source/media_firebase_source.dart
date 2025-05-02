@@ -14,7 +14,11 @@ abstract class MediaFirebaseSource {
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   final _firestore = FirebaseFirestore.instance;
-  final _user = FirebaseAuth.instance.currentUser;
+  final _auth = FirebaseAuth.instance;
+  final _media = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('media');
 
   @override
   Future<Either> addNewMedia(MediaEntity media) async {
@@ -32,9 +36,15 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
         updatedAt: Timestamp.now(),
       );
 
+      final userId = _auth.currentUser?.uid;
+
+      if (userId == null) {
+        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+      }
+
       await _firestore
           .collection('users')
-          .doc(_user!.uid)
+          .doc(userId)
           .collection('media')
           .add(mediaModel.toFirestore());
 
@@ -47,21 +57,21 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   @override
   Future<Either> fetchAllMedia() async {
     try {
+      final userId = _auth.currentUser?.uid;
+
+      if (userId == null) {
+        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+      }
       final response =
           await _firestore
               .collection('users')
-              .doc(_user!.uid)
+              .doc(userId)
               .collection('media')
               .get();
 
       return Right(
         response.docs
-            .map(
-              (item) => {
-                'id': item.id,
-                'data': item.data(),
-              },
-            )
+            .map((item) => {'id': item.id, 'data': item.data()})
             .toList(),
       );
     } catch (e) {
