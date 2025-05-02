@@ -22,7 +22,7 @@ class MediaItem extends StatelessWidget {
         dragDismissible: false,
         openThreshold: .1,
         closeThreshold: .15,
-        extentRatio: .2,
+        extentRatio: .25,
         motion: DrawerMotion(),
         children: [
           SlidableButton(
@@ -39,7 +39,6 @@ class MediaItem extends StatelessWidget {
           onDismissed: () {},
           dismissThreshold: .7, //
         ),
-        extentRatio: .35,
         children: [
           SlidableButton(
             bgColor: AppColors.disabledColor,
@@ -48,7 +47,8 @@ class MediaItem extends StatelessWidget {
             label: 'More',
           ),
           SlidableButton(
-            bgColor: AppColors.successColor,
+            bgColor: AppColors.slidableGreenColor,
+            color: AppColors.textColor,
             icon: CupertinoIcons.archivebox_fill,
             onClick: (context) {},
             label: 'Archive',
