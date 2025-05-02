@@ -87,7 +87,7 @@ class MediaItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
-                          color: AppColors.secondaryColor.withAlpha(180),
+                          color: AppColors.textColor.withAlpha(120),
                         ),
                       ),
                     ],
