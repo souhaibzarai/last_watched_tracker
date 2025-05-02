@@ -6,14 +6,12 @@ import 'package:go_router/go_router.dart';
 import '../../../../common/app_commons.dart';
 import '../../../../common/cubit/button/button_state.dart';
 import '../../../../common/cubit/button/button_state_cubit.dart';
-import '../../../../common/widgets/button/custom_reactive_button.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
 import '../../../../utils/theme/app_colors.dart';
-import '../../domain/entities/media.dart';
-import '../../domain/usecases/new_media.dart';
+import '../widgets/add_media_button.dart';
 
 class AddMediaPage extends StatefulWidget {
   const AddMediaPage({super.key});
@@ -63,147 +61,136 @@ class _AddMediaPageState extends State<AddMediaPage> {
             alignment: Alignment.centerLeft,
             child: BackButton(color: AppColors.secondaryColor),
           ),
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-            child: BlocProvider(
-              create: (context) => ButtonStateCubit(),
-              lazy: true,
-              child: BlocListener<ButtonStateCubit, ButtonState>(
-                listener: (context, state) {
-                  if (state is FailureButtonState) {
-                    return AppCommons.showScaffold(
-                      context,
-                      message: state.errMsg,
-                    );
-                  }
-                  if (state is SuccessButtonState) {
-                    context.pop(true);
-                    return AppCommons.showScaffold(
-                      context,
-                      message: CommonMessagesEn.mediaCreatedSuccessfully,
-                    );
-                  }
-                },
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Add New Media',
-                        style: TextStyle(
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 24,
-                          color: AppColors.textColor,
-                        ),
-                      ),
-                      AppConstants.verticalLargeSizedBox,
-                      CustomTextField(
-                        labelText: 'Title',
-                        controller: titleController,
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      DropdownButtonFormField(
-                        decoration: InputDecoration(labelText: 'Category'),
-                        icon: Icon(
-                          CupertinoIcons.wand_stars,
-                          color: AppColors.infoColor,
-                        ),
-                        dropdownColor: AppColors.disabledColor,
-                        style: const TextStyle(
-                          color: AppColors.textColor,
-                          fontSize: 16,
-                        ),
-                        value: 'series',
-                        itemHeight: 60,
-                        items: const [
-                          DropdownMenuItem(
-                            value: 'movie',
-                            child: Text('Movie'), //
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              child: BlocProvider(
+                create: (context) => ButtonStateCubit(),
+                lazy: true,
+                child: BlocListener<ButtonStateCubit, ButtonState>(
+                  listener: (context, state) {
+                    if (state is FailureButtonState) {
+                      return AppCommons.showScaffold(
+                        context,
+                        message: state.errMsg,
+                      );
+                    }
+                    if (state is SuccessButtonState) {
+                      context.pop(true);
+                      return AppCommons.showScaffold(
+                        context,
+                        message: CommonMessagesEn.mediaCreatedSuccessfully,
+                      );
+                    }
+                  },
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Add New Media',
+                          style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 24,
+                            color: AppColors.textColor,
                           ),
-                          DropdownMenuItem(
-                            value: 'series',
-                            child: Text('TV Series'),
-                          ),
-                        ],
-                        onChanged: (value) {},
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      DropdownButtonFormField(
-                        decoration: InputDecoration(labelText: 'Status'),
-                        icon: Icon(
-                          CupertinoIcons.wand_stars,
-                          color: AppColors.infoColor,
                         ),
-                        dropdownColor: AppColors.disabledColor,
-                        style: const TextStyle(
-                          color: AppColors.textColor,
-                          fontSize: 16,
+                        AppConstants.verticalLargeSizedBox,
+                        CustomTextField(
+                          labelText: 'Title',
+                          controller: titleController,
                         ),
-                        itemHeight: 60,
-                        items: const [
-                          DropdownMenuItem(
-                            value: 'onhold',
-                            child: Text('On Hold'), //
+                        AppConstants.verticalMediumSizedBox,
+                        DropdownButtonFormField(
+                          decoration: InputDecoration(labelText: 'Category'),
+                          icon: Icon(
+                            CupertinoIcons.wand_stars,
+                            color: AppColors.infoColor,
                           ),
-                          DropdownMenuItem(
-                            value: 'inProgress',
-                            child: Text('In Progress'),
+                          dropdownColor: AppColors.disabledColor,
+                          style: const TextStyle(
+                            color: AppColors.textColor,
+                            fontSize: 16,
                           ),
-                        ],
-                        onChanged: (value) {},
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      CustomTextField(
-                        labelText: 'Progress',
-                        hintText: 'Current episodes, chapters, or pages',
-                        controller: progressController,
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      CustomTextField(
-                        labelText: 'Total (Optional)',
-                        hintText: 'Total episodes, chapters, or pages',
-                        controller: totalController,
-                        isOptional: true,
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      CustomTextField(
-                        labelText: 'Cover Image URL (Optional)',
-                        hintText: 'Link to an image for this media',
-                        controller: imgUrlController,
-                      ),
-                      AppConstants.verticalMediumSizedBox,
-                      CustomTextField(
-                        labelText: 'Notes (Optional)',
-                        hintText: 'Add any personal notes about this media',
-                        isDescriptive: true,
-                        controller: notesController,
-                        isOptional: true,
-                      ),
-                      AppConstants.verticalLargeSizedBox,
-                      Builder(
-                        builder: (context) {
-                          return CustomReactiveButton(
-                            onPressed: () async {
-                              if (_formKey.currentState!.validate()) {
-                                await context.read<ButtonStateCubit>().execute(
-                                  usecase: NewMediaUseCase(),
-                                  params: MediaEntity(
-                                    id: '',
-                                    title: titleController.text,
-                                    category: 'Anime',
-                                    status: 'In Progress',
-                                    imgUrl: imgUrlController.text,
-                                    progress: progressController.text,
-                                    total: totalController.text,
-                                    notes: notesController.text,
-                                  ),
-                                );
-                              }
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                          value: 'series',
+                          itemHeight: 60,
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'movie',
+                              child: Text('Movie'), //
+                            ),
+                            DropdownMenuItem(
+                              value: 'series',
+                              child: Text('TV Series'),
+                            ),
+                          ],
+                          onChanged: (value) {},
+                        ),
+                        AppConstants.verticalMediumSizedBox,
+                        DropdownButtonFormField(
+                          decoration: InputDecoration(labelText: 'Status'),
+                          icon: Icon(
+                            CupertinoIcons.wand_stars,
+                            color: AppColors.infoColor,
+                          ),
+                          dropdownColor: AppColors.disabledColor,
+                          style: const TextStyle(
+                            color: AppColors.textColor,
+                            fontSize: 16,
+                          ),
+                          itemHeight: 60,
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'onhold',
+                              child: Text('On Hold'), //
+                            ),
+                            DropdownMenuItem(
+                              value: 'inProgress',
+                              child: Text('In Progress'),
+                            ),
+                          ],
+                          onChanged: (value) {},
+                        ),
+                        AppConstants.verticalMediumSizedBox,
+                        CustomTextField(
+                          labelText: 'Progress',
+                          hintText: 'Current episodes, chapters, or pages',
+                          controller: progressController,
+                          keyboardType: TextInputType.number,
+                        ),
+                        AppConstants.verticalMediumSizedBox,
+                        CustomTextField(
+                          labelText: 'Total (Optional)',
+                          hintText: 'Total episodes, chapters, or pages',
+                          controller: totalController,
+                          isOptional: true,
+                          keyboardType: TextInputType.number,
+                        ),
+                        AppConstants.verticalMediumSizedBox,
+                        CustomTextField(
+                          labelText: 'Cover Image URL (Optional)',
+                          hintText: 'Link to an image for this media',
+                          controller: imgUrlController,
+                        ),
+                        AppConstants.verticalMediumSizedBox,
+                        CustomTextField(
+                          labelText: 'Notes (Optional)',
+                          hintText: 'Add any personal notes about this media',
+                          isDescriptive: true,
+                          controller: notesController,
+                          isOptional: true,
+                        ),
+                        AppConstants.verticalLargeSizedBox,
+                        AddMediaButton(
+                          formKey: _formKey,
+                          titleController: titleController,
+                          imgUrlController: imgUrlController,
+                          progressController: progressController,
+                          totalController: totalController,
+                          notesController: notesController,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
