@@ -10,6 +10,8 @@ abstract class MediaFirebaseSource {
   Future<Either> addNewMedia(MediaEntity media);
 
   Future<Either> fetchAllMedia();
+
+  Future<Either> archiveMedia(MediaEntity media);
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
@@ -76,6 +78,24 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       );
     } catch (e) {
       return Left('$e');
+    }
+  }
+
+  @override
+  Future<Either> archiveMedia(MediaEntity media) async {
+    try {
+      final userId = _auth.currentUser?.uid;
+
+      if (userId == null) {
+        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+      }
+      await _media.doc(media.id).update({
+        'isArchived': !media.isArchived, //
+      });
+
+      return Right(CommonMessagesEn.mediaArchivedSuccessfully);
+    } catch (e) {
+      return Left('${CommonMessagesEn.errorOccurred} $e');
     }
   }
 }
