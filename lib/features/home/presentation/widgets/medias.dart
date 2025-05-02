@@ -1,9 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/common/app_commons.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/fetch_medias_state.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/fetch_medias_cubit.dart';
-import 'package:last_watched_tracker/features/media/presentation/widgets/media_item.dart';
+import '../../../../common/app_commons.dart';
+import '../../../media/presentation/cubit/fetch_medias_state.dart';
+import '../../../media/presentation/cubit/fetch_medias_cubit.dart';
+import '../../../media/presentation/widgets/media_item.dart';
+import '../../../../utils/messages/message_en.dart';
 
 class Medias extends StatelessWidget {
   const Medias({super.key});
@@ -16,6 +17,12 @@ class Medias extends StatelessWidget {
           AppCommons.centerProgressIndicator;
         } else if (state is MediaSuccessState) {
           final medias = state.medias;
+          if (medias.isEmpty) {
+            return const SizedBox(
+              height: 100,
+              child: Center(child: Text(CommonMessagesEn.mediaListEmpty)),
+            );
+          }
           return Expanded(
             child: ListView.builder(
               itemCount: medias.length,
