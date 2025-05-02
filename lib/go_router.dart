@@ -1,15 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/features/auth/presentation/pages/reset_password.dart';
-import 'package:last_watched_tracker/features/auth/presentation/pages/reset_sent.dart';
-import 'package:last_watched_tracker/features/auth/presentation/pages/sign_in.dart';
-import 'package:last_watched_tracker/features/auth/presentation/pages/sign_up.dart';
-import 'package:last_watched_tracker/features/home/presentation/pages/home.dart';
-import 'package:last_watched_tracker/features/media/presentation/pages/add_media.dart';
-import 'package:last_watched_tracker/features/splash/presentation/splash.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
+import 'features/auth/presentation/pages/reset_password.dart';
+import 'features/auth/presentation/pages/reset_sent.dart';
+import 'features/auth/presentation/pages/sign_in.dart';
+import 'features/auth/presentation/pages/sign_up.dart';
+import 'features/home/presentation/pages/home.dart';
+import 'features/media/presentation/pages/add_media.dart';
+import 'features/media/presentation/pages/archive.dart';
+import 'features/splash/presentation/splash.dart';
+import 'utils/helpers/navigator/strings.dart';
 
 GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -44,6 +45,10 @@ GoRouter router = GoRouter(
         GoRoute(
           path: NavigatorPath.addMedia,
           builder: (context, state) => const AddMediaPage(),
+        ),
+        GoRoute(
+          path: NavigatorPath.archive,
+          builder: (context, state) => const ArchivePage(),
         ),
       ],
     ),

@@ -14,4 +14,6 @@ class NavigatorPath {
   static const String home = '/home';
 
   static const String addMedia = '/add-media';
+
+  static const String archive = '/archive';
 }
