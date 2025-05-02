@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/features/media/domain/usecases/fetch_medias.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/fetch_medias_state.dart';
-import 'package:last_watched_tracker/service_locator.dart';
+import '../../domain/usecases/fetch_medias.dart';
+import 'fetch_medias_state.dart';
+import '../../../../service_locator.dart';
 
 class FetchMediasCubit extends Cubit<MediaState> {
   FetchMediasCubit() : super(MediaInitialState());
@@ -17,11 +17,10 @@ class FetchMediasCubit extends Cubit<MediaState> {
       returnedData.fold(
         (err) {
           emit(MediaFailureState(err: err));
-          print(err);
         },
-        (success) => emit(
-          MediaSuccessState(medias: success), //
-        ),
+        (success) {
+          emit(MediaSuccessState(medias: success));
+        },
       );
     } catch (e) {
       emit(MediaFailureState(err: e.toString()));
