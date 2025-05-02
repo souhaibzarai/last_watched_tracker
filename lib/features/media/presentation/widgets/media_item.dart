@@ -1,21 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:last_watched_tracker/common/widgets/button/slidable_button.dart';
-import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
-import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+
+import '../../../../common/widgets/button/slidable_button.dart';
+import '../../../../utils/constants/constants.dart';
+import '../../../../utils/helpers/images/image_helper.dart';
+import '../../../../utils/theme/app_colors.dart';
+import '../../domain/entities/media.dart';
+import '../cubit/archive_media_cubit.dart';
+import '../cubit/fetch_medias_cubit.dart';
 
 class MediaItem extends StatelessWidget {
-  const MediaItem({super.key, required this.mediaEntity});
+  const MediaItem({super.key, required this.media});
 
-  final MediaEntity mediaEntity;
+  final MediaEntity media;
 
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      key: ValueKey(mediaEntity),
+      key: ValueKey(media),
       direction: Axis.horizontal,
       closeOnScroll: true,
       startActionPane: ActionPane(
@@ -35,10 +39,6 @@ class MediaItem extends StatelessWidget {
       ),
       endActionPane: ActionPane(
         motion: StretchMotion(),
-        dismissible: DismissiblePane(
-          onDismissed: () {},
-          dismissThreshold: .7, //
-        ),
         children: [
           SlidableButton(
             bgColor: AppColors.disabledColor,
@@ -49,9 +49,12 @@ class MediaItem extends StatelessWidget {
           SlidableButton(
             bgColor: AppColors.slidableGreenColor,
             color: AppColors.textColor,
-            icon: CupertinoIcons.archivebox_fill,
-            onClick: (context) {},
-            label: 'Archive',
+            icon:
+                media.isArchived
+                    ? Icons.unarchive
+                    : CupertinoIcons.archivebox_fill,
+            label: media.isArchived ? 'Unarchive' : 'Archive',
+            onClick: (context) => toggleArchive(context, media),
           ),
         ],
       ),
@@ -67,9 +70,7 @@ class MediaItem extends StatelessWidget {
                   height: 80,
                   clipBehavior: Clip.hardEdge,
                   decoration: const BoxDecoration(shape: BoxShape.circle),
-                  child: ImageHelper.getImage(
-                    imgUrl: mediaEntity.imgUrl.toString(),
-                  ),
+                  child: ImageHelper.getImage(imgUrl: media.imgUrl.toString()),
                 ),
                 AppConstants.horizontalMediumSizedBox,
                 Expanded(
@@ -77,12 +78,12 @@ class MediaItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        mediaEntity.title,
+                        media.title,
                         maxLines: 1,
                         style: const TextStyle(fontSize: 17),
                       ),
                       Text(
-                        mediaEntity.notes.toString(), //
+                        media.notes.toString(), //
                         maxLines: 1,
                         style: TextStyle(
                           fontSize: 14,
@@ -94,7 +95,7 @@ class MediaItem extends StatelessWidget {
                   ),
                 ),
                 AppConstants.horizontalMediumSizedBox,
-                Text(mediaEntity.status),
+                Text(media.status),
               ],
             ),
           ),
@@ -103,4 +104,12 @@ class MediaItem extends StatelessWidget {
       ),
     );
   }
+}
+
+void toggleArchive(BuildContext context, MediaEntity media) async {
+  final archiveCubit = context.read<ArchiveMediaCubit>();
+  final fetchMediaCubit = context.read<FetchMediasCubit>();
+
+  await archiveCubit.toggleArchive(media);
+  await fetchMediaCubit.fetchMedias(showLoading: false);
 }
