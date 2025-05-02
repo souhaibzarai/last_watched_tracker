@@ -20,7 +20,9 @@ abstract class AuthFirebaseService {
 }
 
 class AuthFirebaseServiceImpl implements AuthFirebaseService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+
+  AuthFirebaseServiceImpl({required FirebaseAuth auth}) : _auth = auth;
 
   @override
   Future<Either> registerUser(UserCreation user) async {
