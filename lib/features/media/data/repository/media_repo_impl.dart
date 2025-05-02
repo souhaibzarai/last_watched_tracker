@@ -31,4 +31,9 @@ class MediaRepoImpl implements MediaRepository {
       return Left('$e');
     }
   }
+
+  @override
+  Future<Either> toggleArchive(MediaEntity media) async {
+    return await serviceLocator<MediaFirebaseSource>().toggleArchive(media);
+  }
 }

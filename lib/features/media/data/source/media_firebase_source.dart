@@ -11,16 +11,12 @@ abstract class MediaFirebaseSource {
 
   Future<Either> fetchAllMedia();
 
-  Future<Either> archiveMedia(MediaEntity media);
+  Future<Either> toggleArchive(MediaEntity media);
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  final _media = FirebaseFirestore.instance
-      .collection('users')
-      .doc(FirebaseAuth.instance.currentUser!.uid)
-      .collection('media');
 
   @override
   Future<Either> addNewMedia(MediaEntity media) async {
@@ -82,16 +78,21 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   }
 
   @override
-  Future<Either> archiveMedia(MediaEntity media) async {
+  Future<Either> toggleArchive(MediaEntity media) async {
     try {
       final userId = _auth.currentUser?.uid;
 
       if (userId == null) {
         return const Left(CommonMessagesEn.userIsNotAuthenticated);
       }
-      await _media.doc(media.id).update({
-        'isArchived': !media.isArchived, //
-      });
+      await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('media')
+          .doc(media.id)
+          .update({
+            'isArchived': !media.isArchived, //
+          });
 
       return Right(CommonMessagesEn.mediaArchivedSuccessfully);
     } catch (e) {
