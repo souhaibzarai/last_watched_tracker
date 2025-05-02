@@ -25,4 +25,11 @@ class CommonMessagesEn {
       'Media creation parameters cannot be null';
 
   static const String mediaListEmpty = 'Your media list is empty!';
+
+  static const String mediaArchivedSuccessfully = 'Media archived successfully';
+
+  static const String errorOnArchive =
+      'An error occurred while archiving the item';
+  static const String mediaWillBeArchived =
+      'This media will stay archived unless you unarchive it.';
 }
