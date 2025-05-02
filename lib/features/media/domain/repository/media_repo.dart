@@ -5,4 +5,6 @@ abstract class MediaRepository {
   Future<Either> addNewMedia(MediaEntity media);
 
   Future<Either> fetchAllMedia();
+
+  Future<Either> toggleArchive(MediaEntity media);
 }
