@@ -18,14 +18,14 @@ class MediaRepoImpl implements MediaRepository {
           await serviceLocator<MediaFirebaseSource>().fetchAllMedia();
 
       return result.fold((err) => Left(err.toString()), (mediaList) {
-        final entities =
+        final response =
             List.from(mediaList).map((media) {
               final String id = media['id'];
               final Map<String, dynamic> data = media['data'];
               return MediaModel.fromFirestore(data, id: id).toEntity();
             }).toList();
 
-        return Right(entities);
+        return Right(response);
       });
     } catch (e) {
       return Left('$e');
@@ -35,5 +35,26 @@ class MediaRepoImpl implements MediaRepository {
   @override
   Future<Either> toggleArchive(MediaEntity media) async {
     return await serviceLocator<MediaFirebaseSource>().toggleArchive(media);
+  }
+
+  @override
+  Future<Either> fetchCategories() async {
+    try {
+      final result =
+          await serviceLocator<MediaFirebaseSource>().fetchCategories();
+
+      return result.fold((err) => Left(err.toString()), (categories) {
+        final response =
+            List.from(categories).map((category) {
+              final String id = category['id'];
+              final Map<String, dynamic> data = category['data'];
+              return MediaModel.fromFirestore(data, id: id).toEntity();
+            }).toList();
+
+        return Right(response);
+      });
+    } catch (e) {
+      return Left('$e');
+    }
   }
 }

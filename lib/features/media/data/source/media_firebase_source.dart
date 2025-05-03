@@ -12,6 +12,8 @@ abstract class MediaFirebaseSource {
   Future<Either> fetchAllMedia();
 
   Future<Either> toggleArchive(MediaEntity media);
+
+  Future<Either> fetchCategories();
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
@@ -97,6 +99,21 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       return Right(CommonMessagesEn.mediaArchivedSuccessfully);
     } catch (e) {
       return Left('${CommonMessagesEn.errorOccurred} $e');
+    }
+  }
+
+  @override
+  Future<Either> fetchCategories() async {
+    try {
+      final response = await _firestore.collection('catgeories').get();
+
+      return Right(
+        response.docs
+            .map((item) => {'id': item.id, 'data': item.data()})
+            .toList(),
+      );
+    } catch (e) {
+      return Left('$e');
     }
   }
 }

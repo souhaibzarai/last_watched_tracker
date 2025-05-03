@@ -7,4 +7,7 @@ abstract class MediaRepository {
   Future<Either> fetchAllMedia();
 
   Future<Either> toggleArchive(MediaEntity media);
+
+  Future<Either> fetchCategories();
+
 }
