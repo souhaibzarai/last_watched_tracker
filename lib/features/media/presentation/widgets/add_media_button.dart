@@ -30,6 +30,7 @@ class AddMediaButton extends StatelessWidget {
     return Builder(
       builder: (context) {
         return CustomReactiveButton(
+          text: 'Add Media',
           onPressed:
               category.toLowerCase().contains('choose')
                   ? null
