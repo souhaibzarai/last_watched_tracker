@@ -13,7 +13,9 @@ import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
 import '../../../../utils/theme/app_colors.dart';
+import '../cubit/category_selector_cubit.dart';
 import '../widgets/add_media_button.dart';
+import '../widgets/category_selector_field.dart';
 
 class AddMediaPage extends StatefulWidget {
   const AddMediaPage({super.key});
@@ -93,31 +95,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           controller: titleController,
                         ),
                         AppConstants.verticalMediumSizedBox,
-                        DropdownButtonFormField(
-                          decoration: InputDecoration(labelText: 'Category'),
-                          icon: Icon(
-                            CupertinoIcons.wand_stars,
-                            color: AppColors.infoColor,
-                          ),
-                          dropdownColor: AppColors.disabledColor,
-                          style: const TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 16,
-                          ),
-                          value: 'series',
-                          itemHeight: 60,
-                          items: const [
-                            DropdownMenuItem(
-                              value: 'movie',
-                              child: Text('Movie'), //
-                            ),
-                            DropdownMenuItem(
-                              value: 'series',
-                              child: Text('TV Series'),
-                            ),
-                          ],
-                          onChanged: (value) {},
-                        ),
+                        CategorySelectorField(),
                         AppConstants.verticalMediumSizedBox,
                         DropdownButtonFormField(
                           decoration: InputDecoration(labelText: 'Status'),
@@ -180,6 +158,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           progressController: progressController,
                           totalController: totalController,
                           notesController: notesController,
+                          category: context.read<CategorySelectorCubit>().state,
                         ),
                       ],
                     ),

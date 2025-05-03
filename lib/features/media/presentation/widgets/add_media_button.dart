@@ -14,6 +14,7 @@ class AddMediaButton extends StatelessWidget {
     required this.progressController,
     required this.totalController,
     required this.notesController,
+    required this.category,
   }) : _formKey = formKey;
 
   final GlobalKey<FormState> _formKey;
@@ -22,29 +23,33 @@ class AddMediaButton extends StatelessWidget {
   final TextEditingController progressController;
   final TextEditingController totalController;
   final TextEditingController notesController;
+  final String category;
 
   @override
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
         return CustomReactiveButton(
-          onPressed: () async {
-            if (_formKey.currentState!.validate()) {
-              await context.read<ButtonStateCubit>().execute(
-                usecase: NewMediaUseCase(),
-                params: MediaEntity(
-                  id: '',
-                  title: titleController.text,
-                  category: 'Anime',
-                  status: 'In Progress',
-                  imgUrl: imgUrlController.text,
-                  progress: progressController.text,
-                  total: totalController.text,
-                  notes: notesController.text,
-                ),
-              );
-            }
-          },
+          onPressed:
+              category.toLowerCase().contains('choose')
+                  ? null
+                  : () async {
+                    if (_formKey.currentState!.validate()) {
+                      await context.read<ButtonStateCubit>().execute(
+                        usecase: NewMediaUseCase(),
+                        params: MediaEntity(
+                          id: '',
+                          title: titleController.text,
+                          category: category,
+                          status: 'In Progress',
+                          imgUrl: imgUrlController.text,
+                          progress: progressController.text,
+                          total: totalController.text,
+                          notes: notesController.text,
+                        ),
+                      );
+                    }
+                  },
         );
       },
     );
