@@ -3,14 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/category.dart';
 
 class CategoryModel {
-  final int index;
-  final String categoryId;
+  final String id;
   final String name;
   final Timestamp createdAt;
 
   CategoryModel({
-    required this.index,
-    required this.categoryId,
+    required this.id,
     required this.name,
     required this.createdAt,
   });
@@ -20,8 +18,7 @@ class CategoryModel {
     required String id,
   }) {
     return CategoryModel(
-      categoryId: id,
-      index: json['index'],
+      id: id,
       name: json['name'],
       createdAt: json['created_at'],
     );
@@ -31,8 +28,7 @@ class CategoryModel {
 extension CategoryXModel on CategoryModel {
   CategoryEntity toEntity() {
     return CategoryEntity(
-      index: index,
-      categoryId: categoryId,
+      id: id,
       name: name,
       createdAt: createdAt,
     );
