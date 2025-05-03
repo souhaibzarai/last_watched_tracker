@@ -83,7 +83,7 @@ class MediaItem extends StatelessWidget {
                         style: const TextStyle(fontSize: 17),
                       ),
                       Text(
-                        media.notes.toString(), //
+                        media.category.toString(), //
                         maxLines: 1,
                         style: TextStyle(
                           fontSize: 14,

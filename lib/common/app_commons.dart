@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
 
 import '../utils/theme/app_colors.dart';
 
@@ -19,8 +20,8 @@ class AppCommons {
 
   static Widget centerProgressIndicator = Center(
     child: Container(
-      width: 35,
-      height: 35,
+      width: 40,
+      height: 40,
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: AppColors.secondaryColor.withAlpha(170),
@@ -33,6 +34,50 @@ class AppCommons {
       ),
     ),
   );
+
+  static Widget labeledProgressIndicator({String? label, Color? color}) {
+    return Center(
+      child: SizedBox(
+        width: double.infinity,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 35,
+              height: 35,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: AppColors.disabledColor,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(25),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: CircularProgressIndicator.adaptive(
+                valueColor: AlwaysStoppedAnimation<Color>(AppColors.textColor),
+                strokeWidth: 3,
+                backgroundColor: AppColors.primaryColor.withAlpha(100),
+              ),
+            ),
+            AppConstants.horizontalSmallSizedBox,
+            Text(
+              label ?? 'Loading...',
+              style: TextStyle(
+                color: color ?? AppColors.primaryColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   static OutlineInputBorder getOutlineInputBorder({
     Color? color,

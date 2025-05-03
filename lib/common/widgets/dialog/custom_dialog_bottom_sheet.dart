@@ -63,11 +63,6 @@ class CustomDialogBottomSheet extends StatelessWidget {
                     ),
                     child: child,
                   ),
-                  AppConstants.getHorizontalDivider(
-                    isTransparent: false,
-                    isFull: true,
-                    color: AppColors.disabledColor,
-                  ),
                 ],
               ),
             );

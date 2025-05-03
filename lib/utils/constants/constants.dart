@@ -27,11 +27,11 @@ class AppConstants {
   }) {
     return Divider(
       indent: isFull ? 0 : 20,
-      thickness: .8,
+      thickness: isFull ? .4 : .8,
       height: isTransparent ? 10 : 1,
       endIndent: 20,
       color:
-          isTransparent ? Colors.transparent : color ?? AppColors.disabledColor,
+          isTransparent ? Colors.transparent : color ?? AppColors.buttonBgColor,
     );
   }
 
