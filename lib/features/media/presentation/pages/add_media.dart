@@ -13,9 +13,9 @@ import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
 import '../../../../utils/theme/app_colors.dart';
-import '../cubit/category_selector_cubit.dart';
+import '../../../category/presentation/cubit/category_selector_cubit.dart';
 import '../widgets/add_media_button.dart';
-import '../widgets/category_selector_field.dart';
+import '../../../category/presentation/widgets/category_selector_field.dart';
 
 class AddMediaPage extends StatefulWidget {
   const AddMediaPage({super.key});

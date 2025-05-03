@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:last_watched_tracker/features/media/data/models/media.dart';
-import 'package:last_watched_tracker/utils/messages/message_en.dart';
+import '../models/media.dart';
+import '../../../../utils/messages/message_en.dart';
 
 import '../../domain/entities/media.dart';
 
@@ -12,8 +12,6 @@ abstract class MediaFirebaseSource {
   Future<Either> fetchAllMedia();
 
   Future<Either> toggleArchive(MediaEntity media);
-
-  Future<Either> fetchCategories();
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
@@ -99,21 +97,6 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       return Right(CommonMessagesEn.mediaArchivedSuccessfully);
     } catch (e) {
       return Left('${CommonMessagesEn.errorOccurred} $e');
-    }
-  }
-
-  @override
-  Future<Either> fetchCategories() async {
-    try {
-      final response = await _firestore.collection('categories').get();
-
-      return Right(
-        response.docs
-            .map((item) => {'id': item.id, 'data': item.data()})
-            .toList(),
-      );
-    } catch (e) {
-      return Left('$e');
     }
   }
 }

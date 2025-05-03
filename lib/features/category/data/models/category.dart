@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:last_watched_tracker/features/media/domain/entities/category.dart';
+
+import '../../domain/entities/category.dart';
 
 class CategoryModel {
   final int index;

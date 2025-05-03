@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:last_watched_tracker/features/media/data/models/category.dart';
-import 'package:last_watched_tracker/features/media/data/models/media.dart';
-import 'package:last_watched_tracker/features/media/data/source/media_firebase_source.dart';
-import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
-import 'package:last_watched_tracker/features/media/domain/repository/media_repo.dart';
-import 'package:last_watched_tracker/service_locator.dart';
+
+import '../../../../service_locator.dart';
+import '../../domain/entities/media.dart';
+import '../../domain/repository/media_repo.dart';
+import '../models/media.dart';
+import '../source/media_firebase_source.dart';
 
 class MediaRepoImpl implements MediaRepository {
   @override
@@ -36,26 +36,5 @@ class MediaRepoImpl implements MediaRepository {
   @override
   Future<Either> toggleArchive(MediaEntity media) async {
     return await serviceLocator<MediaFirebaseSource>().toggleArchive(media);
-  }
-
-  @override
-  Future<Either> fetchCategories() async {
-    try {
-      final result =
-          await serviceLocator<MediaFirebaseSource>().fetchCategories();
-
-      return result.fold((err) => Left(err.toString()), (categories) {
-        final response =
-            List.from(categories).map((category) {
-              final String id = category['id'];
-              final Map<String, dynamic> data = category['data'];
-              return CategoryModel.fromFirestore(data, id: id).toEntity();
-            }).toList();
-
-        return Right(response);
-      });
-    } catch (e) {
-      return Left('$e');
-    }
   }
 }

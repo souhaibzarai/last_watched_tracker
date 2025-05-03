@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:last_watched_tracker/features/media/domain/usecases/fetch_categories.dart';
 
 import 'features/auth/data/repository/auth_repo_impl.dart';
 import 'features/auth/data/source/firebase_auth_source.dart';
@@ -10,6 +9,10 @@ import 'features/auth/domain/usecases/reset_password.dart';
 import 'features/auth/domain/usecases/sign_in.dart';
 import 'features/auth/domain/usecases/sign_up.dart';
 import 'features/auth/domain/usecases/user_status.dart';
+import 'features/category/data/repository/category_repo_impl.dart';
+import 'features/category/data/source/category_firebase_source.dart';
+import 'features/category/domain/repository/category_repo.dart';
+import 'features/category/domain/usecases/fetch_categories.dart';
 import 'features/media/data/repository/media_repo_impl.dart';
 import 'features/media/data/source/media_firebase_source.dart';
 import 'features/media/domain/repository/media_repo.dart';
@@ -31,6 +34,10 @@ Future<void> initDependencies() async {
     MediaFirebaseSourceImpl(),
   );
 
+  serviceLocator.registerSingleton<CategoryRemoteSource>(
+    CategoryRemoteSourceImpl(),
+  );
+
   //
   //
   //
@@ -39,6 +46,10 @@ Future<void> initDependencies() async {
   serviceLocator.registerSingleton<AuthRepository>(AuthRepositoryImpl());
 
   serviceLocator.registerSingleton<MediaRepository>(MediaRepoImpl());
+
+  serviceLocator.registerSingleton<CategoryRepository>(
+    CategoryRepoImpl(), //
+  );
 
   //
   //

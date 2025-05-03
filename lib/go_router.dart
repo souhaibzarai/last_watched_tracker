@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:last_watched_tracker/features/category/presentation/cubit/category_cubit.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/category_selector_cubit.dart';
+import 'package:last_watched_tracker/features/category/presentation/cubit/category_selector_cubit.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
 import 'features/auth/presentation/pages/reset_password.dart';
