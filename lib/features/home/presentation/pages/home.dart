@@ -14,10 +14,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => UserInfoCubit()..getUserInfo()),
-      ],
+    return BlocProvider(
+      create: (context) => UserInfoCubit()..getUserInfo(),
+
       child: CustomAppScaffold(
         child: SizedBox(
           width: double.infinity,
