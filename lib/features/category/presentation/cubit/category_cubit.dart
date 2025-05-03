@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/features/category/domain/usecases/fetch_categories.dart';
-import 'package:last_watched_tracker/service_locator.dart';
 
+import '../../../../service_locator.dart';
+import '../../domain/usecases/fetch_categories.dart';
 import 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
