@@ -6,7 +6,9 @@ import 'package:go_router/go_router.dart';
 import '../../../../common/app_commons.dart';
 import '../../../../common/cubit/button/button_state.dart';
 import '../../../../common/cubit/button/button_state_cubit.dart';
+import '../../../../common/widgets/button/custom_back_button.dart';
 import '../../../../common/widgets/custom_text_field.dart';
+import '../../../../common/widgets/page_heading_title.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
@@ -57,13 +59,10 @@ class _AddMediaPageState extends State<AddMediaPage> {
     return CustomAppScaffold(
       child: Column(
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            child: BackButton(color: AppColors.secondaryColor),
-          ),
+          const CustomBackButton(),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
               child: BlocProvider(
                 create: (context) => ButtonStateCubit(),
                 lazy: true,
@@ -87,14 +86,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        Text(
-                          'Add New Media',
-                          style: TextStyle(
-                            overflow: TextOverflow.ellipsis,
-                            fontSize: 24,
-                            color: AppColors.textColor,
-                          ),
-                        ),
+                        const PageHeadingTitle(text: 'Add New Media'),
                         AppConstants.verticalLargeSizedBox,
                         CustomTextField(
                           labelText: 'Title',
