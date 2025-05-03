@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:last_watched_tracker/features/category/presentation/cubit/category_cubit.dart';
 import 'package:last_watched_tracker/features/category/presentation/cubit/category_selector_cubit.dart';
+import 'package:last_watched_tracker/features/status/presentation/cubit/status_cubit.dart';
+import 'package:last_watched_tracker/features/status/presentation/cubit/status_selector_cubit.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
 import 'features/auth/presentation/pages/reset_password.dart';
@@ -53,7 +55,12 @@ GoRouter router = GoRouter(
                     create: (_) => CategorySelectorCubit(),
                     lazy: true,
                   ),
+                  BlocProvider(
+                    create: (_) => StatusSelectorCubit(),
+                    lazy: true,
+                  ),
                   BlocProvider(create: (_) => CategoryCubit(), lazy: true),
+                  BlocProvider(create: (_) => StatusCubit(), lazy: true),
                 ],
                 child: const AddMediaPage(),
               ),
