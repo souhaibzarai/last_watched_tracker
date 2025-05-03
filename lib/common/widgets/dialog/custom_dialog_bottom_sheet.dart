@@ -20,9 +20,9 @@ class CustomDialogBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showCupertinoSheet(
+        showCupertinoModalPopup(
           context: context,
-          pageBuilder: (dialogContext) {
+          builder: (dialogContext) {
             return CupertinoAlertDialog(
               content: Column(
                 children: [
