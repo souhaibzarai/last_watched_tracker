@@ -20,13 +20,18 @@ class AppConstants {
     );
   }
 
-  static Divider getHorizontalDivider({bool isTransparent = true}) {
+  static Divider getHorizontalDivider({
+    bool isTransparent = true,
+    bool isFull = false,
+    Color? color,
+  }) {
     return Divider(
-      indent: 20,
+      indent: isFull ? 0 : 20,
       thickness: .8,
       height: isTransparent ? 10 : 1,
       endIndent: 20,
-      color: isTransparent ? Colors.transparent : AppColors.disabledColor,
+      color:
+          isTransparent ? Colors.transparent : color ?? AppColors.disabledColor,
     );
   }
 
