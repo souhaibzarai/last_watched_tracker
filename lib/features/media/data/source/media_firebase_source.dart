@@ -105,7 +105,7 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   @override
   Future<Either> fetchCategories() async {
     try {
-      final response = await _firestore.collection('catgeories').get();
+      final response = await _firestore.collection('categories').get();
 
       return Right(
         response.docs

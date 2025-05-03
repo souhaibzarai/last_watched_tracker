@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:last_watched_tracker/features/media/data/models/category.dart';
 import 'package:last_watched_tracker/features/media/data/models/media.dart';
 import 'package:last_watched_tracker/features/media/data/source/media_firebase_source.dart';
 import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
@@ -48,7 +49,7 @@ class MediaRepoImpl implements MediaRepository {
             List.from(categories).map((category) {
               final String id = category['id'];
               final Map<String, dynamic> data = category['data'];
-              return MediaModel.fromFirestore(data, id: id).toEntity();
+              return CategoryModel.fromFirestore(data, id: id).toEntity();
             }).toList();
 
         return Right(response);
