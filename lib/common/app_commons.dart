@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
+import '../utils/constants/constants.dart';
 
 import '../utils/theme/app_colors.dart';
 

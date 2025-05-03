@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
+import '../../../utils/helpers/navigator/strings.dart';
 
 import '../../../../utils/constants/images_path.dart';
 import 'cubit/splash_cubit.dart';

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../models/media.dart';
-import '../../../../utils/messages/message_en.dart';
 
+import '../../../../utils/messages/message_en.dart';
 import '../../domain/entities/media.dart';
+import '../models/media.dart';
 
 abstract class MediaFirebaseSource {
   Future<Either> addNewMedia(MediaEntity media);

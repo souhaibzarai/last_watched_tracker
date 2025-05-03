@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/common/widgets/custom_text_field.dart';
-import 'package:last_watched_tracker/features/auth/presentation/cubit/check_cubit.dart';
+import '../../../../common/widgets/custom_text_field.dart';
+import '../cubit/check_cubit.dart';
 
 class PasswordTextField extends StatelessWidget {
   const PasswordTextField({

@@ -1,4 +1,4 @@
-import 'package:last_watched_tracker/features/category/domain/entities/category.dart';
+import '../../domain/entities/category.dart';
 
 abstract class CategoryState {}
 

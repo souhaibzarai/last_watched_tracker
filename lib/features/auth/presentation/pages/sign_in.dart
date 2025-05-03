@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/common/cubit/button/button_state.dart';
-import 'package:last_watched_tracker/common/cubit/button/button_state_cubit.dart';
-import 'package:last_watched_tracker/common/widgets/custom_text_field.dart';
-import 'package:last_watched_tracker/common/widgets/scaffold/custom_app_bar.dart';
-import 'package:last_watched_tracker/features/auth/data/models/user_login.dart';
-import 'package:last_watched_tracker/features/auth/domain/usecases/sign_in.dart';
-import 'package:last_watched_tracker/features/auth/presentation/widgets/password_text_field.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
+
 import '../../../../common/app_commons.dart';
+import '../../../../common/cubit/button/button_state.dart';
+import '../../../../common/cubit/button/button_state_cubit.dart';
 import '../../../../common/widgets/button/custom_reactive_button.dart';
+import '../../../../common/widgets/custom_text_field.dart';
+import '../../../../common/widgets/scaffold/custom_app_bar.dart';
 import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
+import '../../../../utils/constants/constants.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
+import '../../data/models/user_login.dart';
+import '../../domain/usecases/sign_in.dart';
 import '../widgets/custom_auth_text.dart';
+import '../widgets/password_text_field.dart';
 import '../widgets/under_button_text.dart';
 
 class SignInPage extends StatefulWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../service_locator.dart';
 import '../../domain/usecases/fetch_medias.dart';
 import 'fetch_medias_state.dart';
-import '../../../../service_locator.dart';
 
 class FetchMediasCubit extends Cubit<MediaState> {
   FetchMediasCubit() : super(MediaInitialState());

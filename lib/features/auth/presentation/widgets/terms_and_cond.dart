@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/features/auth/presentation/cubit/check_cubit.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import '../cubit/check_cubit.dart';
+import '../../../../utils/theme/app_colors.dart';
 
 class TermsAndCond extends StatelessWidget {
   const TermsAndCond({super.key});

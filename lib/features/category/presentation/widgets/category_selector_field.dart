@@ -7,8 +7,8 @@ import '../../../../common/widgets/button/clickable_item.dart';
 import '../../../../common/widgets/dialog/custom_dialog_bottom_sheet.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/theme/app_colors.dart';
-import '../cubit/category_selector_cubit.dart';
 import '../cubit/category_cubit.dart';
+import '../cubit/category_selector_cubit.dart';
 import '../cubit/category_state.dart';
 
 class CategorySelectorField extends StatelessWidget {

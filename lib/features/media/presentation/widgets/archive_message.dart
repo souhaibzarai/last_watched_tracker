@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/utils/messages/message_en.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import '../../../../utils/messages/message_en.dart';
+import '../../../../utils/theme/app_colors.dart';
 
 class ArchiveMessage extends StatelessWidget {
   const ArchiveMessage({super.key});

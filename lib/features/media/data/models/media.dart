@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
+import '../../domain/entities/media.dart';
 
 class MediaModel {
   String id;

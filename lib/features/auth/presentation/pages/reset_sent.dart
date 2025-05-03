@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/common/widgets/scaffold/custom_app_bar.dart';
-import 'package:last_watched_tracker/features/auth/presentation/widgets/custom_auth_button.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
+import '../../../../common/widgets/scaffold/custom_app_bar.dart';
+import '../widgets/custom_auth_button.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';

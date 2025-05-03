@@ -1,19 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/features/category/presentation/cubit/category_cubit.dart';
-import 'package:last_watched_tracker/features/category/presentation/cubit/category_selector_cubit.dart';
-import 'package:last_watched_tracker/features/status/presentation/cubit/status_cubit.dart';
-import 'package:last_watched_tracker/features/status/presentation/cubit/status_selector_cubit.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
 import 'features/auth/presentation/pages/reset_password.dart';
 import 'features/auth/presentation/pages/reset_sent.dart';
 import 'features/auth/presentation/pages/sign_in.dart';
 import 'features/auth/presentation/pages/sign_up.dart';
+import 'features/category/presentation/cubit/category_cubit.dart';
+import 'features/category/presentation/cubit/category_selector_cubit.dart';
 import 'features/home/presentation/pages/home.dart';
 import 'features/media/presentation/pages/add_media.dart';
 import 'features/media/presentation/pages/archive.dart';
 import 'features/splash/presentation/splash.dart';
+import 'features/status/presentation/cubit/status_cubit.dart';
+import 'features/status/presentation/cubit/status_selector_cubit.dart';
 import 'utils/helpers/navigator/strings.dart';
 
 GoRouter router = GoRouter(

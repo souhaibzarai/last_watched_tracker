@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/common/app_commons.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import '../../app_commons.dart';
+import '../../../utils/theme/app_colors.dart';
 
 class CustomIconItem extends StatelessWidget {
   const CustomIconItem({

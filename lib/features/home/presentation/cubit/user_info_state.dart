@@ -1,4 +1,4 @@
-import 'package:last_watched_tracker/features/auth/domain/entities/user.dart';
+import '../../../auth/domain/entities/user.dart';
 
 abstract class UserInfoState {}
 

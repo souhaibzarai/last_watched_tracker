@@ -1,6 +1,6 @@
-import 'package:last_watched_tracker/common/usecase.dart';
-import 'package:last_watched_tracker/features/auth/domain/repository/auth_repository.dart';
-import 'package:last_watched_tracker/service_locator.dart';
+import '../../../../common/usecase.dart';
+import '../repository/auth_repository.dart';
+import '../../../../service_locator.dart';
 
 class SignOutUseCase extends Usecase<void, dynamic> {
   @override

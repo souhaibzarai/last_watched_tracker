@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import '../../../../common/usecase.dart';
-import '../../../../utils/messages/message_en.dart';
-import '../repository/auth_repository.dart';
-import '../../../../service_locator.dart';
 
+import '../../../../common/usecase.dart';
+import '../../../../service_locator.dart';
+import '../../../../utils/messages/message_en.dart';
 import '../../data/models/user_login.dart';
+import '../repository/auth_repository.dart';
 
 class SignInUseCase extends Usecase<Either, UserLogin> {
   @override

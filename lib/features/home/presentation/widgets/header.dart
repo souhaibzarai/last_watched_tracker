@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/fetch_medias_cubit.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import '../../../media/presentation/cubit/fetch_medias_cubit.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
+import '../../../../utils/theme/app_colors.dart';
 
 import 'custom_search_field.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../constants/strings.dart';
 
 class AppVersion extends StatelessWidget {

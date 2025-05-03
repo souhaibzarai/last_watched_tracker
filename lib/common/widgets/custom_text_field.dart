@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/common/app_commons.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+
+import '../../utils/theme/app_colors.dart';
+import '../app_commons.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

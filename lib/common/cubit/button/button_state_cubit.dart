@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/common/cubit/button/button_state.dart';
+import 'button_state.dart';
 
 import '../../usecase.dart';
 

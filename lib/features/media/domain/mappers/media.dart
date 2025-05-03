@@ -1,4 +1,4 @@
-import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
+import '../entities/media.dart';
 
 class MediaMappers {
   static getMedias(

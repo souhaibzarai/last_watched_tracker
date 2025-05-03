@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/common/widgets/button/custom_clickable_field.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import '../button/custom_clickable_field.dart';
+import '../../../utils/constants/constants.dart';
+import '../../../utils/theme/app_colors.dart';
 
 class CustomDialogBottomSheet extends StatelessWidget {
   const CustomDialogBottomSheet({
