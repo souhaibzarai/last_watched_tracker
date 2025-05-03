@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:last_watched_tracker/common/usecase.dart';
-import 'package:last_watched_tracker/features/media/domain/entities/media.dart';
-import 'package:last_watched_tracker/features/media/domain/repository/media_repo.dart';
-import 'package:last_watched_tracker/service_locator.dart';
-import 'package:last_watched_tracker/utils/messages/message_en.dart';
+
+import '../../../../common/usecase.dart';
+import '../../../../service_locator.dart';
+import '../../../../utils/messages/message_en.dart';
+import '../entities/media.dart';
+import '../repository/media_repo.dart';
 
 class NewMediaUseCase extends Usecase<Either, MediaEntity> {
   @override

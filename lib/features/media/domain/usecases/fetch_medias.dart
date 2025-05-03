@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:last_watched_tracker/common/usecase.dart';
-import 'package:last_watched_tracker/features/media/domain/repository/media_repo.dart';
-import 'package:last_watched_tracker/service_locator.dart';
+
+import '../../../../common/usecase.dart';
+import '../../../../service_locator.dart';
+import '../repository/media_repo.dart';
 
 class FetchMediasUseCase extends Usecase<Either, dynamic> {
   @override
