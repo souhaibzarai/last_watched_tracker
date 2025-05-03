@@ -1,0 +1,80 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:last_watched_tracker/common/widgets/button/custom_clickable_field.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
+import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+
+class CustomDialogBottomSheet extends StatelessWidget {
+  const CustomDialogBottomSheet({
+    super.key,
+    required this.text,
+    required this.type,
+    required this.child,
+  });
+
+  final String text;
+  final String type;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        showCupertinoSheet(
+          context: context,
+          pageBuilder: (dialogContext) {
+            return CupertinoAlertDialog(
+              content: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        text.toLowerCase().contains('choose')
+                            ? text
+                            : '$type: $text',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primaryColor,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(dialogContext),
+                        child: const Icon(
+                          CupertinoIcons.xmark_circle_fill,
+                          color: AppColors.disabledColor,
+                          size: 25,
+                        ),
+                      ),
+                    ],
+                  ),
+                  AppConstants.verticalMediumSizedBox,
+                  AppConstants.getHorizontalDivider(
+                    isTransparent: false,
+                    isFull: true,
+                    color: AppColors.disabledColor,
+                  ),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height * .2,
+                    ),
+                    child: child,
+                  ),
+                  AppConstants.getHorizontalDivider(
+                    isTransparent: false,
+                    isFull: true,
+                    color: AppColors.disabledColor,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+      child: CustomClickableField(text: text),
+    );
+  }
+}
