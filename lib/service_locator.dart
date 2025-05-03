@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'features/status/data/repository/status_repo_impl.dart';
+import 'features/status/domain/repository/status_repo.dart';
+import 'features/status/domain/usecases/fetch_status.dart';
 
 import 'features/auth/data/repository/auth_repo_impl.dart';
 import 'features/auth/data/source/firebase_auth_source.dart';
@@ -19,6 +22,7 @@ import 'features/media/domain/repository/media_repo.dart';
 import 'features/media/domain/usecases/fetch_medias.dart';
 import 'features/media/domain/usecases/new_media.dart';
 import 'features/media/domain/usecases/toggle_archive.dart';
+import 'features/status/data/source/status_firebase_source.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -38,6 +42,10 @@ Future<void> initDependencies() async {
     CategoryRemoteSourceImpl(),
   );
 
+  serviceLocator.registerSingleton<StatusRemoteSource>(
+    StatusRemoteSourceImpl(),
+  );
+
   //
   //
   //
@@ -49,6 +57,10 @@ Future<void> initDependencies() async {
 
   serviceLocator.registerSingleton<CategoryRepository>(
     CategoryRepoImpl(), //
+  );
+
+  serviceLocator.registerSingleton<StatusRepository>(
+    StatusRepoImpl(), //
   );
 
   //
@@ -82,4 +94,7 @@ Future<void> initDependencies() async {
   serviceLocator.registerSingleton<FetchCategoriesUseCase>(
     FetchCategoriesUseCase(),
   );
+
+  // Status
+  serviceLocator.registerSingleton<FetchStatusUseCase>(FetchStatusUseCase());
 }
