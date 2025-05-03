@@ -15,6 +15,7 @@ class AddMediaButton extends StatelessWidget {
     required this.totalController,
     required this.notesController,
     required this.category,
+    required this.status,
   }) : _formKey = formKey;
 
   final GlobalKey<FormState> _formKey;
@@ -24,6 +25,7 @@ class AddMediaButton extends StatelessWidget {
   final TextEditingController totalController;
   final TextEditingController notesController;
   final String category;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,8 @@ class AddMediaButton extends StatelessWidget {
         return CustomReactiveButton(
           text: 'Add Media',
           onPressed:
-              category.toLowerCase().contains('choose')
+              (category.toLowerCase().contains('choose') ||
+                      status.toLowerCase().contains('choose'))
                   ? null
                   : () async {
                     if (_formKey.currentState!.validate()) {
@@ -42,7 +45,7 @@ class AddMediaButton extends StatelessWidget {
                           id: '',
                           title: titleController.text,
                           category: category,
-                          status: 'In Progress',
+                          status: status,
                           imgUrl: imgUrlController.text,
                           progress: progressController.text,
                           total: totalController.text,

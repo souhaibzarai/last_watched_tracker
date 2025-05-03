@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/features/status/presentation/cubit/status_selector_cubit.dart';
 
 import '../../../../common/app_commons.dart';
 import '../../../../common/cubit/button/button_state.dart';
@@ -12,10 +13,10 @@ import '../../../../common/widgets/page_heading_title.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
-import '../../../../utils/theme/app_colors.dart';
 import '../../../category/presentation/cubit/category_selector_cubit.dart';
 import '../widgets/add_media_button.dart';
 import '../../../category/presentation/widgets/category_selector_field.dart';
+import '../../../status/presentation/widgets/status_selector_field.dart';
 
 class AddMediaPage extends StatefulWidget {
   const AddMediaPage({super.key});
@@ -97,30 +98,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                         AppConstants.verticalMediumSizedBox,
                         CategorySelectorField(),
                         AppConstants.verticalMediumSizedBox,
-                        DropdownButtonFormField(
-                          decoration: InputDecoration(labelText: 'Status'),
-                          icon: Icon(
-                            CupertinoIcons.wand_stars,
-                            color: AppColors.infoColor,
-                          ),
-                          dropdownColor: AppColors.disabledColor,
-                          style: const TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 16,
-                          ),
-                          itemHeight: 60,
-                          items: const [
-                            DropdownMenuItem(
-                              value: 'onhold',
-                              child: Text('On Hold'), //
-                            ),
-                            DropdownMenuItem(
-                              value: 'inProgress',
-                              child: Text('In Progress'),
-                            ),
-                          ],
-                          onChanged: (value) {},
-                        ),
+                        StatusSelectorField(),
                         AppConstants.verticalMediumSizedBox,
                         CustomTextField(
                           labelText: 'Progress',
@@ -158,7 +136,8 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           progressController: progressController,
                           totalController: totalController,
                           notesController: notesController,
-                          category: context.read<CategorySelectorCubit>().state,
+                          category: context.watch<CategorySelectorCubit>().state,
+                          status: context.watch<StatusSelectorCubit>().state,
                         ),
                       ],
                     ),
