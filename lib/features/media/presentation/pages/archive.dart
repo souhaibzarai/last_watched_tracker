@@ -15,10 +15,10 @@ class ArchivePage extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.centerLeft,
-            child: BackButton(color: AppColors.secondaryColor),
+            child: const BackButton(color: AppColors.secondaryColor),
           ),
-          ArchiveMessage(),
-          Expanded(child: Medias(isArchived: true)),
+          const ArchiveMessage(),
+          const Expanded(child: Medias(isArchived: true)),
         ],
       ),
     );
