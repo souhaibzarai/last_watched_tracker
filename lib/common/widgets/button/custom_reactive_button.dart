@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../app_commons.dart';
 
 import '../../../utils/theme/app_colors.dart';
+import '../../app_commons.dart';
 import '../../cubit/button/button_state.dart';
 import '../../cubit/button/button_state_cubit.dart';
 
@@ -38,21 +38,25 @@ class CustomReactiveButton extends StatelessWidget {
             foregroundColor: AppColors.textColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
+              side:
+                  onPressed == null
+                      ? BorderSide(color: AppColors.errorColor, width: 1)
+                      : BorderSide.none,
             ),
             padding: padding,
-            minimumSize: Size(
-              MediaQuery.of(context).size.width,
-              height ?? 60,
-            ),
+            minimumSize: Size(MediaQuery.of(context).size.width, height ?? 60),
           ),
           child:
               isLoading
                   ? AppCommons.centerProgressIndicator
                   : Text(
                     text ?? 'Continuer',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
-                      color: AppColors.textColor, //
+                      color:
+                          onPressed == null
+                              ? AppColors.errorColor
+                              : AppColors.textColor, //
                     ),
                   ),
         );
