@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../service_locator.dart';
 import '../../../auth/domain/usecases/get_user.dart';
 import 'user_info_state.dart';
-import '../../../../service_locator.dart';
 
 class UserInfoCubit extends Cubit<UserInfoState> {
   UserInfoCubit() : super(UserInfoInitial());

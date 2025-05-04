@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../common/app_commons.dart';
+import '../../../../common/cubit/button/button_state.dart';
 import '../../../../common/cubit/button/button_state_cubit.dart';
 import '../../../../common/widgets/button/custom_reactive_button.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/scaffold/custom_app_bar.dart';
+import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
+import '../../../../utils/constants/constants.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
 import '../../data/models/user_creation.dart';
 import '../../domain/usecases/sign_up.dart';
 import '../cubit/check_cubit.dart';
+import '../widgets/custom_auth_text.dart';
 import '../widgets/password_text_field.dart';
 import '../widgets/terms_and_cond.dart';
-import '../../../../utils/constants/constants.dart';
-import '../../../../utils/helpers/navigator/strings.dart';
-import '../../../../common/app_commons.dart';
-import '../../../../common/cubit/button/button_state.dart';
-import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
-import '../widgets/custom_auth_text.dart';
 import '../widgets/under_button_text.dart';
 
 class SignUpPage extends StatefulWidget {

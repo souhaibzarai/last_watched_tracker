@@ -1,6 +1,6 @@
 import '../../../../common/usecase.dart';
-import '../repository/auth_repository.dart';
 import '../../../../service_locator.dart';
+import '../repository/auth_repository.dart';
 
 class SignOutUseCase extends Usecase<void, dynamic> {
   @override
