@@ -13,7 +13,7 @@ class MediaPreviewStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomText(
-      '${PercentageHelper.getPercentage(media.progress, media.total)}',
+      '${PercentageHelper.getPercentage(media.progress, media.total)}%',
       size: 13,
       fw: FontWeight.w300,
       color: AppColors.infoColor,
