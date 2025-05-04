@@ -10,6 +10,7 @@ import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../cubit/archive_media_cubit.dart';
 import '../cubit/fetch_medias_cubit.dart';
+import '../pages/media_preview.dart';
 
 class MediaItem extends StatelessWidget {
   const MediaItem({super.key, required this.media});
@@ -22,7 +23,17 @@ class MediaItem extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onLongPress: () {
-          print('Long press');
+          showDialog(
+            context: context,
+            builder: (dialogContext) {
+              return Dialog(
+                insetPadding: const EdgeInsets.all(20),
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                child: MediaDetailsPreview(media: media),
+              );
+            },
+          );
         },
         onTap: () {
           print('Press');
