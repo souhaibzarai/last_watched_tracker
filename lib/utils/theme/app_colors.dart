@@ -14,4 +14,5 @@ class AppColors {
   static const Color textColor = Color(0xFFF5F5F2);
   static const Color secondaryTextColor = Color.fromARGB(15, 245, 245, 242);
   static const Color disabledColor = Color(0xFF3E5879);
+  static const Color previewTextBgColor = Color(0xFF1d2939);
 }
