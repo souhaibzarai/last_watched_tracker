@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
-import '../../../../utils/helpers/strings/percentage_helper.dart';
+import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 

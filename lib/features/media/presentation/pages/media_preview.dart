@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
-import '../../../../utils/helpers/strings/percentage_helper.dart';
+import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../widgets/media_status_preview.dart';
