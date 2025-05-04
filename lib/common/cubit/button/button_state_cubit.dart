@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'button_state.dart';
 
 import '../../usecase.dart';
+import 'button_state.dart';
 
 class ButtonStateCubit extends Cubit<ButtonState> {
   ButtonStateCubit() : super(InitialButtonState());
