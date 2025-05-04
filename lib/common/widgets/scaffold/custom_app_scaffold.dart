@@ -11,7 +11,7 @@ class CustomAppScaffold extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.only(top: 10),
           decoration: BoxDecoration(color: AppColors.primaryColor),
           child: child,
         ),

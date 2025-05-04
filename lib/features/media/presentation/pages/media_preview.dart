@@ -52,7 +52,7 @@ class MediaDetailsPreview extends StatelessWidget {
                   filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                   child: Container(
                     color: AppColors.primaryColor.withAlpha(180),
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

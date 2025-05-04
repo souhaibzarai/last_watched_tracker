@@ -20,7 +20,7 @@ class CustomAuthScaffold extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
           child: body,
         ),
       ),
