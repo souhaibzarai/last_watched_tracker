@@ -104,6 +104,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           labelText: 'Progress',
                           hintText: 'Current episodes, chapters, or pages',
                           controller: progressController,
+                          isNumber: true,
                           keyboardType: TextInputType.number,
                         ),
                         AppConstants.verticalMediumSizedBox,
@@ -111,8 +112,22 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           labelText: 'Total (Optional)',
                           hintText: 'Total episodes, chapters, or pages',
                           controller: totalController,
+                          isNumber: true,
                           isOptional: true,
                           keyboardType: TextInputType.number,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return null;
+                            }
+                            if (!RegExp(r'^\d+$').hasMatch(value)) {
+                              return 'Please enter a valid number';
+                            }
+                            if (int.parse(progressController.text) >
+                                int.parse(totalController.text)) {
+                              return 'Total cannot be lower than progress';
+                            }
+                            return null;
+                          },
                         ),
                         AppConstants.verticalMediumSizedBox,
                         CustomTextField(
@@ -136,7 +151,8 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           progressController: progressController,
                           totalController: totalController,
                           notesController: notesController,
-                          category: context.watch<CategorySelectorCubit>().state,
+                          category:
+                              context.watch<CategorySelectorCubit>().state,
                           status: context.watch<StatusSelectorCubit>().state,
                         ),
                       ],
