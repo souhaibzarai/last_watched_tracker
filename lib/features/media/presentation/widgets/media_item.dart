@@ -35,9 +35,7 @@ class MediaItem extends StatelessWidget {
             },
           );
         },
-        onTap: () {
-          print('Press');
-        },
+        onTap: () => print('Press'),
         splashColor: AppColors.buttonBgColor.withAlpha(60),
         highlightColor: AppColors.buttonBgColor.withAlpha(25),
         child: Slidable(
