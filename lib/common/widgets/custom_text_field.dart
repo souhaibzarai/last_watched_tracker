@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.validator,
     this.hintText,
+    this.isNumber = false,
   });
 
   final TextEditingController? controller;
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final bool isDescriptive;
   final bool isOptional;
+  final bool isNumber;
   final IconData? prefixIcon;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
@@ -35,11 +37,14 @@ class CustomTextField extends StatelessWidget {
       validator:
           validator ??
           (value) {
-            if (isOptional) {
+            if (isOptional && (value == null || value.isEmpty)) {
               return null;
             }
-            if (value == null || value.isEmpty) {
+            if (!isOptional && (value == null || value.isEmpty)) {
               return 'Please enter a valid ${labelText.toLowerCase()}';
+            }
+            if (isNumber && !RegExp(r'^\d+$').hasMatch(value!)) {
+              return 'Please enter a valid number';
             }
             return null;
           },
@@ -68,7 +73,7 @@ class CustomTextField extends StatelessWidget {
           color: AppColors.successColor,
         ),
         errorBorder: AppCommons.getOutlineInputBorder(
-          color: AppColors.successColor,
+          color: AppColors.errorColor,
         ),
       ),
     );
