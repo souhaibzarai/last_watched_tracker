@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/theme/app_colors.dart';
 
 class CustomAuthButton extends StatelessWidget {
@@ -21,14 +23,7 @@ class CustomAuthButton extends StatelessWidget {
           backgroundColor: AppColors.buttonBgColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: AppColors.textColor,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+        child: CustomText(text, size: 18),
       ),
     );
   }
