@@ -57,7 +57,10 @@ class CategorySelectorField extends StatelessWidget {
                     icon: Icons.arrow_forward_ios_outlined,
                     color: AppColors.primaryColor,
                     iconSize: 12,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 14,
+                    ),
                   );
                 },
               );

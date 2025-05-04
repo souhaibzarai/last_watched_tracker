@@ -15,7 +15,7 @@ class ArchiveMessage extends StatelessWidget {
           horizontal: BorderSide(width: .1, color: AppColors.infoColor),
         ),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 8),
       child: const Text(
         CommonMessagesEn.mediaWillBeArchived,
         textAlign: TextAlign.center,
