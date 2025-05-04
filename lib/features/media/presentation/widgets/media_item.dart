@@ -18,89 +18,104 @@ class MediaItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Slidable(
-      key: ValueKey(media),
-      direction: Axis.horizontal,
-      closeOnScroll: true,
-      startActionPane: ActionPane(
-        dragDismissible: false,
-        openThreshold: .1,
-        closeThreshold: .15,
-        extentRatio: .25,
-        motion: DrawerMotion(),
-        children: [
-          SlidableButton(
-            bgColor: AppColors.disabledColor,
-            icon: Icons.edit_outlined,
-            onClick: (context) {},
-            label: 'Edit',
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onLongPress: () {
+          print('Long press');
+        },
+        onTap: () {
+          print('Press');
+        },
+        splashColor: AppColors.buttonBgColor.withAlpha(60),
+        highlightColor: AppColors.buttonBgColor.withAlpha(25),
+        child: Slidable(
+          key: ValueKey(media),
+          direction: Axis.horizontal,
+          closeOnScroll: true,
+          startActionPane: ActionPane(
+            dragDismissible: false,
+            openThreshold: .1,
+            closeThreshold: .15,
+            extentRatio: .25,
+            motion: DrawerMotion(),
+            children: [
+              SlidableButton(
+                bgColor: AppColors.disabledColor,
+                icon: Icons.edit_outlined,
+                onClick: (context) {},
+                label: 'Edit',
+              ),
+            ],
           ),
-        ],
-      ),
-      endActionPane: ActionPane(
-        motion: StretchMotion(),
-        children: [
-          SlidableButton(
-            bgColor: AppColors.disabledColor,
-            icon: Icons.more_horiz_outlined,
-            onClick: (context) {},
-            label: 'More',
+          endActionPane: ActionPane(
+            motion: StretchMotion(),
+            children: [
+              SlidableButton(
+                bgColor: AppColors.disabledColor,
+                icon: Icons.more_horiz_outlined,
+                onClick: (context) {},
+                label: 'More',
+              ),
+              SlidableButton(
+                bgColor: AppColors.slidableGreenColor,
+                color: AppColors.textColor,
+                icon:
+                    media.isArchived
+                        ? Icons.unarchive
+                        : CupertinoIcons.archivebox_fill,
+                label: media.isArchived ? 'Unarchive' : 'Archive',
+                onClick: (context) => toggleArchive(context, media),
+              ),
+            ],
           ),
-          SlidableButton(
-            bgColor: AppColors.slidableGreenColor,
-            color: AppColors.textColor,
-            icon:
-                media.isArchived
-                    ? Icons.unarchive
-                    : CupertinoIcons.archivebox_fill,
-            label: media.isArchived ? 'Unarchive' : 'Archive',
-            onClick: (context) => toggleArchive(context, media),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 45,
-                  height: 80,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: const BoxDecoration(shape: BoxShape.circle),
-                  child: ImageHelper.getImage(imgUrl: media.imgUrl.toString()),
-                ),
-                AppConstants.horizontalMediumSizedBox,
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        media.title,
-                        maxLines: 1,
-                        style: const TextStyle(fontSize: 17),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 45,
+                      height: 80,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: ImageHelper.getImage(
+                        imgUrl: media.imgUrl.toString(),
                       ),
-                      Text(
-                        media.category.toString(), //
-                        maxLines: 1,
-                        style: TextStyle(
-                          fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
-                          color: AppColors.textColor.withAlpha(120),
-                        ),
+                    ),
+                    AppConstants.horizontalMediumSizedBox,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            media.title,
+                            maxLines: 1,
+                            style: const TextStyle(fontSize: 17),
+                          ),
+                          Text(
+                            media.category.toString(), //
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 14,
+                              overflow: TextOverflow.ellipsis,
+                              color: AppColors.textColor.withAlpha(120),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    AppConstants.horizontalMediumSizedBox,
+                    Text(media.status),
+                  ],
                 ),
-                AppConstants.horizontalMediumSizedBox,
-                Text(media.status),
-              ],
-            ),
+              ),
+              AppConstants.getMediaItemDivider(),
+            ],
           ),
-          AppConstants.getMediaItemDivider(),
-        ],
+        ),
       ),
     );
   }
