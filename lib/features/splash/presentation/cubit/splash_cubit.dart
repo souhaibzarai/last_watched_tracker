@@ -9,7 +9,6 @@ class SplashCubit extends Cubit<SplashState> {
 
   void appStarted() async {
     final bool isLoggedIn = await serviceLocator<UserStatusUseCase>().call();
-    await Future.delayed(Duration(seconds: 1)); //TODO remove this
     if (isLoggedIn) {
       emit(Authenticated());
     } else {
