@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class StringHelper {
   StringHelper._();
   static String capitalizeAString(String phrase) {
@@ -15,5 +17,10 @@ class StringHelper {
     }
 
     return '$progress / $totalCount chapters';
+  }
+
+  static String formatTimestamp(Timestamp timestamp) {
+    final date = timestamp.toDate();
+    return '${date.day}/${date.month}/${date.year}';
   }
 }
