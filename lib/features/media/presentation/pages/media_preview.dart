@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
-import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
+import '../widgets/chapters_text_count.dart';
+import '../widgets/media_status_percentage_bar.dart';
 import '../widgets/media_status_preview.dart';
 import '../widgets/media_text_preview.dart';
 import '../widgets/media_title_preview.dart';
@@ -57,53 +57,18 @@ class MediaDetailsPreview extends StatelessWidget {
                     color: AppColors.primaryColor.withAlpha(180),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 15,
-                      vertical: 20,
+                      vertical: 10,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(media.title),
+                        MediaPreviewTitle(media: media),
+                        AppConstants.verticalVerySmallSizedBox,
+                        MediaPreviewStatus(media: media),
+                        AppConstants.verticalVerySmallSizedBox,
+                        MediaStatusPercentageBar(media: media),
                         AppConstants.verticalSmallSizedBox,
-                        Row(
-                          children: [
-                            MediaPreviewTitle(media: media),
-                            const Spacer(),
-                            MediaPreviewStatus(media: media),
-                          ],
-                        ),
-                        AppConstants.verticalSmallSizedBox,
-                        FractionallySizedBox(
-                          widthFactor: 1,
-                          child: Container(
-                            height: 10,
-                            width: double.infinity,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              color: AppColors.previewTextBgColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: FractionallySizedBox(
-                              widthFactor:
-                                  (PercentageHelper.getPercentage(
-                                        media.progress,
-                                        media.total,
-                                      ) /
-                                      100),
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  color: AppColors.secondaryColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        AppConstants.verticalSmallSizedBox,
-                        (media.notes == null || media.notes!.isEmpty)
-                            ? const SizedBox.shrink()
-                            : CustomText(media.notes!, size: 14),
+                        ChaptersTextCount(media: media),
                       ],
                     ),
                   ),
