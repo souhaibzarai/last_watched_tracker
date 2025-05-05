@@ -11,7 +11,7 @@ class ArchiveMessage extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: AppColors.secondaryTextColor, //
+        color: AppColors.previewTextBgColor,
         border: Border.symmetric(
           horizontal: BorderSide(width: .1, color: AppColors.infoColor),
         ),
