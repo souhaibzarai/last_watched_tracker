@@ -28,7 +28,7 @@ class MediaPreviewStatus extends StatelessWidget {
         const Spacer(),
         CustomText(
           '${PercentageHelper.getPercentage(media.progress, media.total)}%',
-          size: 13,
+          size: 12,
           fw: FontWeight.w300,
           color: AppColors.textColor,
         ),
