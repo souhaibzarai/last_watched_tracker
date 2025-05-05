@@ -8,17 +8,17 @@ class ColorsHelper {
   static Color getStatusColor(String status) {
     switch (status.toLowerCase()) {
       case 'completed':
-        return AppColors.successColor;
+        return AppColors.slidableGreenColor;
       case 'in progress':
-        return AppColors.infoColor;
+        return AppColors.previewTextBgColor.withAlpha(255);
       case 'not started':
         return AppColors.secondaryColor;
       case 'on hold':
-        return AppColors.warningColor;
+        return AppColors.disabledColor;
       case 'dropped':
         return AppColors.errorColor;
       default:
-        return AppColors.secondaryColor;
+        return AppColors.disabledColor;
     }
   }
 }
