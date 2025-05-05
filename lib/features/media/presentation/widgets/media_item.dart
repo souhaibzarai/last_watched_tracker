@@ -91,7 +91,7 @@ class MediaItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Hero(
-                      tag: media.id,
+                      tag: media,
                       transitionOnUserGestures: true,
                       child: Container(
                         width: 45,
