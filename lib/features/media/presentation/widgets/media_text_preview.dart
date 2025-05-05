@@ -4,19 +4,26 @@ import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/theme/app_colors.dart';
 
 class MediaTextPreview extends StatelessWidget {
-  const MediaTextPreview({super.key, required this.text});
+  const MediaTextPreview({
+    super.key,
+    required this.text,
+    this.bgColor = AppColors.disabledColor,
+    this.color = AppColors.textColor,
+  });
 
   final String text;
+  final Color bgColor;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.disabledColor,
+        color: bgColor,
         borderRadius: BorderRadius.circular(25),
       ),
-      child: CustomText(text, size: 14),
+      child: CustomText(text, size: 13, color: color),
     );
   }
 }

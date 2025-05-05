@@ -10,6 +10,6 @@ class MediaPreviewTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomText(media.title, size: 16, fw: FontWeight.bold);
+    return CustomText(media.title, size: 16, fw: FontWeight.w500);
   }
 }
