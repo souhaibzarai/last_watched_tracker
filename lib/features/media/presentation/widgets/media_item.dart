@@ -85,13 +85,17 @@ class MediaItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 45,
-                      height: 80,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: const BoxDecoration(shape: BoxShape.circle),
-                      child: ImageHelper.getImage(
-                        imgUrl: media.imgUrl.toString(),
+                    Hero(
+                      tag: media.id,
+                      transitionOnUserGestures: true,
+                      child: Container(
+                        width: 45,
+                        height: 80,
+                        clipBehavior: Clip.hardEdge,
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: ImageHelper.getImage(
+                          imgUrl: media.imgUrl.toString(),
+                        ),
                       ),
                     ),
                     AppConstants.horizontalMediumSizedBox,
