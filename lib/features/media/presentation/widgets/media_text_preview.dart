@@ -11,12 +11,12 @@ class MediaTextPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(10),
+        color: AppColors.disabledColor,
+        borderRadius: BorderRadius.circular(25),
       ),
-      child: CustomText(text, size: 13),
+      child: CustomText(text, size: 14),
     );
   }
 }
