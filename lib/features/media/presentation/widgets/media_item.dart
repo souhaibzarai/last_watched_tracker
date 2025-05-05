@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/button/slidable_button.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/helpers/images/image_helper.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../cubit/archive_media_cubit.dart';
@@ -35,7 +37,9 @@ class MediaItem extends StatelessWidget {
             },
           );
         },
-        onTap: () => print('Press'),
+        onTap: () {
+          context.push(NavigatorPath.mediaDetails, extra: media);
+        },
         splashColor: AppColors.buttonBgColor.withAlpha(60),
         highlightColor: AppColors.buttonBgColor.withAlpha(25),
         child: Slidable(
