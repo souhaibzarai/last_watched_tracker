@@ -24,11 +24,11 @@ class AppCommons {
       height: 40,
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: AppColors.secondaryColor.withAlpha(170),
+        color: AppColors.disabledColor.withAlpha(170),
         borderRadius: BorderRadius.circular(10),
       ),
       child: CircularProgressIndicator.adaptive(
-        valueColor: AlwaysStoppedAnimation<Color>(AppColors.warningColor),
+        valueColor: AlwaysStoppedAnimation<Color>(AppColors.textColor),
         strokeWidth: 3.0,
         backgroundColor: AppColors.primaryColor.withAlpha(100),
       ),
