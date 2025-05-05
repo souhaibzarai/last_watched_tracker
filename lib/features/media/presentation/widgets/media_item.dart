@@ -13,6 +13,7 @@ import '../../domain/entities/media.dart';
 import '../cubit/archive_media_cubit.dart';
 import '../cubit/fetch_medias_cubit.dart';
 import '../pages/media_preview.dart';
+import 'media_text_preview.dart';
 
 class MediaItem extends StatelessWidget {
   const MediaItem({super.key, required this.media});
@@ -125,7 +126,11 @@ class MediaItem extends StatelessWidget {
                       ),
                     ),
                     AppConstants.horizontalMediumSizedBox,
-                    Text(media.status),
+                    MediaTextPreview(
+                      text: media.progress,
+                      bgColor: AppColors.disabledColor,
+                      color: AppColors.textColor,
+                    ),
                   ],
                 ),
               ),
