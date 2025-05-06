@@ -42,7 +42,7 @@ class StatusSelectorField extends StatelessWidget {
                         AppConstants.getHorizontalDivider(
                           isFull: true,
                           isTransparent: false,
-                          color: AppColors.primaryColor,
+                          color: AppColors.disabledColor,
                         ),
                 itemCount: status.length,
                 itemBuilder: (listBuilderContext, index) {
@@ -55,7 +55,6 @@ class StatusSelectorField extends StatelessWidget {
                       context.pop();
                     },
                     icon: Icons.arrow_forward_ios_outlined,
-                    color: AppColors.primaryColor,
                     iconSize: 12,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,

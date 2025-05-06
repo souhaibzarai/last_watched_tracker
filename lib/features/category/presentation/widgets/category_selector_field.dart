@@ -42,7 +42,7 @@ class CategorySelectorField extends StatelessWidget {
                         AppConstants.getHorizontalDivider(
                           isFull: true,
                           isTransparent: false,
-                          color: AppColors.primaryColor,
+                          color: AppColors.disabledColor,
                         ),
                 itemCount: categories.length,
                 itemBuilder: (listBuilderContext, index) {
@@ -55,7 +55,6 @@ class CategorySelectorField extends StatelessWidget {
                       context.pop();
                     },
                     icon: Icons.arrow_forward_ios_outlined,
-                    color: AppColors.primaryColor,
                     iconSize: 12,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,

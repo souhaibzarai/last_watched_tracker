@@ -36,7 +36,7 @@ class CustomDialogBottomSheet extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: AppColors.primaryColor,
+                          color: AppColors.textColor,
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -45,7 +45,7 @@ class CustomDialogBottomSheet extends StatelessWidget {
                         onTap: () => Navigator.pop(dialogContext),
                         child: const Icon(
                           CupertinoIcons.xmark_circle_fill,
-                          color: AppColors.disabledColor,
+                          color: AppColors.textColor,
                           size: 25,
                         ),
                       ),
@@ -55,7 +55,7 @@ class CustomDialogBottomSheet extends StatelessWidget {
                   AppConstants.getHorizontalDivider(
                     isTransparent: false,
                     isFull: true,
-                    color: AppColors.disabledColor,
+                    color: AppColors.secondaryColor,
                   ),
                   Container(
                     constraints: BoxConstraints(
