@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../service_locator.dart';
 import '../../domain/entities/media.dart';
 import '../../domain/repository/media_repo.dart';
+import '../models/archive.dart';
 import '../models/media.dart';
 import '../source/media_firebase_source.dart';
 
@@ -34,7 +35,7 @@ class MediaRepoImpl implements MediaRepository {
   }
 
   @override
-  Future<Either> toggleArchive(MediaEntity media) async {
-    return await serviceLocator<MediaFirebaseSource>().toggleArchive(media);
+  Future<Either> toggleArchive(ArchiveModel archive) async {
+    return await serviceLocator<MediaFirebaseSource>().toggleArchive(archive);
   }
 }

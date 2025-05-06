@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 
+import '../../data/models/archive.dart';
 import '../entities/media.dart';
 
 abstract class MediaRepository {
@@ -7,5 +8,5 @@ abstract class MediaRepository {
 
   Future<Either> fetchAllMedia();
 
-  Future<Either> toggleArchive(MediaEntity media);
+  Future<Either> toggleArchive(ArchiveModel archive);
 }

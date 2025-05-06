@@ -3,12 +3,12 @@ import 'package:dartz/dartz.dart';
 import '../../../../common/usecase.dart';
 import '../../../../service_locator.dart';
 import '../../../../utils/messages/message_en.dart';
-import '../entities/media.dart';
+import '../../data/models/archive.dart';
 import '../repository/media_repo.dart';
 
-class ToggleArchiveUseCase extends Usecase<Either, MediaEntity> {
+class ToggleArchiveUseCase extends Usecase<Either, ArchiveModel> {
   @override
-  Future<Either> call({MediaEntity? params}) async {
+  Future<Either> call({ArchiveModel? params}) async {
     if (params == null) {
       return const Left(CommonMessagesEn.errorOnArchive);
     }

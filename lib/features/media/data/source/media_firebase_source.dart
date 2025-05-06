@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../utils/messages/message_en.dart';
 import '../../domain/entities/media.dart';
+import '../models/archive.dart';
 import '../models/media.dart';
 
 abstract class MediaFirebaseSource {
@@ -11,7 +12,7 @@ abstract class MediaFirebaseSource {
 
   Future<Either> fetchAllMedia();
 
-  Future<Either> toggleArchive(MediaEntity media);
+  Future<Either> toggleArchive(ArchiveModel archive);
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
@@ -78,7 +79,7 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   }
 
   @override
-  Future<Either> toggleArchive(MediaEntity media) async {
+  Future<Either> toggleArchive(ArchiveModel archive) async {
     try {
       final userId = _auth.currentUser?.uid;
 
@@ -89,9 +90,9 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
           .collection('users')
           .doc(userId)
           .collection('media')
-          .doc(media.id)
+          .doc(archive.id)
           .update({
-            'isArchived': !media.isArchived, //
+            'isArchived': !archive.status, //
           });
 
       return Right(CommonMessagesEn.mediaArchivedSuccessfully);
