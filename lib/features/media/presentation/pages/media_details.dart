@@ -9,6 +9,7 @@ import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../widgets/chapters_text_count.dart';
+import '../widgets/media_notes.dart';
 import '../widgets/media_status_percentage_bar.dart';
 import '../widgets/media_text_preview.dart';
 import '../widgets/media_title_preview.dart';
@@ -46,20 +47,7 @@ class MediaDetailsPage extends StatelessWidget {
                     AppConstants.verticalVerySmallSizedBox,
                     MediaPreviewTitle(media: media),
                     AppConstants.verticalSmallSizedBox,
-                    Row(
-                      children: [
-                        MediaTextPreview(
-                          text: media.category,
-                          color: AppColors.primaryColor,
-                          bgColor: AppColors.infoColor,
-                        ),
-                        AppConstants.horizontalSmallSizedBox,
-                        MediaTextPreview(
-                          text: media.status,
-                          bgColor: ColorsHelper.getStatusColor(media.status),
-                        ),
-                      ],
-                    ),
+                    ScrollableMediaDetailsSection(media: media),
                     AppConstants.verticalSmallSizedBox,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,30 +65,41 @@ class MediaDetailsPage extends StatelessWidget {
                     MediaStatusPercentageBar(media: media),
                     AppConstants.verticalMediumSizedBox,
                     if ((media.notes ?? '').isNotEmpty)
-                      Text.rich(
-                        textAlign: TextAlign.start,
-                        TextSpan(
-                          style: const TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 14,
-                          ),
-                          children: [
-                            const TextSpan(
-                              text: '➾ ',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.secondaryColor,
-                              ),
-                            ),
-                            TextSpan(text: media.notes!),
-                          ],
-                        ),
-                      ),
+                      MediaNotes(media: media),
                   ],
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ScrollableMediaDetailsSection extends StatelessWidget {
+  const ScrollableMediaDetailsSection({
+    super.key,
+    required this.media,
+  });
+
+  final MediaEntity media;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          MediaTextPreview(
+            text: media.category,
+            color: AppColors.primaryColor,
+            bgColor: AppColors.infoColor,
+          ),
+          AppConstants.horizontalSmallSizedBox,
+          MediaTextPreview(
+            text: media.status,
+            bgColor: ColorsHelper.getStatusColor(media.status),
           ),
         ],
       ),
