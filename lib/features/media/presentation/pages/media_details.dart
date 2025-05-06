@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/button/custom_back_button.dart';
 import '../../../../common/widgets/button/custom_media_details_button.dart';
@@ -8,12 +8,10 @@ import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/helpers/colors/colors.dart';
-import '../../../../utils/helpers/functions/functions.dart';
 import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
-import '../../data/models/archive.dart';
 import '../../domain/entities/media.dart';
-import '../cubit/check_archive_cubit.dart';
+import '../widgets/archive_media_button.dart';
 import '../widgets/chapters_text_count.dart';
 import '../widgets/media_notes.dart';
 import '../widgets/media_status_percentage_bar.dart';
@@ -33,11 +31,12 @@ class MediaDetailsPage extends StatelessWidget {
           CustomBackButton(),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    AppConstants.verticalSmallSizedBox,
                     Center(
                       child: Hero(
                         tag: media,
@@ -78,38 +77,28 @@ class MediaDetailsPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          BlocProvider(
-                            create:
-                                (_) =>
-                                    CheckArchiveCubit()
-                                      ..setArchiveStatus(media.isArchived),
-                            child: Builder(
-                              builder: (context) {
-                                return CustomMediaDetailsButton(
-                                  icon:
-                                      context
-                                                  .watch<CheckArchiveCubit>()
-                                                  .state ==
-                                              true
-                                          ? Icons.unarchive
-                                          : CupertinoIcons.archivebox_fill,
-                                  onPressed: () {
-                                    final checkCubit =
-                                        context.read<CheckArchiveCubit>();
-                                    final newStatus = checkCubit.state;
-                                    FunctionsHelper.toggleArchive(
-                                      context,
-                                      ArchiveModel(
-                                        id: media.id,
-                                        status: newStatus,
-                                      ),
-                                    );
-                                    checkCubit.setArchiveStatus(!newStatus);
-                                  },
-                                );
-                              },
-                            ),
+                          CustomMediaDetailsButton(
+                            icon: CupertinoIcons.delete_solid,
+                            color: AppColors.textColor,
+                            bgColor: AppColors.errorColor,
+                            onPressed: () {
+                              print('Delete media');
+                              if (context.canPop()) {
+                                context.pop();
+                              }
+                            },
                           ),
+                          AppConstants.horizontalMediumSizedBox,
+                          CustomMediaDetailsButton(
+                            bgColor: AppColors.infoColor,
+                            color: AppColors.primaryColor,
+                            icon: Icons.edit,
+                            onPressed: () {
+                              print('Update media');
+                            },
+                          ),
+                          AppConstants.horizontalMediumSizedBox,
+                          ArchiveMediaButton(media: media),
                         ],
                       ),
                     ),
