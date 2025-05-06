@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:last_watched_tracker/utils/theme/app_colors.dart';
 
 import '../../../../utils/messages/message_en.dart';
-import '../../../../utils/theme/app_colors.dart';
 
 class ArchiveMessage extends StatelessWidget {
   const ArchiveMessage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColors.previewTextBgColor,
-        border: Border.symmetric(
-          horizontal: BorderSide(width: .1, color: AppColors.infoColor),
-        ),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 8),
-      child: const Text(
-        CommonMessagesEn.mediaWillBeArchived,
-        textAlign: TextAlign.center,
-      ),
+    return Text(
+      CommonMessagesEn.mediaWillBeArchived,
+      style: TextStyle(fontSize: 16, color: AppColors.textColor),
+      maxLines: 2,
+      softWrap: true,
+      textAlign: TextAlign.center,
     );
   }
 }
