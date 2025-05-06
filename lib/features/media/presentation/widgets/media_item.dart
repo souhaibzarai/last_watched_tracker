@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/button/slidable_button.dart';
 import '../../../../utils/constants/constants.dart';
+import '../../../../utils/helpers/functions/functions.dart';
 import '../../../../utils/helpers/images/image_helper.dart';
 import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
+import '../../data/models/archive.dart';
 import '../../domain/entities/media.dart';
-import '../cubit/archive_media_cubit.dart';
-import '../cubit/fetch_medias_cubit.dart';
 import '../pages/media_preview.dart';
 import 'media_text_preview.dart';
 
@@ -79,7 +78,11 @@ class MediaItem extends StatelessWidget {
                         ? Icons.unarchive
                         : CupertinoIcons.archivebox_fill,
                 label: media.isArchived ? 'Unarchive' : 'Archive',
-                onClick: (context) => toggleArchive(context, media),
+                onClick:
+                    (context) => FunctionsHelper.toggleArchive(
+                      context,
+                      ArchiveModel(id: media.id, status: media.isArchived),
+                    ),
               ),
             ],
           ),
@@ -141,12 +144,4 @@ class MediaItem extends StatelessWidget {
       ),
     );
   }
-}
-
-void toggleArchive(BuildContext context, MediaEntity media) async {
-  final archiveCubit = context.read<ArchiveMediaCubit>();
-  final fetchMediaCubit = context.read<FetchMediasCubit>();
-
-  await archiveCubit.toggleArchive(media);
-  await fetchMediaCubit.fetchMedias(showLoading: false);
 }
