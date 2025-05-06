@@ -7,7 +7,6 @@ import '../../../../common/widgets/button/custom_media_details_button.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
-import '../../../../utils/helpers/colors/colors.dart';
 import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
@@ -15,8 +14,8 @@ import '../widgets/archive_media_button.dart';
 import '../widgets/chapters_text_count.dart';
 import '../widgets/media_notes.dart';
 import '../widgets/media_status_percentage_bar.dart';
-import '../widgets/media_text_preview.dart';
 import '../widgets/media_title_preview.dart';
+import '../widgets/scrollable_media_details_section.dart';
 
 class MediaDetailsPage extends StatelessWidget {
   const MediaDetailsPage({super.key, required this.media});
@@ -106,33 +105,6 @@ class MediaDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ScrollableMediaDetailsSection extends StatelessWidget {
-  const ScrollableMediaDetailsSection({super.key, required this.media});
-
-  final MediaEntity media;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          MediaTextPreview(
-            text: media.category,
-            color: AppColors.primaryColor,
-            bgColor: AppColors.infoColor,
-          ),
-          AppConstants.horizontalSmallSizedBox,
-          MediaTextPreview(
-            text: media.status,
-            bgColor: ColorsHelper.getStatusColor(media.status),
           ),
         ],
       ),
