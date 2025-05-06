@@ -7,6 +7,7 @@ class AppTheme {
   const AppTheme._();
 
   static final ThemeData theme = ThemeData().copyWith(
+    brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.primaryColor,
     textTheme: TextTheme()
         .copyWith(
