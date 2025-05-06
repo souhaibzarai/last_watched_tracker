@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../common/widgets/scaffold/custom_app_bar.dart';
 import '../../../../common/widgets/scaffold/custom_auth_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
+import '../../../../utils/constants/images_path.dart';
 import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/messages/message_en.dart';
 import '../../../../utils/theme/app_colors.dart';
@@ -28,7 +29,7 @@ class ResetSentPage extends StatelessWidget {
                 subTitle: CommonMessagesEn.passwordResetLinkSent,
               ),
               AppConstants.verticalMediumSizedBox,
-
+              Image.asset(ImagesPath.emailSent, width: 250),
               // Success Message
               Container(
                 padding: const EdgeInsets.symmetric(
