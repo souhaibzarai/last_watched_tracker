@@ -1,13 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/widgets/button/custom_back_button.dart';
+import '../../../../common/widgets/button/custom_media_details_button.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/helpers/colors/colors.dart';
+import '../../../../utils/helpers/functions/functions.dart';
 import '../../../../utils/helpers/numbers/percentage_helper.dart';
 import '../../../../utils/theme/app_colors.dart';
+import '../../data/models/archive.dart';
 import '../../domain/entities/media.dart';
+import '../cubit/check_archive_cubit.dart';
 import '../widgets/chapters_text_count.dart';
 import '../widgets/media_notes.dart';
 import '../widgets/media_status_percentage_bar.dart';
@@ -66,6 +72,47 @@ class MediaDetailsPage extends StatelessWidget {
                     AppConstants.verticalMediumSizedBox,
                     if ((media.notes ?? '').isNotEmpty)
                       MediaNotes(media: media),
+                    if ((media.notes ?? '').isNotEmpty)
+                      AppConstants.verticalLargeSizedBox,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          BlocProvider(
+                            create:
+                                (_) =>
+                                    CheckArchiveCubit()
+                                      ..setArchiveStatus(media.isArchived),
+                            child: Builder(
+                              builder: (context) {
+                                return CustomMediaDetailsButton(
+                                  icon:
+                                      context
+                                                  .watch<CheckArchiveCubit>()
+                                                  .state ==
+                                              true
+                                          ? Icons.unarchive
+                                          : CupertinoIcons.archivebox_fill,
+                                  onPressed: () {
+                                    final checkCubit =
+                                        context.read<CheckArchiveCubit>();
+                                    final newStatus = checkCubit.state;
+                                    FunctionsHelper.toggleArchive(
+                                      context,
+                                      ArchiveModel(
+                                        id: media.id,
+                                        status: newStatus,
+                                      ),
+                                    );
+                                    checkCubit.setArchiveStatus(!newStatus);
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -78,10 +125,7 @@ class MediaDetailsPage extends StatelessWidget {
 }
 
 class ScrollableMediaDetailsSection extends StatelessWidget {
-  const ScrollableMediaDetailsSection({
-    super.key,
-    required this.media,
-  });
+  const ScrollableMediaDetailsSection({super.key, required this.media});
 
   final MediaEntity media;
 
