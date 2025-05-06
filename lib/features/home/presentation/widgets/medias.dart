@@ -9,9 +9,10 @@ import '../../../media/presentation/cubit/fetch_medias_state.dart';
 import '../../../media/presentation/widgets/media_item.dart';
 
 class Medias extends StatelessWidget {
-  const Medias({super.key, this.isArchived = false});
+  const Medias({super.key, this.isArchived = false, this.scrollPhysics});
 
   final bool isArchived;
+  final ScrollPhysics? scrollPhysics;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,8 @@ class Medias extends StatelessWidget {
             );
           }
           return ListView.builder(
+            shrinkWrap: true,
+            physics: scrollPhysics,
             itemCount: medias.length,
             itemBuilder: (context, index) {
               return MediaItem(media: medias[index]);
