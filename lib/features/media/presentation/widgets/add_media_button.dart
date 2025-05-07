@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../common/cubit/button/button_state_cubit.dart';
 import '../../../../common/widgets/button/custom_reactive_button.dart';
 import '../../domain/entities/media.dart';
