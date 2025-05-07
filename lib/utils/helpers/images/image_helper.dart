@@ -7,9 +7,9 @@ class ImageHelper {
 
   static Widget getImage({required String imgUrl}) {
     if (imgUrl == 'null' || imgUrl.isEmpty) {
-      return Image.asset(ImagesPath.splashImage);
+      return Image.asset(ImagesPath.splashImage, fit: BoxFit.cover);
     } else {
-      return Image.network(imgUrl, width: double.infinity);
+      return Image.network(imgUrl, width: double.infinity, fit: BoxFit.cover);
     }
   }
 }
