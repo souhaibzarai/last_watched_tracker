@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:last_watched_tracker/features/media/presentation/cubit/check_archive_cubit.dart';
 
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/helpers/colors/colors.dart';
@@ -16,6 +18,7 @@ class ScrollableMediaDetailsSection extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MediaTextPreview(
             text: media.category,
@@ -27,6 +30,12 @@ class ScrollableMediaDetailsSection extends StatelessWidget {
             text: media.status,
             bgColor: ColorsHelper.getStatusColor(media.status),
           ),
+          AppConstants.horizontalSmallSizedBox,
+          if (context.read<CheckArchiveCubit>().state)
+            MediaTextPreview(
+              text: 'Not Archived',
+              bgColor: AppColors.slidableGreenColor,
+            ),
         ],
       ),
     );
