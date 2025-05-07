@@ -10,7 +10,7 @@ class ArchiveMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       CommonMessagesEn.mediaWillBeArchived,
-      style: TextStyle(fontSize: 16, color: AppColors.textColor),
+      style: TextStyle(fontSize: 15, color: AppColors.textColor),
       maxLines: 2,
       softWrap: true,
       textAlign: TextAlign.center,
