@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/button/custom_back_button.dart';
+import '../../../../common/widgets/button/sliver_back_button.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../../home/presentation/widgets/medias.dart';
@@ -17,10 +17,7 @@ class ArchivePage extends StatelessWidget {
       child: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar(
-            leading: CustomBackButton(),
-            backgroundColor: AppColors.primaryColor,
-          ),
+          const SliverBackButton(),
           SliverAppBar(
             pinned: true,
             backgroundColor: AppColors.previewTextBgColor,
