@@ -9,6 +9,9 @@ class AppConstants {
     horizontal: 16,
     vertical: 20,
   );
+
+  static const smallPadding = EdgeInsets.all(8.0);
+
   static const border = Radius.circular(15);
 
   static VerticalDivider getVerticalDivider({bool isTransparent = false}) {
@@ -29,9 +32,19 @@ class AppConstants {
       indent: isFull ? 0 : 20,
       thickness: isFull ? .4 : .8,
       height: isTransparent ? 10 : 1,
-      endIndent: 20,
+      endIndent: isFull ? 0 : 20,
       color:
           isTransparent ? Colors.transparent : color ?? AppColors.buttonBgColor,
+    );
+  }
+
+  static Divider getNotesDivider({double? indent, double? endIndent}) {
+    return Divider(
+      color: AppColors.infoColor,
+      endIndent: endIndent ?? 0,
+      indent: indent ?? 0,
+      height: 0,
+      thickness: .4,
     );
   }
 
