@@ -19,7 +19,7 @@ class AppConstants {
       indent: 20,
       thickness: .8,
       width: isTransparent ? 15 : 1,
-      color: isTransparent ? Colors.transparent : AppColors.disabledColor,
+      color: isTransparent ? Colors.transparent : AppColors.previewTextBgColor,
     );
   }
 

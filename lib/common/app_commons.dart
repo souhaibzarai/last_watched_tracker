@@ -24,7 +24,7 @@ class AppCommons {
       height: 40,
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: AppColors.disabledColor.withAlpha(170),
+        color: AppColors.previewTextBgColor.withAlpha(170),
         borderRadius: BorderRadius.circular(10),
       ),
       child: CircularProgressIndicator.adaptive(
@@ -48,7 +48,7 @@ class AppCommons {
               height: 35,
               padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: AppColors.disabledColor,
+                color: AppColors.previewTextBgColor,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(

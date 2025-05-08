@@ -32,11 +32,11 @@ class CustomSearchField extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
-        color: backgroundColor ?? AppColors.disabledColor,
+        color: backgroundColor ?? AppColors.previewTextBgColor,
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
-            color: AppColors.disabledColor.withAlpha(150),
+            color: AppColors.previewTextBgColor.withAlpha(150),
             blurRadius: 100,
             offset: const Offset(4, 5),
           ),

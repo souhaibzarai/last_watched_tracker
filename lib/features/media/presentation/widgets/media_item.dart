@@ -54,7 +54,7 @@ class MediaItem extends StatelessWidget {
             motion: DrawerMotion(),
             children: [
               SlidableButton(
-                bgColor: AppColors.disabledColor,
+                bgColor: AppColors.previewTextBgColor,
                 icon: Icons.edit_outlined,
                 onClick: (context) {},
                 label: 'Edit',
@@ -65,7 +65,7 @@ class MediaItem extends StatelessWidget {
             motion: StretchMotion(),
             children: [
               SlidableButton(
-                bgColor: AppColors.disabledColor,
+                bgColor: AppColors.previewTextBgColor,
                 icon: Icons.more_horiz_outlined,
                 onClick: (context) {},
                 label: 'More',
@@ -131,7 +131,7 @@ class MediaItem extends StatelessWidget {
                     AppConstants.horizontalMediumSizedBox,
                     MediaTextPreview(
                       text: media.progress,
-                      bgColor: AppColors.disabledColor,
+                      bgColor: AppColors.previewTextBgColor,
                       color: AppColors.textColor,
                     ),
                   ],

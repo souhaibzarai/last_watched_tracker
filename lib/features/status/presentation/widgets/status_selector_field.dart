@@ -42,7 +42,7 @@ class StatusSelectorField extends StatelessWidget {
                         AppConstants.getHorizontalDivider(
                           isFull: true,
                           isTransparent: false,
-                          color: AppColors.disabledColor,
+                          color: AppColors.previewTextBgColor,
                         ),
                 itemCount: status.length,
                 itemBuilder: (listBuilderContext, index) {

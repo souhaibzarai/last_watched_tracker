@@ -42,7 +42,7 @@ class CategorySelectorField extends StatelessWidget {
                         AppConstants.getHorizontalDivider(
                           isFull: true,
                           isTransparent: false,
-                          color: AppColors.disabledColor,
+                          color: AppColors.previewTextBgColor,
                         ),
                 itemCount: categories.length,
                 itemBuilder: (listBuilderContext, index) {
