@@ -16,7 +16,7 @@ class MediaNotes extends StatelessWidget {
       children: [
         AppConstants.getNotesDivider(endIndent: 50),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.all(8),
           child: Text.rich(
             textAlign: TextAlign.justify,
             TextSpan(
