@@ -7,7 +7,7 @@ class MediaTextPreview extends StatelessWidget {
   const MediaTextPreview({
     super.key,
     required this.text,
-    this.bgColor = AppColors.disabledColor,
+    this.bgColor = AppColors.primaryColor,
     this.color = AppColors.textColor,
   });
 
