@@ -7,8 +7,8 @@ class CustomMediaDetailsButton extends StatelessWidget {
     super.key,
     required this.icon,
     this.onPressed,
-    this.bgColor = AppColors.disabledColor,
-    this.color = AppColors.textColor,
+    this.bgColor = AppColors.buttonBgColor,
+    this.color = AppColors.primaryColor,
   });
 
   final VoidCallback? onPressed;
@@ -18,16 +18,18 @@ class CustomMediaDetailsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 120,
-        height: 60,
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(25),
+    return Material(
+      borderRadius: BorderRadius.circular(10),
+      clipBehavior: Clip.hardEdge,
+      color: bgColor,
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          width: 40,
+          height: 40,
+          padding: EdgeInsets.all(8),
+          child: Icon(icon, color: color),
         ),
-        child: Icon(icon, color: color, size: 30),
       ),
     );
   }
