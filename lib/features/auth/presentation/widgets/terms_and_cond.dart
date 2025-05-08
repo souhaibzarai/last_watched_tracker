@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/check_cubit.dart';
+
 import '../../../../utils/theme/app_colors.dart';
+import '../cubit/check_cubit.dart';
 
 class TermsAndCond extends StatelessWidget {
   const TermsAndCond({super.key});
@@ -19,7 +20,7 @@ class TermsAndCond extends StatelessWidget {
               },
               checkColor: AppColors.textColor,
               side: BorderSide(width: 1, color: AppColors.infoColor),
-              fillColor: WidgetStatePropertyAll(AppColors.disabledColor),
+              fillColor: WidgetStatePropertyAll(AppColors.secondaryTextColor),
             ),
             Expanded(
               child: RichText(
