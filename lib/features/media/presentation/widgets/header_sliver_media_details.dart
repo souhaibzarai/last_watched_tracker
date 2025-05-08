@@ -7,8 +7,8 @@ import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import 'archive_media_button.dart';
 
-class CustomSliverMediaDetailsHeader extends StatelessWidget {
-  const CustomSliverMediaDetailsHeader({super.key, required this.media});
+class HeaderSliverMediaDetails extends StatelessWidget {
+  const HeaderSliverMediaDetails({super.key, required this.media});
 
   final MediaEntity media;
 

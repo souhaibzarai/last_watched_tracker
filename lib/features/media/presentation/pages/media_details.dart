@@ -6,7 +6,7 @@ import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../cubit/check_archive_cubit.dart';
-import '../widgets/custom_sliver_media_details_header.dart';
+import '../widgets/header_sliver_media_details.dart';
 import '../widgets/media_notes.dart';
 import '../widgets/scrollable_media_details_section.dart';
 
@@ -26,7 +26,7 @@ class MediaDetailsPage extends StatelessWidget {
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
-            CustomSliverMediaDetailsHeader(media: media),
+            HeaderSliverMediaDetails(media: media),
             SliverToBoxAdapter(
               child: Stack(
                 children: [
