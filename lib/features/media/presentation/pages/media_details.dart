@@ -1,14 +1,21 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
+import 'package:last_watched_tracker/features/media/presentation/widgets/archive_media_button.dart'
+    show ArchiveMediaButton;
 
+import '../../../../common/widgets/button/custom_media_details_button.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';
+import '../../../../utils/constants/constants.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../cubit/check_archive_cubit.dart';
+import '../widgets/chapters_text_count.dart';
 import '../widgets/header_sliver_media_details.dart';
 import '../widgets/media_notes.dart';
+import '../widgets/media_status_percentage_bar.dart';
 import '../widgets/scrollable_media_details_section.dart';
 
 class MediaDetailsPage extends StatelessWidget {
@@ -23,87 +30,192 @@ class MediaDetailsPage extends StatelessWidget {
         create:
             (context) =>
                 CheckArchiveCubit()..setArchiveStatus(media.isArchived),
-        child: CustomScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          slivers: [
-            HeaderSliverMediaDetails(media: media),
-            SliverToBoxAdapter(
-              child: Stack(
-                children: [
-                  // Image place
-                  Hero(
-                    tag: media,
-                    child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      height: 400,
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40),
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            media.imgUrl, //
+        child: Stack(
+          children: [
+            CustomScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              slivers: [
+                // Header
+                HeaderSliverMediaDetails(media: media),
+                // Image and title
+                SliverToBoxAdapter(
+                  child: Stack(
+                    children: [
+                      // Image place
+                      Hero(
+                        tag: media,
+                        child: Container(
+                          clipBehavior: Clip.hardEdge,
+                          height: 400,
+                          alignment: Alignment.center,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                media.imgUrl, //
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  // title placeholder
-                  Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
+                      // title placeholder
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 12,
+                          ),
+                          alignment: Alignment.bottomLeft,
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(100),
+                            ),
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.center,
+                              colors: [
+                                Colors.black,
+                                Colors.black54,
+                                Colors.transparent,
+                              ],
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomText(media.title, size: 22),
+                              AppConstants.verticalVerySmallSizedBox,
+                              SizedBox(
+                                height: 30,
+                                child: ScrollableMediaDetailsSection(
+                                  media: media,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ), //
                       ),
-                      alignment: Alignment.bottomLeft,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(100),
-                        ),
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: [
-                            AppColors.primaryColor,
-                            AppColors.primaryColor.withAlpha(180),
-                            Colors.transparent,
+                    ],
+                  ),
+                ),
+                // Percentage bar and progress
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: AppConstants.smallPadding,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ChaptersTextCount(media: media), //
                           ],
                         ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomText(media.title, size: 22),
-                          AppConstants.verticalVerySmallSizedBox,
-                          ScrollableMediaDetailsSection(media: media),
-                        ],
-                      ),
-                    ), //
+                        AppConstants.verticalVerySmallSizedBox,
+                        MediaStatusPercentageBar(media: media),
+                      ],
+                    ),
+                  ),
+                ),
+                //Notes Section
+                if ((media.notes ?? '').isNotEmpty)
+                  SliverToBoxAdapter(child: MediaNotes(media: media)),
+
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  toolbarHeight: 800,
+                  backgroundColor: AppColors.primaryColor,
+                ),
+              ],
+            ),
+
+            Positioned(
+              bottom: 10,
+              left: 16,
+              right: 16,
+              height: 60,
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                    bottomLeft: Radius.circular(48),
+                    bottomRight: Radius.circular(48),
+                  ),
+                  border: Border.all(color: AppColors.textColor, width: 1.4),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                    bottomLeft: Radius.circular(48),
+                    bottomRight: Radius.circular(48),
+                  ),
+                  child: ClipPath(
+                    clipBehavior: Clip.hardEdge,
+                    clipper: MyCustomClipper(),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                      child: const SizedBox(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              left: 16,
+              right: 16,
+              height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ArchiveMediaButton(media: media), //
+
+                  CustomMediaDetailsButton(
+                    icon: Icons.menu,
+                    onPressed: () {},
+                    color: AppColors.textColor,
+                    size: 34,
                   ),
                 ],
               ),
-            ),
-
-            if ((media.notes ?? '').isNotEmpty)
-              SliverToBoxAdapter(child: MediaNotes(media: media)),
-
-            SliverAppBar(
-              toolbarHeight: 800,
-              backgroundColor: AppColors.primaryColor,
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+class MyCustomClipper extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    final path = Path();
+
+    path.moveTo(30, size.height - 30);
+    path.lineTo(10, 0);
+    path.lineTo(size.width, 10);
+    path.lineTo(40, size.width);
+    path.lineTo(180, size.height);
+    path.lineTo(0, size.width);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return true;
   }
 }
