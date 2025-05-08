@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/common/widgets/button/custom_back_button.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+
+import '../../../utils/theme/app_colors.dart';
+import 'custom_back_button.dart';
 
 class SliverBackButton extends StatelessWidget {
   const SliverBackButton({
