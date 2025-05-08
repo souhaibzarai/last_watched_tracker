@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import '../../../../utils/messages/message_en.dart';
+
 import '../../../../common/usecase.dart';
-import '../repository/auth_repository.dart';
 import '../../../../service_locator.dart';
+import '../../../../utils/messages/message_en.dart';
+import '../repository/auth_repository.dart';
 
 class ResetPasswordUseCase extends Usecase<Either, String> {
   @override
