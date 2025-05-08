@@ -127,14 +127,15 @@ class MediaDetailsPage extends StatelessWidget {
                 if ((media.notes ?? '').isNotEmpty)
                   SliverToBoxAdapter(child: MediaNotes(media: media)),
 
+                // Free spacing
                 SliverAppBar(
                   automaticallyImplyLeading: false,
-                  toolbarHeight: 800,
+                  toolbarHeight: 70,
                   backgroundColor: AppColors.primaryColor,
                 ),
               ],
             ),
-
+            // Floating bottom nav bar BNB
             Positioned(
               bottom: 10,
               left: 16,
