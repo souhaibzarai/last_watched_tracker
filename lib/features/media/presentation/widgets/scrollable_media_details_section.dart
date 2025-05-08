@@ -31,7 +31,7 @@ class ScrollableMediaDetailsSection extends StatelessWidget {
             bgColor: ColorsHelper.getStatusColor(media.status),
           ),
           AppConstants.horizontalSmallSizedBox,
-          if (context.read<CheckArchiveCubit>().state)
+          if (context.watch<CheckArchiveCubit>().state)
             MediaTextPreview(
               text: 'Archived',
               bgColor: AppColors.slidableGreenColor,

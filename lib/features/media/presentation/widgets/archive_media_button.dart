@@ -16,28 +16,25 @@ class ArchiveMediaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CheckArchiveCubit()..setArchiveStatus(media.isArchived),
-      child: Builder(
-        builder: (context) {
-          return CustomMediaDetailsButton(
-            bgColor: AppColors.buttonBgColor,
-            icon:
-                context.watch<CheckArchiveCubit>().state == true
-                    ? Icons.unarchive
-                    : CupertinoIcons.archivebox_fill,
-            onPressed: () {
-              final checkCubit = context.read<CheckArchiveCubit>();
-              final newStatus = checkCubit.state;
-              FunctionsHelper.toggleArchive(
-                context,
-                ArchiveModel(id: media.id, status: newStatus),
-              );
-              checkCubit.setArchiveStatus(!newStatus);
-            },
-          );
-        },
-      ),
+    return Builder(
+      builder: (context) {
+        return CustomMediaDetailsButton(
+          bgColor: AppColors.buttonBgColor,
+          icon:
+              context.watch<CheckArchiveCubit>().state == true
+                  ? Icons.unarchive
+                  : CupertinoIcons.archivebox_fill,
+          onPressed: () {
+            final checkCubit = context.read<CheckArchiveCubit>();
+            final newStatus = checkCubit.state;
+            FunctionsHelper.toggleArchive(
+              context,
+              ArchiveModel(id: media.id, status: newStatus),
+            );
+            checkCubit.setArchiveStatus(!newStatus);
+          },
+        );
+      },
     );
   }
 }

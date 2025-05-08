@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
 
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';
@@ -19,7 +20,6 @@ class MediaDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppScaffold(
       child: BlocProvider<CheckArchiveCubit>(
-        lazy: true,
         create:
             (context) =>
                 CheckArchiveCubit()..setArchiveStatus(media.isArchived),
@@ -84,6 +84,7 @@ class MediaDetailsPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CustomText(media.title, size: 22),
+                          AppConstants.verticalVerySmallSizedBox,
                           ScrollableMediaDetailsSection(media: media),
                         ],
                       ),
