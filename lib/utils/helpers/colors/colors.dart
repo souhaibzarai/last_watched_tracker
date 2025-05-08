@@ -11,14 +11,14 @@ class ColorsHelper {
         return AppColors.slidableGreenColor;
       case 'in progress':
         return AppColors.previewTextBgColor.withAlpha(255);
-      case 'not started':
-        return AppColors.secondaryColor;
+      case 'plan to watch/read':
+        return AppColors.infoColor.withAlpha(160);
       case 'on hold':
-        return AppColors.disabledColor;
+        return AppColors.secondaryTextColor;
       case 'dropped':
         return AppColors.errorColor;
       default:
-        return AppColors.disabledColor;
+        return AppColors.secondaryTextColor;
     }
   }
 }
