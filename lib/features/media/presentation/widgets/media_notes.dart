@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../utils/constants/constants.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 
@@ -11,7 +12,7 @@ class MediaNotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: AppConstants.smallPadding,
       child: Text.rich(
         textAlign: TextAlign.justify,
         TextSpan(
