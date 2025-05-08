@@ -34,11 +34,9 @@ class ArchivePage extends StatelessWidget {
             title: ArchiveMessage(),
           ),
           SliverToBoxAdapter(
-            child: FractionallySizedBox(
-              child: Medias(
-                isArchived: true,
-                scrollPhysics: NeverScrollableScrollPhysics(),
-              ),
+            child: Medias(
+              isArchived: true,
+              scrollPhysics: NeverScrollableScrollPhysics(),
             ),
           ),
         ],
