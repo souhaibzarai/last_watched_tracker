@@ -19,7 +19,9 @@ class ArchiveMediaButton extends StatelessWidget {
     return Builder(
       builder: (context) {
         return CustomMediaDetailsButton(
-          bgColor: AppColors.buttonBgColor,
+          size: 30,
+          color: AppColors.textColor,
+          bgColor: Colors.transparent,
           icon:
               context.watch<CheckArchiveCubit>().state == true
                   ? Icons.unarchive

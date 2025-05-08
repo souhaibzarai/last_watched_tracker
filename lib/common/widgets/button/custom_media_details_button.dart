@@ -7,14 +7,16 @@ class CustomMediaDetailsButton extends StatelessWidget {
     super.key,
     required this.icon,
     this.onPressed,
-    this.bgColor = AppColors.buttonBgColor,
-    this.color = AppColors.primaryColor,
+    this.bgColor = Colors.transparent,
+    this.color = AppColors.textColor,
+    this.size,
   });
 
   final VoidCallback? onPressed;
   final IconData icon;
   final Color color;
   final Color bgColor;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,13 @@ class CustomMediaDetailsButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       color: bgColor,
       child: InkWell(
+        focusColor: Colors.transparent,
+        splashColor: AppColors.secondaryColor.withAlpha(1),
+        highlightColor: Colors.transparent,
         onTap: onPressed,
         child: Container(
-          width: 40,
-          height: 40,
-          padding: EdgeInsets.all(8),
-          child: Icon(icon, color: color),
+          padding: const EdgeInsets.all(8),
+          child: Icon(icon, color: color, size: size),
         ),
       ),
     );
