@@ -15,29 +15,27 @@ class ScrollableMediaDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return ListView(
       scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
+      physics: BouncingScrollPhysics(),
+      children: [
+        MediaTextPreview(
+          text: media.category,
+          color: AppColors.primaryColor,
+          bgColor: AppColors.infoColor,
+        ),
+        AppConstants.horizontalSmallSizedBox,
+        MediaTextPreview(
+          text: media.status,
+          bgColor: ColorsHelper.getStatusColor(media.status),
+        ),
+        AppConstants.horizontalSmallSizedBox,
+        if (context.watch<CheckArchiveCubit>().state)
           MediaTextPreview(
-            text: media.category,
-            color: AppColors.primaryColor,
-            bgColor: AppColors.infoColor,
+            text: 'Archived',
+            bgColor: AppColors.slidableGreenColor,
           ),
-          AppConstants.horizontalSmallSizedBox,
-          MediaTextPreview(
-            text: media.status,
-            bgColor: ColorsHelper.getStatusColor(media.status),
-          ),
-          AppConstants.horizontalSmallSizedBox,
-          if (context.watch<CheckArchiveCubit>().state)
-            MediaTextPreview(
-              text: 'Archived',
-              bgColor: AppColors.slidableGreenColor,
-            ),
-        ],
-      ),
+      ],
     );
   }
 }
