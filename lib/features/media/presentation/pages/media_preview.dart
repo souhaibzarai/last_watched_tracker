@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
 
 import '../../../../common/widgets/blured_bg_preview.dart';
 import '../../../../utils/constants/constants.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../../domain/entities/media.dart';
 import '../widgets/chapters_text_count.dart';
