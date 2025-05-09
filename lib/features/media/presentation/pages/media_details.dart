@@ -23,6 +23,7 @@ class MediaDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppScaffold(
       child: BlocProvider<CheckArchiveCubit>(
+        lazy: true,
         create:
             (context) =>
                 CheckArchiveCubit()..setArchiveStatus(media.isArchived),
@@ -92,12 +93,7 @@ class MediaDetailsPage extends StatelessWidget {
                             children: [
                               CustomText(media.title, size: 22),
                               AppConstants.verticalVerySmallSizedBox,
-                              SizedBox(
-                                height: 30,
-                                child: ScrollableMediaDetailsSection(
-                                  media: media,
-                                ),
-                              ),
+                              ScrollableMediaDetailsSection(media: media),
                             ],
                           ),
                         ), //
