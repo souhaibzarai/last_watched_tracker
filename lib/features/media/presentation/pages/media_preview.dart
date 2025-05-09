@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
 
 import '../../../../common/widgets/blured_bg_preview.dart';
 import '../../../../utils/constants/constants.dart';
@@ -31,15 +32,7 @@ class MediaDetailsPreview extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.hardEdge,
           children: [
-            Hero(
-              tag: media,
-              child: Image.network(
-                media.imgUrl,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
+            Hero(tag: media, child: ImageHelper.getImage(imgUrl: media.imgUrl)),
             Positioned(
               right: 10,
               top: 10,
