@@ -38,12 +38,12 @@ class AppConstants {
     );
   }
 
-  static Divider getNotesDivider({double? indent, double? endIndent}) {
+  static Divider getDialogDivider({double? indent, double? endIndent}) {
     return Divider(
-      color: AppColors.infoColor,
+      color: AppColors.warningColor,
       endIndent: endIndent ?? 0,
       indent: indent ?? 0,
-      height: 0,
+      height: 8,
       thickness: .4,
     );
   }
