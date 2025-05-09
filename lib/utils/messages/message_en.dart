@@ -29,4 +29,8 @@ class CommonMessagesEn {
       'An error occurred while archiving the item';
   static const String mediaWillStayArchived =
       'This media will stay archived unless you unarchive it.';
+
+  static String confirmMediaDeletion(String mediaTitle) {
+    return 'Are you sure you want to permanently delete "$mediaTitle" from your list?';
+  }
 }
