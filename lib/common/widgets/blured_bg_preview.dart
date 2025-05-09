@@ -5,8 +5,16 @@ import 'package:flutter/material.dart';
 import '../../utils/theme/app_colors.dart';
 
 class BluredBgPreview extends StatelessWidget {
-  const BluredBgPreview({super.key, required this.child});
+  const BluredBgPreview({
+    super.key,
+    required this.child,
+    this.width,
+    this.height,
+  });
   final Widget child;
+
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +28,8 @@ class BluredBgPreview extends StatelessWidget {
         ),
         width: double.infinity,
         constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * .6,
-          maxWidth: MediaQuery.of(context).size.width * .8,
+          maxWidth: width ?? MediaQuery.of(context).size.width * .8,
+          maxHeight: height ?? MediaQuery.of(context).size.height * .6,
         ),
         child: child,
       ),
