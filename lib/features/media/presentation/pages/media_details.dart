@@ -143,6 +143,13 @@ class MediaDetailsPage extends StatelessWidget {
               height: 60,
               child: CustomFloatingBottomBar(media: media),
             ),
+            Positioned(
+              bottom: 10,
+              left: 16,
+              right: 16,
+              height: 60,
+              child: CustomFloatingBNBActions(media: media),
+            ),
           ],
         ),
       ),

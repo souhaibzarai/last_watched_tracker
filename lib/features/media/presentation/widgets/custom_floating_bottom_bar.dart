@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/button/custom_media_details_button.dart';
@@ -8,10 +9,7 @@ import '../../domain/entities/media.dart';
 import 'archive_media_button.dart' show ArchiveMediaButton;
 
 class CustomFloatingBottomBar extends StatelessWidget {
-  const CustomFloatingBottomBar({
-    super.key,
-    required this.media,
-  });
+  const CustomFloatingBottomBar({super.key, required this.media});
 
   final MediaEntity media;
 
@@ -40,20 +38,7 @@ class CustomFloatingBottomBar extends StatelessWidget {
           clipper: MyCustomClipper(),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-            child: SizedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ArchiveMediaButton(media: media), //
-                  CustomMediaDetailsButton(
-                    icon: Icons.menu,
-                    onPressed: () {},
-                    color: AppColors.textColor,
-                    size: 34,
-                  ),
-                ],
-              ),
-            ),
+            child: SizedBox(),
           ),
         ),
       ),
@@ -79,5 +64,45 @@ class MyCustomClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper oldClipper) {
     return true;
+  }
+}
+
+class CustomFloatingBNBActions extends StatelessWidget {
+  const CustomFloatingBNBActions({super.key, required this.media});
+
+  final MediaEntity media;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ArchiveMediaButton(media: media),
+        CustomMediaDetailsButton(
+          icon: Icons.edit,
+          onPressed: () {},
+          color: AppColors.textColor,
+          size: 30,
+        ),
+        CustomMediaDetailsButton(
+          icon: CupertinoIcons.delete,
+          onPressed: () {},
+          color: AppColors.textColor,
+          size: 30,
+        ),
+        CustomMediaDetailsButton(
+          icon: CupertinoIcons.share,
+          onPressed: () {},
+          color: AppColors.textColor,
+          size: 30,
+        ),
+        CustomMediaDetailsButton(
+          icon: CupertinoIcons.delete,
+          onPressed: () {},
+          color: AppColors.textColor,
+          size: 30,
+        ),
+      ],
+    );
   }
 }
