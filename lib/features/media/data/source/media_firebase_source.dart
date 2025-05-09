@@ -13,6 +13,8 @@ abstract class MediaFirebaseSource {
   Future<Either> fetchAllMedia();
 
   Future<Either> toggleArchive(ArchiveModel archive);
+
+  Future<Either> deleteMedia(String id);
 }
 
 class MediaFirebaseSourceImpl implements MediaFirebaseSource {
@@ -92,6 +94,27 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
           .collection('media')
           .doc(archive.id)
           .update({'isArchived': !archive.status});
+
+      return Right(CommonMessagesEn.mediaArchived);
+    } catch (e) {
+      return Left('${CommonMessagesEn.somethingWentWrong} $e');
+    }
+  }
+
+  @override
+  Future<Either> deleteMedia(String id) async {
+    try {
+      if (_auth.currentUser == null) {
+        return Left(CommonMessagesEn.notAuthenticated);
+      }
+      final userId = _auth.currentUser!.uid;
+
+      await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('media')
+          .doc(id)
+          .delete();
 
       return Right(CommonMessagesEn.mediaArchived);
     } catch (e) {

@@ -16,6 +16,7 @@ import 'features/category/domain/usecases/fetch_categories.dart';
 import 'features/media/data/repository/media_repo_impl.dart';
 import 'features/media/data/source/media_firebase_source.dart';
 import 'features/media/domain/repository/media_repo.dart';
+import 'features/media/domain/usecases/delete_media.dart';
 import 'features/media/domain/usecases/fetch_medias.dart';
 import 'features/media/domain/usecases/new_media.dart';
 import 'features/media/domain/usecases/toggle_archive.dart';
@@ -89,6 +90,8 @@ Future<void> initDependencies() async {
   serviceLocator.registerSingleton<ToggleArchiveUseCase>(
     ToggleArchiveUseCase(),
   );
+
+  serviceLocator.registerSingleton<DeleteMediaUseCase>(DeleteMediaUseCase());
 
   // Category
   serviceLocator.registerSingleton<FetchCategoriesUseCase>(

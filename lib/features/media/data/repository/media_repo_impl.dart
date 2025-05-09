@@ -38,4 +38,9 @@ class MediaRepoImpl implements MediaRepository {
   Future<Either> toggleArchive(ArchiveModel archive) async {
     return await serviceLocator<MediaFirebaseSource>().toggleArchive(archive);
   }
+
+  @override
+  Future<Either> deleteMedia(String id) async {
+    return await serviceLocator<MediaFirebaseSource>().deleteMedia(id);
+  }
 }

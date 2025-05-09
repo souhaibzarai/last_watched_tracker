@@ -9,4 +9,6 @@ abstract class MediaRepository {
   Future<Either> fetchAllMedia();
 
   Future<Either> toggleArchive(ArchiveModel archive);
+
+  Future<Either> deleteMedia(String id);
 }
