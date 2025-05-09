@@ -19,16 +19,26 @@ class ArchivePage extends StatelessWidget {
         slivers: [
           const SliverBackButton(),
           SliverAppBar(
-            pinned: true,
+            floating: true,
+            snap: true,
             backgroundColor: AppColors.previewTextBgColor,
-            collapsedHeight: 60,
-            toolbarHeight: 60,
-            expandedHeight: 80,
+            toolbarHeight: 70,
             automaticallyImplyLeading: false,
-            flexibleSpace: ClipRRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 20),
-                child: Container(width: double.infinity),
+            flexibleSpace: DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                border: Border.symmetric(
+                  horizontal: BorderSide(
+                    width: .15,
+                    color: AppColors.secondaryColor,
+                  ),
+                ),
+              ),
+              child: ClipRRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Container(width: double.infinity),
+                ),
               ),
             ),
             title: ArchiveMessage(),
