@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
 
 import '../../../../common/widgets/blured_bg_preview.dart';
 import '../../../../utils/messages/message_en.dart';
@@ -46,6 +47,15 @@ class DeleteMediaConfirmDialog extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  CustomDialogTextButton(
+                    bgColor: AppColors.secondaryTextColor,
+                    color: AppColors.textColor,
+                    onPressed: () {
+                      context.pop(false);
+                    },
+                    text: 'Cancel',
+                  ),
+                  AppConstants.horizontalSmallSizedBox,
                   CustomDialogTextButton(
                     onPressed: () {
                       context.pop(true);

@@ -7,11 +7,13 @@ class CustomDialogTextButton extends StatelessWidget {
     super.key,
     this.text = 'Yes',
     this.onPressed,
-    this.color = AppColors.errorColor,
+    this.bgColor = AppColors.errorColor,
+    this.color = AppColors.primaryColor,
   });
 
   final String text;
   final VoidCallback? onPressed;
+  final Color bgColor;
   final Color color;
 
   @override
@@ -19,7 +21,7 @@ class CustomDialogTextButton extends StatelessWidget {
     return Material(
       borderRadius: BorderRadius.circular(10),
       clipBehavior: Clip.hardEdge,
-      color: color,
+      color: bgColor,
       child: InkWell(
         highlightColor: AppColors.primaryColor.withAlpha(80),
         splashColor: AppColors.primaryColor.withAlpha(120),
@@ -27,7 +29,7 @@ class CustomDialogTextButton extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-          child: Text(text, style: TextStyle(color: AppColors.primaryColor)),
+          child: Text(text, style: TextStyle(color: color)),
         ),
       ),
     );
