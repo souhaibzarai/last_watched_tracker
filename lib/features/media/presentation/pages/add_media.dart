@@ -81,7 +81,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                       context.pop(true);
                       return AppCommons.showScaffold(
                         context,
-                        message: CommonMessagesEn.mediaCreatedSuccessfully,
+                        message: CommonMessagesEn.mediaCreated,
                       );
                     }
                   },

@@ -38,7 +38,7 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       final userId = _auth.currentUser?.uid;
 
       if (userId == null) {
-        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+        return const Left(CommonMessagesEn.notAuthenticated);
       }
 
       await _firestore
@@ -47,9 +47,9 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
           .collection('media')
           .add(mediaModel.toFirestore());
 
-      return const Right(CommonMessagesEn.mediaCreatedSuccessfully);
+      return const Right(CommonMessagesEn.mediaCreated);
     } catch (e) {
-      return Left({CommonMessagesEn.errorOccurred, e.toString()});
+      return Left({CommonMessagesEn.somethingWentWrong, e.toString()});
     }
   }
 
@@ -59,7 +59,7 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       final userId = _auth.currentUser?.uid;
 
       if (userId == null) {
-        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+        return const Left(CommonMessagesEn.notAuthenticated);
       }
       final response =
           await _firestore
@@ -84,20 +84,18 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       final userId = _auth.currentUser?.uid;
 
       if (userId == null) {
-        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+        return const Left(CommonMessagesEn.notAuthenticated);
       }
       await _firestore
           .collection('users')
           .doc(userId)
           .collection('media')
           .doc(archive.id)
-          .update({
-            'isArchived': !archive.status, //
-          });
+          .update({'isArchived': !archive.status});
 
-      return Right(CommonMessagesEn.mediaArchivedSuccessfully);
+      return Right(CommonMessagesEn.mediaArchived);
     } catch (e) {
-      return Left('${CommonMessagesEn.errorOccurred} $e');
+      return Left('${CommonMessagesEn.somethingWentWrong} $e');
     }
   }
 }

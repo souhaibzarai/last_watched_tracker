@@ -45,14 +45,14 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
             'email': user.email,
           });
 
-      return const Right(CommonMessagesEn.accountCreatedSuccessfully);
+      return const Right(CommonMessagesEn.accountCreated);
     } on FirebaseAuthException catch (e) {
       String message = '';
 
       if (e.code == 'weak-password') {
-        message = CommonMessagesEn.passwordWeak;
+        message = CommonMessagesEn.passwordTooWeak;
       } else if (e.code == 'email-already-in-use') {
-        message = CommonMessagesEn.emailAlreadyExists;
+        message = CommonMessagesEn.emailAlreadyUsed;
       }
       return Left(message);
     }
@@ -68,7 +68,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       String message = '';
 
       if (e.code == 'invalid-email' || e.code == 'invalid-credential') {
-        message = CommonMessagesEn.invalidEmail;
+        message = CommonMessagesEn.invalidCredentials;
       }
 
       return Left(message);
@@ -102,7 +102,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       late String userId;
 
       if (currentUser == null) {
-        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+        return const Left(CommonMessagesEn.notAuthenticated);
       }
 
       userId = currentUser.uid;
@@ -112,13 +112,13 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
           .get()
           .then((value) => value.data());
       if (userData == null) {
-        return const Left(CommonMessagesEn.userIsNotAuthenticated);
+        return const Left(CommonMessagesEn.notAuthenticated);
       }
       return Right(userData);
       //
     } catch (e) {
       //
-      return Left('${CommonMessagesEn.errorOccurred} $e');
+      return Left('${CommonMessagesEn.somethingWentWrong} $e');
     }
   }
 

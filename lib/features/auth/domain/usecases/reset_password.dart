@@ -9,7 +9,7 @@ class ResetPasswordUseCase extends Usecase<Either, String> {
   @override
   Future<Either> call({String? params}) async {
     if (params == null) {
-      return const Left(CommonMessagesEn.invalidParam);
+      return const Left(CommonMessagesEn.invalidParameter);
     }
     return await serviceLocator<AuthRepository>().sendPasswordResetEmail(
       params,
