@@ -19,7 +19,6 @@ class ArchiveMediaButton extends StatelessWidget {
     return Builder(
       builder: (context) {
         return CustomMediaDetailsButton(
-          size: 30,
           color: AppColors.textColor,
           bgColor: Colors.transparent,
           icon:

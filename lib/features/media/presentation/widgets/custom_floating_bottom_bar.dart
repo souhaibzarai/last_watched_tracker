@@ -82,25 +82,16 @@ class CustomFloatingBNBActions extends StatelessWidget {
           icon: Icons.edit,
           onPressed: () {},
           color: AppColors.textColor,
-          size: 30,
-        ),
-        CustomMediaDetailsButton(
-          icon: CupertinoIcons.delete,
-          onPressed: () {},
-          color: AppColors.textColor,
-          size: 30,
         ),
         CustomMediaDetailsButton(
           icon: CupertinoIcons.share,
           onPressed: () {},
           color: AppColors.textColor,
-          size: 30,
         ),
         CustomMediaDetailsButton(
           icon: CupertinoIcons.delete,
           onPressed: () {},
           color: AppColors.textColor,
-          size: 30,
         ),
       ],
     );

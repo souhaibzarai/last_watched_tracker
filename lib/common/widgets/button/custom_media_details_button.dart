@@ -9,7 +9,7 @@ class CustomMediaDetailsButton extends StatelessWidget {
     this.onPressed,
     this.bgColor = Colors.transparent,
     this.color = AppColors.textColor,
-    this.size,
+    this.size = 30,
   });
 
   final VoidCallback? onPressed;
