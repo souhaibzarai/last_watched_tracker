@@ -24,7 +24,10 @@ class CommonMessagesEn {
   static const String missingMediaCreationParams =
       'Media creation parameters cannot be null';
 
-  static const String mediaListEmpty = 'Your media list is empty!';
+  static const String mediaListEmpty = 'Your media list is currently empty.';
+
+  static const String archivedListEmpty =
+      'There is no media in the archive at the moment.';
 
   static const String mediaArchivedSuccessfully = 'Media archived successfully';
 

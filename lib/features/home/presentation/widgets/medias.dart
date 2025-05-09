@@ -29,12 +29,15 @@ class Medias extends StatelessWidget {
             isArchived: isArchived,
           );
           if (medias.isEmpty) {
-            return const SizedBox(
+            return SizedBox(
               height: 100,
               child: Center(
                 child: Text(
-                  CommonMessagesEn.mediaListEmpty,
-                  style: TextStyle(fontSize: 16),
+                  isArchived
+                      ? CommonMessagesEn.archivedListEmpty
+                      : CommonMessagesEn.mediaListEmpty,
+                  style: const TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
                 ),
               ),
             );
