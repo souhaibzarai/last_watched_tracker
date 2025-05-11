@@ -8,8 +8,9 @@ class ImageHelper {
   ImageHelper._();
 
   static Widget getImage({required String imgUrl}) {
+    final defaultImg = Image.asset(ImagesPath.defaultImg, fit: BoxFit.cover);
     if (imgUrl == 'null' || imgUrl.isEmpty) {
-      return Image.asset(ImagesPath.splashImage, fit: BoxFit.cover);
+      return defaultImg;
     } else {
       return CachedNetworkImage(
         imageUrl: imgUrl,
@@ -24,9 +25,7 @@ class ImageHelper {
                 backgroundColor: AppColors.primaryColor.withAlpha(100),
               ),
             ),
-        errorWidget:
-            (context, url, error) =>
-                Image.asset(ImagesPath.splashImage, fit: BoxFit.cover),
+        errorWidget: (context, url, error) => defaultImg,
       );
     }
   }
