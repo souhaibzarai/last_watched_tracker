@@ -9,8 +9,6 @@ class CommonMessagesEn {
       'Operation failed. Please try again later';
   static const String notAuthenticated = 'User is not authenticated';
   static const String somethingWentWrong = 'An error occurred';
-  static const String noImageSelected = 'No image selected';
-  static const String imageUploadFailed = 'Image upload failed';
   static const String invalidParameter = 'Invalid parameter provided';
   static const String missingUserConnectionParams =
       'User connection parameters are missing';
@@ -33,4 +31,11 @@ class CommonMessagesEn {
   static String confirmMediaDeletion(String mediaTitle) {
     return 'Are you sure you want to permanently delete "$mediaTitle" from your list?';
   }
+
+  static const String uploadFailureMessage =
+      'Failed to upload the image. Status code: ';
+
+  static const String uploadErrorMessage = 'Failed to upload the image: ';
+
+  static const String noImageSelected = 'No image selected';
 }
