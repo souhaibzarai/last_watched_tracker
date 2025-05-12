@@ -35,7 +35,7 @@ class CustomDialogBottomSheet extends StatelessWidget {
                             ? text
                             : '$type: $text',
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: AppColors.textColor,
                         ),
