@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../common/app_commons.dart';
 import '../../../../common/cubit/button/button_state.dart';
@@ -12,10 +15,12 @@ import '../../../../common/widgets/page_heading_title.dart';
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/messages/message_en.dart';
+import '../../../../utils/theme/app_colors.dart';
 import '../../../category/presentation/cubit/category_selector_cubit.dart';
 import '../../../category/presentation/widgets/category_selector_field.dart';
 import '../../../status/presentation/cubit/status_selector_cubit.dart';
 import '../../../status/presentation/widgets/status_selector_field.dart';
+import '../cubit/upload_image_cubit.dart';
 import '../widgets/add_media_button.dart';
 
 class AddMediaPage extends StatefulWidget {
@@ -66,9 +71,17 @@ class _AddMediaPageState extends State<AddMediaPage> {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-              child: BlocProvider(
-                create: (context) => ButtonStateCubit(),
-                lazy: true,
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => ButtonStateCubit(),
+                    lazy: true,
+                  ),
+                  BlocProvider(
+                    create: (context) => UploadImageCubit(),
+                    lazy: true,
+                  ),
+                ],
                 child: BlocListener<ButtonStateCubit, ButtonState>(
                   listener: (context, state) {
                     if (state is FailureButtonState) {
@@ -119,7 +132,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                             if (value == null || value.isEmpty) {
                               return null;
                             }
-                            if (!RegExp(r'^\d+$').hasMatch(value)) {
+                            if (!RegExp(r'^\d+//$').hasMatch(value)) {
                               return 'Please enter a valid number';
                             }
                             if (int.parse(progressController.text) >
@@ -130,10 +143,39 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           },
                         ),
                         AppConstants.verticalMediumSizedBox,
-                        CustomTextField(
-                          labelText: 'Cover Image URL (Optional)',
-                          hintText: 'Link to an image for this media',
-                          controller: imgUrlController,
+                        BlocBuilder<UploadImageCubit, XFile?>(
+                          builder: (context, image) {
+                            return InkWell(
+                              onTap: () async {
+                                await context
+                                    .read<UploadImageCubit>()
+                                    .pickImageFromGallery();
+                              },
+                              borderRadius: BorderRadius.circular(4),
+                              child: Container(
+                                width: double.infinity,
+                                height: 150,
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  color: AppColors.previewTextBgColor.withAlpha(
+                                    150,
+                                  ),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child:
+                                    image == null
+                                        ? Icon(
+                                          CupertinoIcons.camera_fill,
+                                          color: AppColors.infoColor,
+                                          size: 30,
+                                        )
+                                        : Image.file(
+                                          File(image.path),
+                                          fit: BoxFit.cover,
+                                        ),
+                              ),
+                            );
+                          },
                         ),
                         AppConstants.verticalMediumSizedBox,
                         CustomTextField(
@@ -147,7 +189,6 @@ class _AddMediaPageState extends State<AddMediaPage> {
                         AddMediaButton(
                           formKey: _formKey,
                           titleController: titleController,
-                          imgUrlController: imgUrlController,
                           progressController: progressController,
                           totalController: totalController,
                           notesController: notesController,
