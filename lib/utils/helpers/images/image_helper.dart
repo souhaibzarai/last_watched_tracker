@@ -15,6 +15,7 @@ class ImageHelper {
       return CachedNetworkImage(
         imageUrl: imgUrl,
         width: double.infinity,
+        height: 400,
         fit: BoxFit.cover,
         fadeInCurve: Curves.easeIn,
         placeholder:
