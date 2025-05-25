@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,20 +44,38 @@ class Home2 extends StatelessWidget {
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
-                            elevation: 4,
                             useSafeArea: true,
-                            isDismissible: true,
+                            constraints: BoxConstraints(maxHeight: 400.h),
                             sheetAnimationStyle: AnimationStyle(
                               curve: Curves.elasticInOut,
                               duration: Duration(milliseconds: 500),
                             ),
-                            backgroundColor: AppColors.buttonBgColor,
-                            showDragHandle: true,
+                            backgroundColor: Colors.transparent,
                             builder: (context) {
-                              print(
-                                '${MediaQuery.of(context).size.width} //  ${MediaQuery.of(context).size.height} ',
+                              return ClipRRect(
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 6,
+                                    sigmaY: 6,
+                                  ),
+                                  child: Container(
+                                    padding: EdgeInsets.all(10).r,
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        topRight: Radius.circular(30),
+                                      ).r,
+                                      color: AppColors.previewTextBgColor,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Center(child: Text('Hello World')),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               );
-                              return Container();
                             },
                           );
                         },
@@ -64,6 +84,11 @@ class Home2 extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+            SliverAppBar(
+              backgroundColor: AppColors.secondaryTextColor,
+              toolbarHeight: 800,
+              automaticallyImplyLeading: false,
             ),
           ],
         ),
