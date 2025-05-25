@@ -15,7 +15,13 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initDependencies();
 
-  runApp(const LastWatchedTracker());
+  runApp(
+    ScreenUtilInit(
+      designSize: const Size(360, 752),
+
+      child: const LastWatchedTracker(),
+    ),
+  );
 }
 
 class LastWatchedTracker extends StatelessWidget {
@@ -27,21 +33,16 @@ class LastWatchedTracker extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => FetchMediasCubit()..fetchMedias()),
         BlocProvider(
-          create:
-              (context) => ArchiveMediaCubit(
-                fetchMediasCubit: context.read<FetchMediasCubit>(),
-              ),
+          create: (context) => ArchiveMediaCubit(
+            fetchMediasCubit: context.read<FetchMediasCubit>(),
+          ),
         ),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(360, 752),
-        minTextAdapt: true,
-        child: MaterialApp.router(
-          title: 'Last Watched Tracker',
-          theme: AppTheme.theme, //
-          routerConfig: router,
-          debugShowCheckedModeBanner: false,
-        ),
+      child: MaterialApp.router(
+        title: 'Last Watched Tracker',
+        theme: AppTheme.theme, //
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
