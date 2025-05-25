@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/features/home/presentation/pages/home2.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
 import 'features/auth/presentation/pages/reset_password.dart';
@@ -46,7 +47,7 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           path: NavigatorPath.home,
-          builder: (context, state) => const HomePage(),
+          builder: (context, state) => const Home2(),
         ),
         GoRoute(
           path: NavigatorPath.addMedia,
