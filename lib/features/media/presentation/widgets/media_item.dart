@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,7 +30,7 @@ class MediaItem extends StatelessWidget {
             context: context,
             builder: (dialogContext) {
               return Dialog(
-                insetPadding: const EdgeInsets.all(20),
+                insetPadding: const EdgeInsets.all(20).r,
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 child: MediaDetailsPreview(media: media),
@@ -89,7 +90,7 @@ class MediaItem extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8).r,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -97,8 +98,8 @@ class MediaItem extends StatelessWidget {
                       tag: media,
                       transitionOnUserGestures: true,
                       child: Container(
-                        width: 45,
-                        height: 80,
+                        width: 45.w,
+                        height: 80.h,
                         clipBehavior: Clip.hardEdge,
                         decoration: const BoxDecoration(shape: BoxShape.circle),
                         child: ImageHelper.getImage(
@@ -114,13 +115,13 @@ class MediaItem extends StatelessWidget {
                           Text(
                             media.title,
                             maxLines: 1,
-                            style: const TextStyle(fontSize: 17),
+                            style: TextStyle(fontSize: 17.sp),
                           ),
                           Text(
                             media.category.toString(), //
                             maxLines: 1,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               overflow: TextOverflow.ellipsis,
                               color: AppColors.textColor.withAlpha(120),
                             ),

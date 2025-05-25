@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../utils/constants/constants.dart';
@@ -24,7 +25,7 @@ class Archived extends StatelessWidget {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(),
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5).r,
               child: CupertinoListTile(
                 leading: Icon(
                   CupertinoIcons.archivebox,

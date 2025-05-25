@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../utils/constants/constants.dart';
 import 'social_sign_in_button.dart';
@@ -15,7 +16,7 @@ class SocialSignInOptions extends StatelessWidget {
         children: [
           Text(
             introText,
-            style: TextStyle(color: Colors.white70, fontSize: 14),
+            style: TextStyle(color: Colors.white70, fontSize: 14.sp),
           ),
           AppConstants.verticalMediumSizedBox,
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/theme/app_colors.dart';
@@ -16,14 +17,16 @@ class CustomAuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 45,
+      height: 45.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.buttonBgColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8).r,
+          ),
         ),
-        child: CustomText(text, size: 18),
+        child: CustomText(text, size: 18.sp),
       ),
     );
   }

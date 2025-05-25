@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/theme/app_colors.dart';
 import '../../app_commons.dart';
@@ -37,14 +38,17 @@ class CustomReactiveButton extends StatelessWidget {
             backgroundColor: backgroundColor ?? AppColors.buttonBgColor,
             foregroundColor: AppColors.textColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               side:
                   onPressed == null
                       ? BorderSide(color: AppColors.errorColor, width: 1)
                       : BorderSide.none,
             ),
-            padding: padding,
-            minimumSize: Size(MediaQuery.of(context).size.width, height ?? 60),
+            padding: padding.r,
+            minimumSize: Size(
+              MediaQuery.of(context).size.width.w,
+              height ?? 60.h,
+            ),
           ),
           child:
               isLoading
@@ -52,7 +56,7 @@ class CustomReactiveButton extends StatelessWidget {
                   : Text(
                     text ?? 'Continuer',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color:
                           onPressed == null
                               ? AppColors.errorColor

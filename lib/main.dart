@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/media/presentation/cubit/archive_media_cubit.dart';
 import 'features/media/presentation/cubit/fetch_medias_cubit.dart';
@@ -32,11 +33,15 @@ class LastWatchedTracker extends StatelessWidget {
               ),
         ),
       ],
-      child: MaterialApp.router(
-        title: 'Last Watched Tracker',
-        theme: AppTheme.theme, //
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
+      child: ScreenUtilInit(
+        designSize: const Size(360, 752),
+        minTextAdapt: true,
+        child: MaterialApp.router(
+          title: 'Last Watched Tracker',
+          theme: AppTheme.theme, //
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }

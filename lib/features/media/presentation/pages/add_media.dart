@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -151,23 +152,23 @@ class _AddMediaPageState extends State<AddMediaPage> {
                                     .read<UploadImageCubit>()
                                     .pickImageFromGallery();
                               },
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(4).r,
                               child: Container(
                                 width: double.infinity,
-                                height: 150,
+                                height: 150.h,
                                 clipBehavior: Clip.hardEdge,
                                 decoration: BoxDecoration(
                                   color: AppColors.previewTextBgColor.withAlpha(
                                     150,
                                   ),
-                                  borderRadius: BorderRadius.circular(4),
+                                  borderRadius: BorderRadius.circular(4).r,
                                 ),
                                 child:
                                     image == null
                                         ? Icon(
                                           CupertinoIcons.camera_fill,
                                           color: AppColors.infoColor,
-                                          size: 30,
+                                          size: 30.sp,
                                         )
                                         : Image.file(
                                           File(image.path),

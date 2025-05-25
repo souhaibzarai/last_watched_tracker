@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:last_watched_tracker/utils/constants/constants.dart';
 
@@ -20,7 +21,7 @@ class DeleteMediaConfirmDialog extends StatelessWidget {
       elevation: 1,
       backgroundColor: AppColors.secondaryTextColor,
       child: BluredBgPreview(
-        height: 200,
+        height: 200.h,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -28,13 +29,10 @@ class DeleteMediaConfirmDialog extends StatelessWidget {
             DialogTitle(media: media),
             // Dialog content
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8).r,
               child: Text(
                 CommonMessagesEn.confirmMediaDeletion(media.title),
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
                 softWrap: true,
                 maxLines: 3,
@@ -43,7 +41,7 @@ class DeleteMediaConfirmDialog extends StatelessWidget {
             ),
 
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8).r,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

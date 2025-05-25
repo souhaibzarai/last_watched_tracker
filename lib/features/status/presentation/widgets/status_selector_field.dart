@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../common/app_commons.dart';
@@ -55,11 +56,11 @@ class StatusSelectorField extends StatelessWidget {
                       context.pop();
                     },
                     icon: Icons.arrow_forward_ios_outlined,
-                    iconSize: 12,
+                    iconSize: 12.sp,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 14,
-                    ),
+                    ).r,
                   );
                 },
               );

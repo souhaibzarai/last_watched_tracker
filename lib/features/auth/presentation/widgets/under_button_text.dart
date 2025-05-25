@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:last_watched_tracker/utils/constants/constants.dart';
 
 import '../../../../utils/theme/app_colors.dart';
 
@@ -21,14 +23,11 @@ class UnderButtonText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 5),
+          AppConstants.verticalVerySmallSizedBox,
           Text(
             '$text ',
             softWrap: true,
-            style: const TextStyle(
-              fontSize: 12, //
-              color: Colors.white,
-            ),
+            style: TextStyle(fontSize: 12.sp, color: Colors.white),
             textAlign: TextAlign.center,
           ), //
           GestureDetector(

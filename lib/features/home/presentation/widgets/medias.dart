@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/app_commons.dart';
 import '../../../../utils/messages/message_en.dart';
@@ -20,7 +21,7 @@ class Medias extends StatelessWidget {
       builder: (context, state) {
         if (state is MediaLoadingState) {
           return SizedBox(
-            height: 100,
+            height: 100.h,
             child: Center(child: AppCommons.centerProgressIndicator),
           );
         } else if (state is MediaSuccessState) {
@@ -30,13 +31,13 @@ class Medias extends StatelessWidget {
           );
           if (medias.isEmpty) {
             return SizedBox(
-              height: 100,
+              height: 100.h,
               child: Center(
                 child: Text(
                   isArchived
                       ? CommonMessagesEn.archivedListEmpty
                       : CommonMessagesEn.mediaListEmpty,
-                  style: const TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16.sp),
                   textAlign: TextAlign.center,
                 ),
               ),

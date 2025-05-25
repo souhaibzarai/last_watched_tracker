@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../common/widgets/scaffold/custom_app_bar.dart';
@@ -20,7 +21,7 @@ class ResetSentPage extends StatelessWidget {
       appBar: CustomAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0).r,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -29,13 +30,10 @@ class ResetSentPage extends StatelessWidget {
                 subTitle: CommonMessagesEn.passwordResetLinkSent,
               ),
               AppConstants.verticalMediumSizedBox,
-              Image.asset(ImagesPath.emailSent, width: 250),
-              // Success Message
+              Image.asset(ImagesPath.emailSent, width: 250.w),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12).r,
                 decoration: BoxDecoration(
                   color: AppColors.successColor.withAlpha(22),
                   borderRadius: BorderRadius.circular(8),
@@ -44,7 +42,7 @@ class ResetSentPage extends StatelessWidget {
                   'Check your inbox for the password reset link.',
                   style: TextStyle(
                     color: AppColors.successColor,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -62,7 +60,7 @@ class ResetSentPage extends StatelessWidget {
               // Additional Instructions
               Text(
                 'If you don’t receive the email, please check your spam folder or try again.',
-                style: TextStyle(color: AppColors.textColor, fontSize: 14),
+                style: TextStyle(color: AppColors.textColor, fontSize: 14.sp),
               ),
             ],
           ),

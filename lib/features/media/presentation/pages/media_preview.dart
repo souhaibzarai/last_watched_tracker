@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
 
@@ -50,7 +51,7 @@ class MediaDetailsPreview extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 15,
                       vertical: 10,
-                    ),
+                    ).r,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

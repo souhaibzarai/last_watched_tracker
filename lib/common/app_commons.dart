@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/constants/constants.dart';
 import '../utils/theme/app_colors.dart';
@@ -20,9 +21,9 @@ class AppCommons {
 
   static Widget centerProgressIndicator = Center(
     child: Container(
-      width: 40,
-      height: 40,
-      padding: const EdgeInsets.all(8.0),
+      width: 40.w,
+      height: 40.h,
+      padding: const EdgeInsets.all(8.0).r,
       decoration: BoxDecoration(
         color: AppColors.previewTextBgColor.withAlpha(170),
         borderRadius: BorderRadius.circular(10),
@@ -44,9 +45,9 @@ class AppCommons {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 35,
-              height: 35,
-              padding: const EdgeInsets.all(8.0),
+              width: 35.w,
+              height: 35.h,
+              padding: const EdgeInsets.all(8.0).r,
               decoration: BoxDecoration(
                 color: AppColors.previewTextBgColor,
                 borderRadius: BorderRadius.circular(12),
@@ -69,7 +70,7 @@ class AppCommons {
               label ?? 'Loading...',
               style: TextStyle(
                 color: color ?? AppColors.primaryColor,
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -80,12 +81,12 @@ class AppCommons {
   }
 
   static OutlineInputBorder getOutlineInputBorder({
-    Color? color,
-    double? radiusSize,
+    Color color = AppColors.infoColor,
+    double radiusSize = 4,
   }) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(radiusSize ?? 4),
-      borderSide: BorderSide(color: color ?? AppColors.infoColor),
+      borderRadius: BorderRadius.circular(radiusSize.r),
+      borderSide: BorderSide(color: color),
     );
   }
 }

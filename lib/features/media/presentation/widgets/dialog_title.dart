@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/constants/constants.dart';
@@ -13,7 +14,7 @@ class DialogTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+      padding: const EdgeInsets.only(top: 8, left: 8, right: 8).r,
       child: Column(
         children: [
           Row(
@@ -23,13 +24,9 @@ class DialogTitle extends StatelessWidget {
                 'Delete ${media.title}',
                 color: AppColors.textColor,
                 fw: FontWeight.w300,
-                size: 18,
+                size: 18.sp,
               ),
-              const Icon(
-                Icons.warning,
-                color: AppColors.warningColor,
-                size: 17,
-              ),
+              Icon(Icons.warning, color: AppColors.warningColor, size: 17.sp),
             ],
           ),
           AppConstants.getDialogDivider(),

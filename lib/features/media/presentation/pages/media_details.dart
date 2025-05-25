@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
 
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
@@ -44,14 +45,15 @@ class MediaDetailsPage extends StatelessWidget {
                         tag: media,
                         child: Container(
                           clipBehavior: Clip.hardEdge,
-                          height: 400,
+                          height: 400.h,
                           alignment: Alignment.center,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40),
-                            ),
+                            borderRadius:
+                                BorderRadius.only(
+                                  topLeft: Radius.circular(40),
+                                  topRight: Radius.circular(40),
+                                ).r,
                           ),
                           child: ImageHelper.getImage(imgUrl: media.imgUrl),
                         ),
@@ -63,16 +65,18 @@ class MediaDetailsPage extends StatelessWidget {
                         left: 0,
                         right: 0,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 12,
-                          ),
+                          padding:
+                              const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 12,
+                              ).r,
                           alignment: Alignment.bottomLeft,
                           width: double.infinity,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(100),
-                            ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.only(
+                                  topRight: Radius.circular(100),
+                                ).r,
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment.center,
@@ -87,7 +91,7 @@ class MediaDetailsPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              CustomText(media.title, size: 22),
+                              CustomText(media.title, size: 22.sp),
                               AppConstants.verticalVerySmallSizedBox,
                               ScrollableMediaDetailsSection(media: media),
                             ],
@@ -100,14 +104,12 @@ class MediaDetailsPage extends StatelessWidget {
                 // Percentage bar and progress
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: AppConstants.smallPadding,
+                    padding: AppConstants.smallPadding.r,
                     child: Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            ChaptersTextCount(media: media), //
-                          ],
+                          children: [ChaptersTextCount(media: media)],
                         ),
                         AppConstants.verticalVerySmallSizedBox,
                         MediaStatusPercentageBar(media: media),
@@ -122,7 +124,7 @@ class MediaDetailsPage extends StatelessWidget {
                 // Free spacing
                 SliverAppBar(
                   automaticallyImplyLeading: false,
-                  toolbarHeight: 70,
+                  toolbarHeight: 70.h,
                   backgroundColor: AppColors.primaryColor,
                 ),
               ],
@@ -132,14 +134,14 @@ class MediaDetailsPage extends StatelessWidget {
               bottom: 10,
               left: 16,
               right: 16,
-              height: 60,
+              height: 60.h,
               child: CustomFloatingBottomBar(media: media),
             ),
             Positioned(
               bottom: 10,
               left: 16,
               right: 16,
-              height: 60,
+              height: 60.h,
               child: CustomFloatingBNBActions(media: media),
             ),
           ],

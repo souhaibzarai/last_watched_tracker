@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../utils/theme/app_colors.dart';
 
@@ -20,15 +21,15 @@ class CustomAuthText extends StatelessWidget {
           title,
           style: TextStyle(
             overflow: TextOverflow.ellipsis,
-            fontSize: 24, //
+            fontSize: 24.sp,
             color: AppColors.textColor,
           ),
         ),
         Text(
           subTitle,
-          style: const TextStyle(color: Colors.white70, fontSize: 16),
+          style: TextStyle(color: Colors.white70, fontSize: 16.sp),
         ),
-        const SizedBox(height: 40),
+        SizedBox(height: 40.h),
       ],
     );
   }

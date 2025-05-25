@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../../../utils/helpers/numbers/percentage_helper.dart';
@@ -21,14 +22,14 @@ class MediaPreviewStatus extends StatelessWidget {
             child: CustomText(
               media.status,
               color: AppColors.secondaryColor,
-              size: 14,
+              size: 14.sp,
             ),
           ),
         ),
         const Spacer(),
         CustomText(
           '${PercentageHelper.getPercentage(media.progress, media.total)}%',
-          size: 12,
+          size: 12.sp,
           fw: FontWeight.w300,
           color: AppColors.textColor,
         ),

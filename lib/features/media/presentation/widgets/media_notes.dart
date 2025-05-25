@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../utils/constants/constants.dart';
 import '../../../../utils/theme/app_colors.dart';
@@ -16,7 +17,7 @@ class MediaNotes extends StatelessWidget {
       child: Text.rich(
         textAlign: TextAlign.justify,
         TextSpan(
-          style: const TextStyle(color: AppColors.textColor, fontSize: 14),
+          style: TextStyle(color: AppColors.textColor, fontSize: 14.sp),
           children: [
             const TextSpan(
               text: '➾ ',

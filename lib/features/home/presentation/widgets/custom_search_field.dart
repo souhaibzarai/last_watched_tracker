@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../utils/theme/app_colors.dart';
 
@@ -48,22 +49,22 @@ class CustomSearchField extends StatelessWidget {
           itemColor: AppColors.textColor,
           placeholderStyle: TextStyle(
             color: AppColors.textColor.withAlpha(180),
-            fontSize: fontSize,
+            fontSize: fontSize.sp,
             fontWeight: FontWeight.w400,
           ),
           style: TextStyle(
             color: AppColors.textColor,
-            fontSize: fontSize,
+            fontSize: fontSize.sp,
             fontWeight: FontWeight.w500,
           ),
           cursorColor: AppColors.textColor,
           onChanged: onChanged,
           placeholder: hintText,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8).r,
           prefixIcon: prefixIcon ?? const Icon(CupertinoIcons.search),
           suffixIcon: Icon(CupertinoIcons.clear),
           backgroundColor: Colors.transparent,
-          borderRadius: BorderRadius.circular(borderRadius - 4),
+          borderRadius: BorderRadius.circular(borderRadius - 4).r,
         ),
       ),
     );

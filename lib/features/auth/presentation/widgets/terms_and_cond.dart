@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../utils/theme/app_colors.dart';
 import '../cubit/check_cubit.dart';
@@ -26,10 +27,7 @@ class TermsAndCond extends StatelessWidget {
               child: RichText(
                 text: TextSpan(
                   text: 'I agree to the ',
-                  style: const TextStyle(
-                    color: AppColors.textColor,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: AppColors.textColor, fontSize: 12.sp),
                   children: [
                     TextSpan(
                       text: 'Terms & Conditions',
@@ -38,11 +36,11 @@ class TermsAndCond extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const TextSpan(
+                    TextSpan(
                       text: ' and ',
                       style: TextStyle(
                         color: AppColors.textColor,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                       ),
                     ),
                     TextSpan(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAuthScaffold extends StatelessWidget {
   const CustomAuthScaffold({
@@ -20,7 +21,7 @@ class CustomAuthScaffold extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10).r,
           child: body,
         ),
       ),

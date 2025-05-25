@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../utils/theme/app_colors.dart';
@@ -23,7 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Container(
           decoration: BoxDecoration(color: AppColors.primaryColor),
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5).r,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,29 +32,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               hideBackButton
                   ? SizedBox.shrink()
                   : IconButton(
-                    onPressed: () {
-                      context.pop();
-                    },
-                    icon: Container(
-                      padding: const EdgeInsets.only(right: 3),
-                      width: 40,
-                      height: 40,
-                      alignment: AlignmentDirectional.center,
-                      decoration: const BoxDecoration(
-                        color: AppColors.buttonBgColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.arrow_back_ios_outlined,
-                        size: 20,
-                        color: AppColors.textColor,
+                      onPressed: () {
+                        context.pop();
+                      },
+                      icon: Container(
+                        padding: const EdgeInsets.only(right: 3).r,
+                        width: 40.w,
+                        height: 40.h,
+                        alignment: AlignmentDirectional.center,
+                        decoration: const BoxDecoration(
+                          color: AppColors.buttonBgColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.arrow_back_ios_outlined,
+                          size: 20.sp,
+                          color: AppColors.textColor,
+                        ),
                       ),
                     ),
-                  ),
               if (title != null) AppConstants.verticalMediumSizedBox,
               if (title != null) Expanded(child: title!),
               if (actions != null) const Spacer(),
-              if (actions != null) ...actions!,
+              ...?actions,
             ], //
           ),
         ),

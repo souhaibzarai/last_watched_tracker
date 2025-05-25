@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/constants/constants.dart';
 import '../../../utils/theme/app_colors.dart';
@@ -34,8 +35,8 @@ class CustomDialogBottomSheet extends StatelessWidget {
                         text.toLowerCase().contains('choose')
                             ? text
                             : '$type: $text',
-                        style: const TextStyle(
-                          fontSize: 12,
+                        style: TextStyle(
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: AppColors.textColor,
                         ),
@@ -44,10 +45,10 @@ class CustomDialogBottomSheet extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () => Navigator.pop(dialogContext),
-                        child: const Icon(
+                        child: Icon(
                           CupertinoIcons.xmark_circle_fill,
                           color: AppColors.textColor,
-                          size: 25,
+                          size: 25.sp,
                         ),
                       ),
                     ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/text/custom_text.dart';
 import '../../domain/entities/media.dart';
@@ -10,6 +11,6 @@ class MediaPreviewTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomText(media.title, size: 16, fw: FontWeight.w500);
+    return CustomText(media.title, size: 16.sp, fw: FontWeight.w500);
   }
 }

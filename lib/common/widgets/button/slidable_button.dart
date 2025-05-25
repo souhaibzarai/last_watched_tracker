@@ -20,7 +20,6 @@ class SlidableButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlidableAction(
-      spacing: 4,
       onPressed: onClick,
       backgroundColor: bgColor,
       foregroundColor: color,

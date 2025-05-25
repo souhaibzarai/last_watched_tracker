@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/theme/app_colors.dart';
 
@@ -21,7 +22,7 @@ class CustomMediaDetailsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(10).r,
       clipBehavior: Clip.hardEdge,
       color: bgColor,
       child: InkWell(
@@ -30,7 +31,7 @@ class CustomMediaDetailsButton extends StatelessWidget {
         highlightColor: Colors.transparent,
         onTap: onPressed,
         child: Container(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8).r,
           child: Icon(icon, color: color, size: size),
         ),
       ),

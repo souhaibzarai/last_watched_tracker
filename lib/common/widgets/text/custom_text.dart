@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/theme/app_colors.dart';
 
@@ -22,7 +23,7 @@ class CustomText extends StatelessWidget {
       text,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(fontSize: size, color: color, fontWeight: fw),
+      style: TextStyle(fontSize: size.sp, color: color, fontWeight: fw),
     );
   }
 }

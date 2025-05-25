@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/theme/app_colors.dart';
 
@@ -11,9 +12,9 @@ class PageHeadingTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         overflow: TextOverflow.ellipsis,
-        fontSize: 24,
+        fontSize: 24.sp,
         color: AppColors.textColor,
       ),
     );

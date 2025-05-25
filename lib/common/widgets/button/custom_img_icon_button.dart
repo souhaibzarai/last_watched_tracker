@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/theme/app_colors.dart';
 
@@ -25,13 +26,13 @@ class CustomImgIconButton extends StatelessWidget {
       highlightColor: AppColors.previewTextBgColor,
       borderRadius: BorderRadius.circular(10),
       child: Container(
-        padding: padding,
+        padding: padding.r,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: bgColor,
           border: Border.all(width: 1, color: AppColors.infoColor),
         ),
-        child: Image.asset(path, color: color, height: 32),
+        child: Image.asset(path, color: color, height: 32.h),
       ),
     );
   }

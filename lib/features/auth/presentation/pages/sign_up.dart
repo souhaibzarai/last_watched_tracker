@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../common/app_commons.dart';
@@ -70,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage>
           },
           child: SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12.0).r,
               child: Form(
                 key: _formKey,
                 child: BlocProvider(
