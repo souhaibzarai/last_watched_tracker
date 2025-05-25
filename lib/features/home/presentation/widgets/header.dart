@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:last_watched_tracker/features/auth/domain/usecases/sign_out.dart';
 
 import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
@@ -18,6 +19,15 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          IconButton(
+            onPressed: () async {
+              await SignOutUseCase().call();
+              if (context.mounted) {
+                context.go(NavigatorPath.login);
+              }
+            },
+            icon: Icon(Icons.logout, color: AppColors.secondaryColor),
+          ),
           Expanded(
             child: const CustomSearchField(), //
           ),
