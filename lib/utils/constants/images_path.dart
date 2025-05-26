@@ -18,4 +18,6 @@ class ImagesPath {
   static const String successImage = 'assets/$_images/success$_pngExt';
 
   static const String menuIcon = 'assets/$_icons/menu$_pngExt';
+
+  static const String logoutIcon = 'assets/$_icons/logout$_pngExt';
 }
