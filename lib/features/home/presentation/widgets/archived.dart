@@ -39,7 +39,7 @@ class Archived extends StatelessWidget {
             ),
           ),
         ),
-        AppConstants.getMediaItemDivider(), //
+        AppConstants.getMediaItemDivider(),
       ],
     );
   }
