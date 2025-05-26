@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/features/home/presentation/pages/home2.dart';
 
 import 'features/auth/presentation/cubit/check_cubit.dart';
 import 'features/auth/presentation/pages/reset_password.dart';
@@ -9,6 +8,7 @@ import 'features/auth/presentation/pages/sign_in.dart';
 import 'features/auth/presentation/pages/sign_up.dart';
 import 'features/category/presentation/cubit/category_cubit.dart';
 import 'features/category/presentation/cubit/category_selector_cubit.dart';
+import 'features/home/presentation/pages/home.dart';
 import 'features/media/domain/entities/media.dart';
 import 'features/media/presentation/pages/add_media.dart';
 import 'features/media/presentation/pages/archive.dart';
@@ -45,7 +45,7 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           path: NavigatorPath.home,
-          builder: (context, state) => const Home2(),
+          builder: (context, state) => const Home(),
         ),
         GoRoute(
           path: NavigatorPath.addMedia,
