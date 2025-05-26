@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:last_watched_tracker/features/auth/domain/usecases/sign_out.dart';
 
 import 'features/auth/data/repository/auth_repo_impl.dart';
 import 'features/auth/data/source/firebase_auth_source.dart';
@@ -70,6 +71,7 @@ Future<void> initDependencies() async {
 
   // UseCases
 
+  // Auth
   serviceLocator.registerSingleton<GetUserUseCase>(GetUserUseCase());
 
   serviceLocator.registerSingleton<ResetPasswordUseCase>(
@@ -81,6 +83,8 @@ Future<void> initDependencies() async {
   serviceLocator.registerSingleton<SignUpUseCase>(SignUpUseCase());
 
   serviceLocator.registerSingleton<UserStatusUseCase>(UserStatusUseCase());
+
+  serviceLocator.registerSingleton<SignOutUseCase>(SignOutUseCase());
 
   //Media
   serviceLocator.registerSingleton<NewMediaUseCase>(NewMediaUseCase());
