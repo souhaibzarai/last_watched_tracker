@@ -12,12 +12,11 @@ class StatusRepoImpl implements StatusRepository {
       final result = await serviceLocator<StatusRemoteSource>().fetchStatus();
 
       return result.fold((err) => Left(err.toString()), (allStatus) {
-        final response =
-            List.from(allStatus).map((status) {
-              final String id = status['id'];
-              final Map<String, dynamic> data = status['data'];
-              return StatusModel.fromFirestore(data, id: id).toEntity();
-            }).toList();
+        final response = List.from(allStatus).map((status) {
+          final String id = status['id'];
+          final Map<String, dynamic> data = status['data'];
+          return StatusModel.fromFirestore(data, id: id).toEntity();
+        }).toList();
 
         return Right(response);
       });

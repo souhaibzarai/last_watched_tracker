@@ -37,51 +37,51 @@ class AddMediaButton extends StatelessWidget {
           text: 'Add Media',
           onPressed:
               (category.toLowerCase().contains('choose') ||
-                      status.toLowerCase().contains('choose'))
-                  ? null
-                  : () async {
-                    MediaEntity newMedia = MediaEntity(
-                      id: '',
-                      title: titleController.text,
-                      category: category,
-                      status: status,
-                      imgUrl: '',
-                      progress: progressController.text,
-                      total: totalController.text,
-                      notes: notesController.text,
+                  status.toLowerCase().contains('choose'))
+              ? null
+              : () async {
+                  MediaEntity newMedia = MediaEntity(
+                    id: '',
+                    title: titleController.text,
+                    category: category,
+                    status: status,
+                    imgUrl: '',
+                    progress: progressController.text,
+                    total: totalController.text,
+                    notes: notesController.text,
+                  );
+                  context.read<ButtonStateCubit>().setLoading();
+
+                  final imageCubit = context.read<UploadImageCubit>();
+
+                  if (imageCubit.state == null) {
+                    context.read<ButtonStateCubit>().setIdle();
+                    return AppCommons.showScaffold(
+                      context,
+                      message: CommonMessagesEn.noImageSelected,
                     );
-                    context.read<ButtonStateCubit>().setLoading();
+                  }
 
-                    final imageCubit = context.read<UploadImageCubit>();
+                  final imgUrlResult = await imageCubit.getImageUrl(
+                    imageCubit.pickedImage,
+                  );
 
-                    if (imageCubit.state == null) {
-                      context.read<ButtonStateCubit>().setIdle();
-                      return AppCommons.showScaffold(
-                        context,
-                        message: CommonMessagesEn.noImageSelected,
-                      );
-                    }
+                  imgUrlResult.fold(
+                    (err) {
+                      return AppCommons.showScaffold(context, message: err);
+                    },
+                    (imgUrl) {
+                      newMedia.imgUrl = imgUrl;
+                    },
+                  );
 
-                    final imgUrlResult = await imageCubit.getImageUrl(
-                      imageCubit.pickedImage,
+                  if (_formKey.currentState!.validate() && context.mounted) {
+                    await context.read<ButtonStateCubit>().execute(
+                      usecase: NewMediaUseCase(),
+                      params: newMedia,
                     );
-
-                    imgUrlResult.fold(
-                      (err) {
-                        return AppCommons.showScaffold(context, message: err);
-                      },
-                      (imgUrl) {
-                        newMedia.imgUrl = imgUrl;
-                      },
-                    );
-
-                    if (_formKey.currentState!.validate() && context.mounted) {
-                      await context.read<ButtonStateCubit>().execute(
-                        usecase: NewMediaUseCase(),
-                        params: newMedia,
-                      );
-                    }
-                  },
+                  }
+                },
         );
       },
     );

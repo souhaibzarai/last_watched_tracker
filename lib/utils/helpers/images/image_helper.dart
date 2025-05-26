@@ -18,14 +18,13 @@ class ImageHelper {
         height: 400,
         fit: BoxFit.cover,
         fadeInCurve: Curves.easeIn,
-        placeholder:
-            (context, url) => Center(
-              child: CircularProgressIndicator.adaptive(
-                valueColor: AlwaysStoppedAnimation<Color>(AppColors.textColor),
-                strokeWidth: 3.0,
-                backgroundColor: AppColors.primaryColor.withAlpha(100),
-              ),
-            ),
+        placeholder: (context, url) => Center(
+          child: CircularProgressIndicator.adaptive(
+            valueColor: AlwaysStoppedAnimation<Color>(AppColors.textColor),
+            strokeWidth: 3.0,
+            backgroundColor: AppColors.primaryColor.withAlpha(100),
+          ),
+        ),
         errorWidget: (context, url, error) => defaultImg,
       );
     }

@@ -11,7 +11,6 @@ class SignInUseCase extends Usecase<Either, UserLogin> {
   Future<Either> call({UserLogin? params}) async {
     if (params == null) {
       return const Left(CommonMessagesEn.missingUserConnectionParams);
-      
     }
     return await serviceLocator<AuthRepository>().loginUser(
       params.email!,

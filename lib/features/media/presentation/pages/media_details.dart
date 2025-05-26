@@ -26,9 +26,8 @@ class MediaDetailsPage extends StatelessWidget {
     return CustomAppScaffold(
       child: BlocProvider<CheckArchiveCubit>(
         lazy: true,
-        create:
-            (context) =>
-                CheckArchiveCubit()..setArchiveStatus(media.isArchived),
+        create: (context) =>
+            CheckArchiveCubit()..setArchiveStatus(media.isArchived),
         child: Stack(
           children: [
             CustomScrollView(
@@ -49,11 +48,10 @@ class MediaDetailsPage extends StatelessWidget {
                           alignment: Alignment.center,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.only(
-                                  topLeft: Radius.circular(40),
-                                  topRight: Radius.circular(40),
-                                ).r,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
+                            ).r,
                           ),
                           child: ImageHelper.getImage(imgUrl: media.imgUrl),
                         ),
@@ -65,18 +63,16 @@ class MediaDetailsPage extends StatelessWidget {
                         left: 0,
                         right: 0,
                         child: Container(
-                          padding:
-                              const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 12,
-                              ).r,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 12,
+                          ).r,
                           alignment: Alignment.bottomLeft,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.only(
-                                  topRight: Radius.circular(100),
-                                ).r,
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(100),
+                            ).r,
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment.center,

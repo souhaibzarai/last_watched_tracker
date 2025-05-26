@@ -14,7 +14,7 @@ class UserInfoCubit extends Cubit<UserInfoState> {
     try {
       final result = await serviceLocator<GetUserUseCase>().call();
 
-       result.fold(
+      result.fold(
         (err) => emit(UserInfoLoadFailed(errMsg: err.toString())),
         (user) => emit(UserInfoLoadSuccess(userEntity: user)), //
       );

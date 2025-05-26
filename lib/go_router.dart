@@ -30,11 +30,10 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           path: NavigatorPath.signUp,
-          builder:
-              (context, state) => BlocProvider(
-                create: (_) => CheckCubit(),
-                child: const SignUpPage(),
-              ),
+          builder: (context, state) => BlocProvider(
+            create: (_) => CheckCubit(),
+            child: const SignUpPage(),
+          ),
         ),
         GoRoute(
           path: NavigatorPath.resetPsw,
@@ -50,22 +49,21 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           path: NavigatorPath.addMedia,
-          builder:
-              (context, state) => MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                    create: (_) => CategorySelectorCubit(),
-                    lazy: true,
-                  ),
-                  BlocProvider(
-                    create: (_) => StatusSelectorCubit(),
-                    lazy: true,
-                  ),
-                  BlocProvider(create: (_) => CategoryCubit(), lazy: true),
-                  BlocProvider(create: (_) => StatusCubit(), lazy: true),
-                ],
-                child: const AddMediaPage(),
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => CategorySelectorCubit(),
+                lazy: true,
               ),
+              BlocProvider(
+                create: (_) => StatusSelectorCubit(),
+                lazy: true,
+              ),
+              BlocProvider(create: (_) => CategoryCubit(), lazy: true),
+              BlocProvider(create: (_) => StatusCubit(), lazy: true),
+            ],
+            child: const AddMediaPage(),
+          ),
         ),
         GoRoute(
           path: NavigatorPath.archive,

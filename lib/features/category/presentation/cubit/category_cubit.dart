@@ -11,8 +11,8 @@ class CategoryCubit extends Cubit<CategoryState> {
     emit(CategoriesLoading());
 
     try {
-      final returnedData =
-          await serviceLocator<FetchCategoriesUseCase>().call();
+      final returnedData = await serviceLocator<FetchCategoriesUseCase>()
+          .call();
 
       returnedData.fold(
         (err) => emit(CategoriesFailure(err: err.toString())),

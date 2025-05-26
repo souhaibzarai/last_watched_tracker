@@ -3,6 +3,4 @@ class AppString {
 
   static const appVersion = 'v1.0';
   static const appName = 'FVR Shop';
-
-  
 }

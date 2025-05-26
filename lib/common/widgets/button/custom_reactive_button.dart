@@ -39,10 +39,9 @@ class CustomReactiveButton extends StatelessWidget {
             foregroundColor: AppColors.textColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.r),
-              side:
-                  onPressed == null
-                      ? BorderSide(color: AppColors.errorColor, width: 1)
-                      : BorderSide.none,
+              side: onPressed == null
+                  ? BorderSide(color: AppColors.errorColor, width: 1)
+                  : BorderSide.none,
             ),
             padding: padding.r,
             minimumSize: Size(
@@ -50,19 +49,17 @@ class CustomReactiveButton extends StatelessWidget {
               height ?? 60.h,
             ),
           ),
-          child:
-              isLoading
-                  ? AppCommons.centerProgressIndicator
-                  : Text(
-                    text ?? 'Continuer',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color:
-                          onPressed == null
-                              ? AppColors.errorColor
-                              : AppColors.textColor, //
-                    ),
+          child: isLoading
+              ? AppCommons.centerProgressIndicator
+              : Text(
+                  text ?? 'Continuer',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    color: onPressed == null
+                        ? AppColors.errorColor
+                        : AppColors.textColor, //
                   ),
+                ),
         );
       },
     );

@@ -61,8 +61,9 @@ class CustomTextField extends StatelessWidget {
         constraints: BoxConstraints(),
         labelText: labelText,
         hintStyle: const TextStyle(color: Colors.white54),
-        prefixIcon:
-            prefixIcon != null ? Icon(prefixIcon, color: Colors.white70) : null,
+        prefixIcon: prefixIcon != null
+            ? Icon(prefixIcon, color: Colors.white70)
+            : null,
         suffixIcon: suffixIcon,
         filled: true,
         hintText: hintText,

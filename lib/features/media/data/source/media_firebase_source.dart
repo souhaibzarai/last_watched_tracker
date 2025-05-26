@@ -63,12 +63,11 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
       if (userId == null) {
         return const Left(CommonMessagesEn.notAuthenticated);
       }
-      final response =
-          await _firestore
-              .collection('users')
-              .doc(userId)
-              .collection('media')
-              .get();
+      final response = await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('media')
+          .get();
 
       return Right(
         response.docs

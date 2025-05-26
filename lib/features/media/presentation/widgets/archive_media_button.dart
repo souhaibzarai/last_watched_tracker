@@ -21,10 +21,9 @@ class ArchiveMediaButton extends StatelessWidget {
         return CustomMediaDetailsButton(
           color: AppColors.textColor,
           bgColor: Colors.transparent,
-          icon:
-              context.watch<CheckArchiveCubit>().state == true
-                  ? Icons.unarchive
-                  : CupertinoIcons.archivebox_fill,
+          icon: context.watch<CheckArchiveCubit>().state == true
+              ? Icons.unarchive
+              : CupertinoIcons.archivebox_fill,
           onPressed: () {
             final checkCubit = context.read<CheckArchiveCubit>();
             final newStatus = checkCubit.state;

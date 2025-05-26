@@ -24,7 +24,7 @@ class MediaStatusPercentageBar extends StatelessWidget {
         child: FractionallySizedBox(
           widthFactor:
               (PercentageHelper.getPercentage(media.progress, media.total) /
-                  100),
+              100),
           alignment: Alignment.centerLeft,
           child: Container(
             clipBehavior: Clip.hardEdge,

@@ -32,8 +32,10 @@ class ResetSentPage extends StatelessWidget {
               AppConstants.verticalMediumSizedBox,
               Image.asset(ImagesPath.emailSent, width: 250.w),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12).r,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ).r,
                 decoration: BoxDecoration(
                   color: AppColors.successColor.withAlpha(22),
                   borderRadius: BorderRadius.circular(8),

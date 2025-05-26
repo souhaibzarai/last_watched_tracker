@@ -156,15 +156,14 @@ class _SignUpPageState extends State<SignUpPage>
                                               .execute(
                                                 usecase: SignUpUseCase(),
                                                 params: UserCreation(
-                                                  username:
-                                                      _usernameController.text
-                                                          .trim(),
-                                                  email:
-                                                      _emailController.text
-                                                          .trim(),
-                                                  password:
-                                                      _passwordController.text
-                                                          .trim(),
+                                                  username: _usernameController
+                                                      .text
+                                                      .trim(),
+                                                  email: _emailController.text
+                                                      .trim(),
+                                                  password: _passwordController
+                                                      .text
+                                                      .trim(),
                                                 ),
                                               );
                                         }

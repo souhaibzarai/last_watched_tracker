@@ -38,13 +38,12 @@ class StatusSelectorField extends StatelessWidget {
             } else if (state is StatusLoaded) {
               final status = state.status;
               return ListView.separated(
-                separatorBuilder:
-                    (listBuilderSeparatorContext, index) =>
-                        AppConstants.getHorizontalDivider(
-                          isFull: true,
-                          isTransparent: false,
-                          color: AppColors.previewTextBgColor,
-                        ),
+                separatorBuilder: (listBuilderSeparatorContext, index) =>
+                    AppConstants.getHorizontalDivider(
+                      isFull: true,
+                      isTransparent: false,
+                      color: AppColors.previewTextBgColor,
+                    ),
                 itemCount: status.length,
                 itemBuilder: (listBuilderContext, index) {
                   return ClickableItem(

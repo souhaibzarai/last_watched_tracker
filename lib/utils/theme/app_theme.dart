@@ -52,8 +52,10 @@ class AppTheme {
       ),
       fillColor: AppColors.primaryColor,
       filled: true,
-      contentPadding:
-          const EdgeInsets.symmetric(vertical: 12, horizontal: 16).r,
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 16,
+      ).r,
       hintStyle: getTextStyle(color: AppColors.textColor),
       labelStyle: getTextStyle(color: AppColors.textColor),
       errorStyle: getTextStyle(color: AppColors.errorColor),

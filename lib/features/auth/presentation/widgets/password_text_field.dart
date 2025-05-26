@@ -23,7 +23,7 @@ class PasswordTextField extends StatelessWidget {
       child: BlocBuilder<CheckCubit, bool>(
         builder: (context, isNotHidden) {
           return CustomTextField(
-            validator: validator ,
+            validator: validator,
             controller: _passwordController,
             labelText: title,
             prefixIcon: Icons.lock_outline,

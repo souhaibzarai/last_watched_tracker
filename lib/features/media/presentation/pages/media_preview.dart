@@ -33,7 +33,10 @@ class MediaDetailsPreview extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.hardEdge,
           children: [
-            Hero(tag: media, child: ImageHelper.getImage(imgUrl: media.imgUrl)),
+            Hero(
+              tag: media,
+              child: ImageHelper.getImage(imgUrl: media.imgUrl),
+            ),
             Positioned(
               right: 10,
               top: 10,

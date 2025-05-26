@@ -16,16 +16,15 @@ class MediaRepoImpl implements MediaRepository {
   @override
   Future<Either> fetchAllMedia() async {
     try {
-      final result =
-          await serviceLocator<MediaFirebaseSource>().fetchAllMedia();
+      final result = await serviceLocator<MediaFirebaseSource>()
+          .fetchAllMedia();
 
       return result.fold((err) => Left(err.toString()), (mediaList) {
-        final response =
-            List.from(mediaList).map((media) {
-              final String id = media['id'];
-              final Map<String, dynamic> data = media['data'];
-              return MediaModel.fromFirestore(data, id: id).toEntity();
-            }).toList();
+        final response = List.from(mediaList).map((media) {
+          final String id = media['id'];
+          final Map<String, dynamic> data = media['data'];
+          return MediaModel.fromFirestore(data, id: id).toEntity();
+        }).toList();
 
         return Right(response);
       });

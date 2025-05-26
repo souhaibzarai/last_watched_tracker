@@ -38,13 +38,12 @@ class CategorySelectorField extends StatelessWidget {
             } else if (state is CategoriesLoaded) {
               final categories = state.categories;
               return ListView.separated(
-                separatorBuilder:
-                    (listBuilderSeparatorContext, index) =>
-                        AppConstants.getHorizontalDivider(
-                          isFull: true,
-                          isTransparent: false,
-                          color: AppColors.previewTextBgColor,
-                        ),
+                separatorBuilder: (listBuilderSeparatorContext, index) =>
+                    AppConstants.getHorizontalDivider(
+                      isFull: true,
+                      isTransparent: false,
+                      color: AppColors.previewTextBgColor,
+                    ),
                 itemCount: categories.length,
                 itemBuilder: (listBuilderContext, index) {
                   return ClickableItem(
@@ -57,11 +56,10 @@ class CategorySelectorField extends StatelessWidget {
                     },
                     icon: Icons.arrow_forward_ios_outlined,
                     iconSize: 12.sp,
-                    padding:
-                        const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 14,
-                        ).r,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 14,
+                    ).r,
                   );
                 },
               );
