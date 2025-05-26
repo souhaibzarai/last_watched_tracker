@@ -25,7 +25,6 @@ class Archived extends StatelessWidget {
             },
             child: Container(
               width: double.infinity,
-              decoration: BoxDecoration(),
               padding: const EdgeInsets.all(5).r,
               child: CupertinoListTile(
                 leading: Icon(

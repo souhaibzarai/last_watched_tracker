@@ -13,6 +13,7 @@ class BottomSheetCustomButtonWIcon extends StatelessWidget {
     this.fSize = 20,
     required this.colors,
     required this.onPressed,
+    this.color,
   });
 
   final String path;
@@ -20,6 +21,7 @@ class BottomSheetCustomButtonWIcon extends StatelessWidget {
   final double height;
   final double fSize;
   final List<Color> colors;
+  final Color? color;
   final VoidCallback? onPressed;
 
   @override
@@ -45,7 +47,11 @@ class BottomSheetCustomButtonWIcon extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(title, style: TextStyle(fontSize: fSize.sp)),
-              CustomImageAsset(height: height.h, path: path),
+              CustomImageAsset(
+                height: height.h,
+                path: path,
+                color: color,
+              ),
             ],
           ),
         ),
