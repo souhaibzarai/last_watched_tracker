@@ -133,7 +133,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                             if (value == null || value.isEmpty) {
                               return null;
                             }
-                            if (!RegExp(r'^\d+//$').hasMatch(value)) {
+                            if (!RegExp(r'^\d+$').hasMatch(value)) {
                               return 'Please enter a valid number';
                             }
                             if (int.parse(progressController.text) >
