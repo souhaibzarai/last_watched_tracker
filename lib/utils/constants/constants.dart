@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theme/app_colors.dart';
 
 class AppConstants {
   AppConstants._();
 
-  static const EdgeInsetsGeometry padding = EdgeInsets.symmetric(
+  static final EdgeInsetsGeometry padding = EdgeInsets.symmetric(
     horizontal: 16,
     vertical: 20,
-  );
+  ).r;
 
-  static const smallPadding = EdgeInsets.all(8.0);
+  static final smallPadding = EdgeInsets.all(8.0).r;
 
-  static const border = Radius.circular(15);
+  static final border = Radius.circular(15).r;
 
   static VerticalDivider getVerticalDivider({bool isTransparent = false}) {
     return VerticalDivider(
       indent: 20,
       thickness: .8,
-      width: isTransparent ? 15 : 1,
+      width: isTransparent ? 15.w : 1,
       color: isTransparent ? Colors.transparent : AppColors.previewTextBgColor,
     );
   }
@@ -31,10 +32,11 @@ class AppConstants {
     return Divider(
       indent: isFull ? 0 : 20,
       thickness: isFull ? .4 : .8,
-      height: isTransparent ? 10 : 1,
+      height: isTransparent ? 10.h : 1,
       endIndent: isFull ? 0 : 20,
-      color:
-          isTransparent ? Colors.transparent : color ?? AppColors.buttonBgColor,
+      color: isTransparent
+          ? Colors.transparent
+          : color ?? AppColors.buttonBgColor,
     );
   }
 
@@ -61,15 +63,15 @@ class AppConstants {
     return MediaQuery.of(context).orientation == Orientation.landscape;
   }
 
-  static const Widget horizontalVerySmallSizedBox = SizedBox(height: 5);
-  static const Widget verticalVerySmallSizedBox = SizedBox(height: 5);
+  static final Widget horizontalVerySmallSizedBox = SizedBox(width: 5.w);
+  static final Widget verticalVerySmallSizedBox = SizedBox(height: 5.h);
 
-  static const Widget horizontalSmallSizedBox = SizedBox(width: 10);
-  static const Widget verticalSmallSizedBox = SizedBox(height: 10);
+  static final Widget horizontalSmallSizedBox = SizedBox(width: 10.w);
+  static final Widget verticalSmallSizedBox = SizedBox(height: 10.h);
 
-  static const Widget horizontalMediumSizedBox = SizedBox(width: 15);
-  static const Widget verticalMediumSizedBox = SizedBox(height: 15);
+  static final Widget horizontalMediumSizedBox = SizedBox(width: 15.w);
+  static final Widget verticalMediumSizedBox = SizedBox(height: 15.h);
 
-  static const Widget horizontalLargeSizedBox = SizedBox(width: 25);
-  static const Widget verticalLargeSizedBox = SizedBox(height: 25);
+  static final Widget horizontalLargeSizedBox = SizedBox(width: 25.w);
+  static final Widget verticalLargeSizedBox = SizedBox(height: 25.h);
 }
