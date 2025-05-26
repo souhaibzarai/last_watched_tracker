@@ -50,32 +50,32 @@ class AddMediaButton extends StatelessWidget {
                     total: totalController.text,
                     notes: notesController.text,
                   );
-                  context.read<ButtonStateCubit>().setLoading();
-
-                  final imageCubit = context.read<UploadImageCubit>();
-
-                  if (imageCubit.state == null) {
-                    context.read<ButtonStateCubit>().setIdle();
-                    return AppCommons.showScaffold(
-                      context,
-                      message: CommonMessagesEn.noImageSelected,
-                    );
-                  }
-
-                  final imgUrlResult = await imageCubit.getImageUrl(
-                    imageCubit.pickedImage,
-                  );
-
-                  imgUrlResult.fold(
-                    (err) {
-                      return AppCommons.showScaffold(context, message: err);
-                    },
-                    (imgUrl) {
-                      newMedia.imgUrl = imgUrl;
-                    },
-                  );
-
                   if (_formKey.currentState!.validate() && context.mounted) {
+                    context.read<ButtonStateCubit>().setLoading();
+
+                    final imageCubit = context.read<UploadImageCubit>();
+
+                    if (imageCubit.state == null) {
+                      context.read<ButtonStateCubit>().setIdle();
+                      return AppCommons.showScaffold(
+                        context,
+                        message: CommonMessagesEn.noImageSelected,
+                      );
+                    }
+
+                    final imgUrlResult = await imageCubit.getImageUrl(
+                      imageCubit.pickedImage,
+                    );
+
+                    imgUrlResult.fold(
+                      (err) {
+                        return AppCommons.showScaffold(context, message: err);
+                      },
+                      (imgUrl) {
+                        newMedia.imgUrl = imgUrl;
+                      },
+                    );
+
                     await context.read<ButtonStateCubit>().execute(
                       usecase: NewMediaUseCase(),
                       params: newMedia,
