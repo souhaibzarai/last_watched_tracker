@@ -24,14 +24,15 @@ class AddMediaModalButton extends StatelessWidget {
         AppColors.secondaryColor.withAlpha(100),
       ],
       onPressed: () async {
-        final isAdded = await context.push(
+        final isMediaAdded = await context.push(
           NavigatorPath.addMedia,
         );
 
-        if (isAdded == true) {
-          await context.read<FetchMediasCubit>().fetchMedias();
-        }
-        context.pop();
+        if (isMediaAdded == true) {
+          context.pop();
+          return await context.read<FetchMediasCubit>().fetchMedias();
+        } else
+          return context.pop();
       },
     );
   }
