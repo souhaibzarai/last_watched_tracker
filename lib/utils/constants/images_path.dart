@@ -21,4 +21,5 @@ class ImagesPath {
   static const String menuIcon = 'assets/$_icons/menu$_pngExt';
   static const String logoutIcon = 'assets/$_icons/logout$_pngExt';
   static const String settingsIcon = 'assets/$_icons/settings$_pngExt';
+  static const String addIcon = 'assets/$_icons/add$_pngExt';
 }
