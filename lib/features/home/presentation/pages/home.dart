@@ -10,6 +10,7 @@ import '../../../../utils/constants/constants.dart';
 import '../../../../utils/constants/images_path.dart';
 import '../../../../utils/theme/app_colors.dart';
 import '../cubit/user_info_cubit.dart';
+import '../widgets/add_media_modal_button.dart';
 import '../widgets/archived.dart';
 import '../widgets/custom_search_field.dart';
 import '../widgets/medias.dart';
@@ -67,7 +68,7 @@ class Home extends StatelessWidget {
               elevation: 0,
             ),
             SliverToBoxAdapter(
-              child: Expanded(child: const Medias()),
+              child: const Medias(),
             ),
           ],
         ),
@@ -121,6 +122,7 @@ class Home extends StatelessWidget {
                 childrenDelegate: SliverChildListDelegate(
                   [
                     const SignOutButton(),
+                    const AddMediaModalButton(),
                     const SettingsButton(),
                   ],
                 ),
