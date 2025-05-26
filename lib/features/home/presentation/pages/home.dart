@@ -89,46 +89,48 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.transparent,
       barrierColor: Colors.transparent,
       builder: (context) {
-        return Stack(
-          children: [
-            Positioned.fill(
-              child: ClipRRect(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: 10,
-                    sigmaY: 10,
-                  ),
-                  child: Container(
-                    color: Colors.transparent,
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 300.h),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: ClipRRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(
+                      sigmaX: 10,
+                      sigmaY: 10,
+                    ),
+                    child: Container(
+                      color: Colors.transparent,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ).r,
-                color: AppColors.previewTextBgColor,
-              ),
-              child: ListView.custom(
-                shrinkWrap: true,
-                padding: EdgeInsets.all(10).r,
-
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.manual,
-                childrenDelegate: SliverChildListDelegate(
-                  [
-                    const SignOutButton(),
-                    const AddMediaModalButton(),
-                    const SettingsButton(),
-                  ],
+              Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ).r,
+                  color: AppColors.previewTextBgColor,
+                ),
+                child: ListView.custom(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(10).r,
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.manual,
+                  childrenDelegate: SliverChildListDelegate(
+                    [
+                      const SignOutButton(),
+                      const AddMediaModalButton(),
+                      const SettingsButton(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

@@ -19,7 +19,7 @@ class SignOutButton extends StatelessWidget {
       path: ImagesPath.logoutIcon,
       title: 'Sign Out',
       colors: [
-        AppColors.buttonBgColor.withAlpha(210),
+        AppColors.errorColor.withAlpha(210),
         AppColors.secondaryColor.withAlpha(100),
         AppColors.infoColor.withAlpha(220),
       ],
