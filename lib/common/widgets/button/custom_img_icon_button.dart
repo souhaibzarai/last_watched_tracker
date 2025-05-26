@@ -23,6 +23,7 @@ class CustomImgIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
+      enableFeedback: false,
       splashColor: AppColors.buttonBgColor,
       highlightColor: AppColors.previewTextBgColor,
       borderRadius: BorderRadius.circular(10),

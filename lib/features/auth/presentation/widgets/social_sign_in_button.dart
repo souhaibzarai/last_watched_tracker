@@ -14,6 +14,7 @@ class SocialSignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      enableFeedback: false,
       onTap: onPressed,
       borderRadius: BorderRadius.circular(8).r,
       child: Container(

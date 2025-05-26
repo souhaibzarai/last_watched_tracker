@@ -30,6 +30,7 @@ class ClickableItem extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
+        enableFeedback: false,
         hoverColor: AppColors.buttonBgColor.withAlpha(120),
         splashColor: AppColors.buttonBgColor.withAlpha(77),
         highlightColor: AppColors.buttonBgColor.withAlpha(52),

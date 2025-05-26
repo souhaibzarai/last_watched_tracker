@@ -17,6 +17,7 @@ class Archived extends StatelessWidget {
         Material(
           color: Colors.transparent,
           child: InkWell(
+            enableFeedback: false,
             splashColor: AppColors.buttonBgColor.withAlpha(60),
             highlightColor: AppColors.buttonBgColor.withAlpha(25),
             onTap: () {

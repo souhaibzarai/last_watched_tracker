@@ -23,6 +23,7 @@ class CustomIconItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      enableFeedback: false,
       borderRadius: BorderRadius.circular(radius).r,
       onTap:
           onTap ??

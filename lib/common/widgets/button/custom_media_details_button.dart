@@ -26,6 +26,7 @@ class CustomMediaDetailsButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       color: bgColor,
       child: InkWell(
+        enableFeedback: false,
         focusColor: Colors.transparent,
         splashColor: AppColors.secondaryColor.withAlpha(1),
         highlightColor: Colors.transparent,

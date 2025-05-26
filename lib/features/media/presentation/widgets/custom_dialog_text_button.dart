@@ -23,6 +23,7 @@ class CustomDialogTextButton extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       color: bgColor,
       child: InkWell(
+        enableFeedback: false,
         highlightColor: AppColors.primaryColor.withAlpha(80),
         splashColor: AppColors.primaryColor.withAlpha(120),
         focusColor: Colors.transparent,

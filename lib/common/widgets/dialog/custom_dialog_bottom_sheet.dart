@@ -21,6 +21,7 @@ class CustomDialogBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      enableFeedback: false,
       onTap: () {
         showCupertinoModalPopup(
           context: context,

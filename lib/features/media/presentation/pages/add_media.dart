@@ -152,6 +152,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
                                     .read<UploadImageCubit>()
                                     .pickImageFromGallery();
                               },
+                              enableFeedback: false,
                               borderRadius: BorderRadius.circular(4).r,
                               child: Container(
                                 width: double.infinity,
@@ -163,17 +164,16 @@ class _AddMediaPageState extends State<AddMediaPage> {
                                   ),
                                   borderRadius: BorderRadius.circular(4).r,
                                 ),
-                                child:
-                                    image == null
-                                        ? Icon(
-                                          CupertinoIcons.camera_fill,
-                                          color: AppColors.infoColor,
-                                          size: 30.sp,
-                                        )
-                                        : Image.file(
-                                          File(image.path),
-                                          fit: BoxFit.cover,
-                                        ),
+                                child: image == null
+                                    ? Icon(
+                                        CupertinoIcons.camera_fill,
+                                        color: AppColors.infoColor,
+                                        size: 30.sp,
+                                      )
+                                    : Image.file(
+                                        File(image.path),
+                                        fit: BoxFit.cover,
+                                      ),
                               ),
                             );
                           },
@@ -193,8 +193,9 @@ class _AddMediaPageState extends State<AddMediaPage> {
                           progressController: progressController,
                           totalController: totalController,
                           notesController: notesController,
-                          category:
-                              context.watch<CategorySelectorCubit>().state,
+                          category: context
+                              .watch<CategorySelectorCubit>()
+                              .state,
                           status: context.watch<StatusSelectorCubit>().state,
                         ),
                       ],

@@ -41,6 +41,7 @@ class MediaItem extends StatelessWidget {
         onTap: () {
           context.push(NavigatorPath.mediaDetails, extra: media);
         },
+        enableFeedback: false,
         splashColor: AppColors.buttonBgColor.withAlpha(60),
         highlightColor: AppColors.buttonBgColor.withAlpha(25),
         child: Slidable(
@@ -74,16 +75,14 @@ class MediaItem extends StatelessWidget {
               SlidableButton(
                 bgColor: AppColors.slidableGreenColor,
                 color: AppColors.textColor,
-                icon:
-                    media.isArchived
-                        ? Icons.unarchive
-                        : CupertinoIcons.archivebox_fill,
+                icon: media.isArchived
+                    ? Icons.unarchive
+                    : CupertinoIcons.archivebox_fill,
                 label: media.isArchived ? 'Unarchive' : 'Archive',
-                onClick:
-                    (context) => FunctionsHelper.toggleArchive(
-                      context,
-                      ArchiveModel(id: media.id, status: media.isArchived),
-                    ),
+                onClick: (context) => FunctionsHelper.toggleArchive(
+                  context,
+                  ArchiveModel(id: media.id, status: media.isArchived),
+                ),
               ),
             ],
           ),

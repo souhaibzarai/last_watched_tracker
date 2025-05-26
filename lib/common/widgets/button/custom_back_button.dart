@@ -16,11 +16,11 @@ class CustomBackButton extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: InkWell(
-          borderRadius:
-              BorderRadius.only(
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ).r,
+          enableFeedback: false,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(12),
+            bottomRight: Radius.circular(12),
+          ).r,
           onTap: () {
             if (context.canPop()) {
               context.pop();
