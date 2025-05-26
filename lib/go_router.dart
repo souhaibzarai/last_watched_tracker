@@ -9,7 +9,6 @@ import 'features/auth/presentation/pages/sign_in.dart';
 import 'features/auth/presentation/pages/sign_up.dart';
 import 'features/category/presentation/cubit/category_cubit.dart';
 import 'features/category/presentation/cubit/category_selector_cubit.dart';
-import 'features/home/presentation/pages/home.dart';
 import 'features/media/domain/entities/media.dart';
 import 'features/media/presentation/pages/add_media.dart';
 import 'features/media/presentation/pages/archive.dart';

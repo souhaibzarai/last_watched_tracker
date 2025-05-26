@@ -103,8 +103,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
                     // Back to Sign In Text
                     UnderButtonText(
-                      text: "Remember your password?",
-                      clickableText: "Sign In",
+                      text: 'Remember your password?',
+                      clickableText: 'Sign In',
                       onTextClick: () {
                         context.replace(
                           NavigatorPath.login,

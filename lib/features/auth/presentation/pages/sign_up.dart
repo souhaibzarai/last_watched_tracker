@@ -181,8 +181,8 @@ class _SignUpPageState extends State<SignUpPage>
                       ),
 
                       UnderButtonText(
-                        text: "Already have an account?",
-                        clickableText: "Sign In",
+                        text: 'Already have an account?',
+                        clickableText: 'Sign In',
                         onTextClick: () {
                           context.replace(NavigatorPath.login);
                         },

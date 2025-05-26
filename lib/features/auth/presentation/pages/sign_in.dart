@@ -143,7 +143,7 @@ class _SignInPageState extends State<SignInPage> {
                     // Sign Up Text
                     UnderButtonText(
                       text: "Don't have an account?",
-                      clickableText: "Sign Up",
+                      clickableText: 'Sign Up',
                       onTextClick: () {
                         context.replace(NavigatorPath.signUp);
                       },
