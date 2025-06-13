@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:last_watched_tracker/common/widgets/button/bottom_sheet_custom_button_w_icon.dart';
-import 'package:last_watched_tracker/utils/constants/images_path.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+import 'package:rekoro/common/widgets/button/bottom_sheet_custom_button_w_icon.dart';
+import 'package:rekoro/utils/constants/images_path.dart';
+import 'package:rekoro/utils/theme/app_colors.dart';
 
 class SettingsButton extends StatelessWidget {
   const SettingsButton({

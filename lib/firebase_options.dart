@@ -47,21 +47,21 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBhrFv6_lGL7wuAz-dDj6Zx8Z4QvSSjBlk',
-    appId: '1:909413460105:web:872439d5f14b587b80fe58',
-    messagingSenderId: '909413460105',
-    projectId: 'last-watched-tracker',
-    authDomain: 'last-watched-tracker.firebaseapp.com',
-    storageBucket: 'last-watched-tracker.firebasestorage.app',
-    measurementId: 'G-QV3CJED9Z5',
+    apiKey: 'AIzaSyD06nWCElTqsCT6G7EVj2Gzu7-waZ9jsqw',
+    appId: '1:43827701403:web:e1ff251e2abb0c2a0f083e',
+    messagingSenderId: '43827701403',
+    projectId: 'rekoro-57cb2',
+    authDomain: 'rekoro-57cb2.firebaseapp.com',
+    storageBucket: 'rekoro-57cb2.firebasestorage.app',
+    measurementId: 'G-B93WSMM4D9',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAIfWvN9xUt1FjojQv7OJImhFQ5f6L7BXM',
-    appId: '1:909413460105:android:8e2c9cb58829c84780fe58',
-    messagingSenderId: '909413460105',
-    projectId: 'last-watched-tracker',
-    storageBucket: 'last-watched-tracker.firebasestorage.app',
+    apiKey: 'AIzaSyAPA5HAOVlFOjXgap4sgOwQe8e8IKgL77Y',
+    appId: '1:43827701403:android:b2698bfe640cca6a0f083e',
+    messagingSenderId: '43827701403',
+    projectId: 'rekoro-57cb2',
+    storageBucket: 'rekoro-57cb2.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

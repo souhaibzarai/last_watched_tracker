@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/utils/constants/constants.dart';
+import 'package:rekoro/utils/constants/constants.dart';
 
 import '../../../../common/widgets/blured_bg_preview.dart';
 import '../../../../utils/messages/message_en.dart';

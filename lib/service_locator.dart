@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:last_watched_tracker/features/auth/domain/usecases/sign_out.dart';
+import 'package:rekoro/features/auth/domain/usecases/sign_out.dart';
 
 import 'features/auth/data/repository/auth_repo_impl.dart';
 import 'features/auth/data/source/firebase_auth_source.dart';

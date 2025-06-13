@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/common/widgets/button/bottom_sheet_custom_button_w_icon.dart';
-import 'package:last_watched_tracker/features/media/presentation/cubit/fetch_medias_cubit.dart';
-import 'package:last_watched_tracker/utils/constants/images_path.dart';
-import 'package:last_watched_tracker/utils/helpers/navigator/strings.dart';
-import 'package:last_watched_tracker/utils/theme/app_colors.dart';
+
+import '../../../../common/widgets/button/bottom_sheet_custom_button_w_icon.dart';
+import '../../../../utils/constants/images_path.dart';
+import '../../../../utils/helpers/navigator/strings.dart';
+import '../../../../utils/theme/app_colors.dart';
+import '../../../media/presentation/cubit/fetch_medias_cubit.dart';
 
 class AddMediaModalButton extends StatelessWidget {
   const AddMediaModalButton({

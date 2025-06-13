@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
+import 'package:rekoro/utils/helpers/images/image_helper.dart';
 
 import '../../../../common/widgets/scaffold/custom_app_scaffold.dart';
 import '../../../../common/widgets/text/custom_text.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:last_watched_tracker/utils/helpers/images/image_helper.dart';
+import 'package:rekoro/utils/helpers/images/image_helper.dart';
 
 import '../../../../common/widgets/blured_bg_preview.dart';
 import '../../../../utils/constants/constants.dart';
