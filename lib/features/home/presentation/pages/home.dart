@@ -22,57 +22,60 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserInfoCubit()..getUserInfo(),
-      child: CustomAppScaffold(
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              expandedHeight: 60.h,
-              toolbarHeight: 40.h,
-              collapsedHeight: 40.h,
-              elevation: 0,
-              stretch: true,
-              floating: true,
-              snap: true,
-              flexibleSpace: FlexibleSpaceBar(
-                background: ClipRRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8).r,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(child: CustomSearchField()),
-                          AppConstants.horizontalSmallSizedBox,
-                          CustomImgIconButton(
-                            path: ImagesPath.menuIcon,
-                            onPressed: () {
-                              ShowMenuModal(context);
-                            },
-                          ),
-                        ],
+    return PopScope(
+      canPop: false,
+      child: BlocProvider(
+        create: (context) => UserInfoCubit()..getUserInfo(),
+        child: CustomAppScaffold(
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+                expandedHeight: 60.h,
+                toolbarHeight: 40.h,
+                collapsedHeight: 40.h,
+                elevation: 0,
+                stretch: true,
+                floating: true,
+                snap: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: ClipRRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8).r,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(child: CustomSearchField()),
+                            AppConstants.horizontalSmallSizedBox,
+                            CustomImgIconButton(
+                              path: ImagesPath.menuIcon,
+                              onPressed: () {
+                                ShowMenuModal(context);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SliverAppBar(
-              backgroundColor: Colors.transparent,
-              flexibleSpace: const Archived(),
-              automaticallyImplyLeading: false,
-              elevation: 0,
-            ),
-            SliverToBoxAdapter(
-              child: const Medias(),
-            ),
-          ],
+              SliverAppBar(
+                backgroundColor: Colors.transparent,
+                flexibleSpace: const Archived(),
+                automaticallyImplyLeading: false,
+                elevation: 0,
+              ),
+              SliverToBoxAdapter(
+                child: const Medias(),
+              ),
+            ],
+          ),
+          //
         ),
-        //
       ),
     );
   }
