@@ -20,7 +20,7 @@ class CategoryModel {
     return CategoryModel(
       id: id,
       name: json['name'],
-      createdAt: json['created_at'],
+      createdAt: json['createdAt'],
     );
   }
 }
