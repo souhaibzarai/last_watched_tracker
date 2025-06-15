@@ -50,6 +50,7 @@ class CustomTextField extends StatelessWidget {
           },
       controller: controller,
       keyboardType: keyboardType,
+      autovalidateMode: AutovalidateMode.onUnfocus,
       obscureText: obscureText && !isDescriptive,
       cursorColor: AppColors.infoColor,
       cursorWidth: 1,
