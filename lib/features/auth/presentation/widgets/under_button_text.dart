@@ -37,7 +37,8 @@ class UnderButtonText extends StatelessWidget {
               softWrap: true,
               clickableText,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
+                fontSize: 18.sp,
                 color: AppColors.textColor,
                 fontWeight: FontWeight.w500,
               ),

@@ -21,13 +21,13 @@ class CustomAuthText extends StatelessWidget {
           title,
           style: TextStyle(
             overflow: TextOverflow.ellipsis,
-            fontSize: 24.sp,
+            fontSize: 18.sp,
             color: AppColors.textColor,
           ),
         ),
         Text(
           subTitle,
-          style: TextStyle(color: Colors.white70, fontSize: 16.sp),
+          style: TextStyle(color: Colors.white70, fontSize: 14.sp),
         ),
         SizedBox(height: 40.h),
       ],

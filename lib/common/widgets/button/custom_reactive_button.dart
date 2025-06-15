@@ -16,7 +16,7 @@ class CustomReactiveButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.padding = const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-    this.height,
+    this.height = 60,
   });
 
   final String? text;
@@ -25,7 +25,7 @@ class CustomReactiveButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final EdgeInsets padding;
-  final double? height;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class CustomReactiveButton extends StatelessWidget {
             backgroundColor: backgroundColor ?? AppColors.buttonBgColor,
             foregroundColor: AppColors.textColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.r),
+              borderRadius: BorderRadius.circular(20).r,
               side: onPressed == null
                   ? BorderSide(color: AppColors.errorColor, width: 1)
                   : BorderSide.none,
@@ -46,7 +46,7 @@ class CustomReactiveButton extends StatelessWidget {
             padding: padding.r,
             minimumSize: Size(
               MediaQuery.of(context).size.width.w,
-              height ?? 60.h,
+              height,
             ),
           ),
           child: isLoading
@@ -54,7 +54,7 @@ class CustomReactiveButton extends StatelessWidget {
               : Text(
                   text ?? 'Continuer',
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: 18.sp,
                     color: onPressed == null
                         ? AppColors.errorColor
                         : AppColors.textColor, //

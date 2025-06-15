@@ -14,19 +14,25 @@ class AppCommons {
       }
       ScaffoldMessenger.of(context).removeCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message), behavior: SnackBarBehavior.floating),
+        SnackBar(
+          content: Text(
+            message,
+            style: TextStyle(fontSize: 12.sp),
+          ),
+          behavior: SnackBarBehavior.floating,
+        ),
       );
     });
   }
 
   static Widget centerProgressIndicator = Center(
     child: Container(
-      width: 40.w,
-      height: 40.h,
+      width: 40,
+      height: 40,
       padding: const EdgeInsets.all(8.0).r,
       decoration: BoxDecoration(
         color: AppColors.previewTextBgColor.withAlpha(170),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10).r,
       ),
       child: CircularProgressIndicator.adaptive(
         valueColor: AlwaysStoppedAnimation<Color>(AppColors.textColor),
@@ -45,12 +51,12 @@ class AppCommons {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 35.w,
-              height: 35.h,
+              width: 35,
+              height: 35,
               padding: const EdgeInsets.all(8.0).r,
               decoration: BoxDecoration(
                 color: AppColors.previewTextBgColor,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12).r,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withAlpha(25),

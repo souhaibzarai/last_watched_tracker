@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/theme/app_colors.dart';
 import '../app_commons.dart';
@@ -57,13 +58,18 @@ class CustomTextField extends StatelessWidget {
       minLines: isDescriptive ? 3 : 1,
       maxLines: isDescriptive ? 4 : 1,
       cursorErrorColor: AppColors.errorColor,
-      style: const TextStyle(color: AppColors.textColor),
+      style: TextStyle(
+        color: AppColors.textColor,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      ),
       decoration: InputDecoration(
-        constraints: BoxConstraints(),
         labelText: labelText,
-        hintStyle: const TextStyle(color: Colors.white54),
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: Colors.white70)
+            ? Icon(
+                prefixIcon,
+                color: Colors.white70,
+              )
             : null,
         suffixIcon: suffixIcon,
         filled: true,
