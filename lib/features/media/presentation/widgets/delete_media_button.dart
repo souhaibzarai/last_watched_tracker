@@ -27,7 +27,7 @@ class DeleteMediaButton extends StatelessWidget {
           if (state is MediaDeleteFailed) {
             return AppCommons.showScaffold(context, message: state.err);
           } else if (state is MediaDeleteSuccess) {
-            context.read<FetchMediasCubit>().fetchMedias(showLoading: false);
+            context.read<FetchMediasCubit>().fetchMedias();
             context.pop();
           }
         },

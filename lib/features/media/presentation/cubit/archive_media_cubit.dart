@@ -22,7 +22,6 @@ class ArchiveMediaCubit extends Cubit<ArchiveMediaState> {
         (err) => emit(ArchiveFailureState(err: err)),
         (success) => emit(ArchiveSuccessState()),
       );
-      fetchMediasCubit.fetchMedias(showLoading: false);
     } catch (e) {
       emit(ArchiveFailureState(err: '$e'));
     }

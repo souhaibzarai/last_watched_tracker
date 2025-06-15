@@ -6,7 +6,7 @@ import '../entities/media.dart';
 abstract class MediaRepository {
   Future<Either> addNewMedia(MediaEntity media);
 
-  Future<Either> fetchAllMedia();
+  Stream<Either<String, List<MediaEntity>>> streamAllMedia();
 
   Future<Either> toggleArchive(ArchiveModel archive);
 

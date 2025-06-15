@@ -10,7 +10,7 @@ import '../models/media.dart';
 abstract class MediaFirebaseSource {
   Future<Either> addNewMedia(MediaEntity media);
 
-  Future<Either> fetchAllMedia();
+  Stream<Either> streamAllMedia();
 
   Future<Either> toggleArchive(ArchiveModel archive);
 
@@ -56,26 +56,30 @@ class MediaFirebaseSourceImpl implements MediaFirebaseSource {
   }
 
   @override
-  Future<Either> fetchAllMedia() async {
+  Stream<Either> streamAllMedia() async* {
     try {
       final userId = _auth.currentUser?.uid;
 
       if (userId == null) {
-        return const Left(CommonMessagesEn.notAuthenticated);
+        yield const Left(CommonMessagesEn.notAuthenticated);
+        return;
       }
-      final response = await _firestore
+      final _response = await _firestore
           .collection('users')
           .doc(userId)
           .collection('media')
-          .get();
+          .snapshots();
 
-      return Right(
-        response.docs
-            .map((item) => {'id': item.id, 'data': item.data()})
-            .toList(),
-      );
+      yield* _response
+          .map((snapshot) {
+            final medias = snapshot.docs.map(
+              (item) => {'id': item.id, 'data': item.data()},
+            );
+            return Right(medias);
+          })
+          .handleError((error) => Left('$error'));
     } catch (e) {
-      return Left('$e');
+      yield Left('$e');
     }
   }
 

@@ -36,15 +36,15 @@ class MediaModel {
     return MediaModel(
       id: id,
       title: json['title'] ?? 'Unknown',
-      category: json['category'],
-      status: json['status'],
+      category: json['category'] ?? 'Unknown',
+      status: json['status'] ?? 'Unknown',
       imgUrl: json['imgUrl'] ?? '',
-      progress: json['progress'],
+      progress: json['progress'] ?? 'Unknown',
       total: json['total'] != null ? json['total'] as String : null,
       notes: json['notes'] != null ? json['notes'] as String : null,
       isArchived: json['isArchived'] ?? false,
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
+      createdAt: json['createdAt'] ?? Timestamp.now(),
+      updatedAt: json['updatedAt'] ?? Timestamp.now(),
     );
   }
 

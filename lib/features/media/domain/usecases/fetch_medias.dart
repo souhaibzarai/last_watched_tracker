@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:rekoro/features/media/domain/entities/media.dart';
 
 import '../../../../common/usecase.dart';
 import '../../../../service_locator.dart';
 import '../repository/media_repo.dart';
 
-class FetchMediasUseCase extends Usecase<Either, dynamic> {
+class FetchMediasUseCase extends UsecaseStream<Either, dynamic> {
   @override
-  Future<Either> call({params}) async {
-    return await serviceLocator<MediaRepository>().fetchAllMedia();
+  Stream<Either<String, List<MediaEntity>>> call({params}) async* {
+    yield* serviceLocator<MediaRepository>().streamAllMedia();
   }
 }

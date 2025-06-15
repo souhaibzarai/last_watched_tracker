@@ -35,7 +35,6 @@ class _AddMediaPageState extends State<AddMediaPage> {
   late TextEditingController titleController;
   late TextEditingController progressController;
   late TextEditingController totalController;
-  late TextEditingController imgUrlController;
   late TextEditingController notesController;
 
   late GlobalKey<FormState> _formKey;
@@ -46,9 +45,7 @@ class _AddMediaPageState extends State<AddMediaPage> {
     titleController = TextEditingController(text: 'Kingdom');
     progressController = TextEditingController(text: '830');
     totalController = TextEditingController();
-    imgUrlController = TextEditingController(
-      text: 'https://i.imgur.com/NSVz8Vx.png',
-    );
+
     notesController = TextEditingController(text: 'Kingdom');
     super.initState();
   }
@@ -59,7 +56,6 @@ class _AddMediaPageState extends State<AddMediaPage> {
     titleController.dispose();
     progressController.dispose();
     totalController.dispose();
-    imgUrlController.dispose();
     notesController.dispose();
   }
 
