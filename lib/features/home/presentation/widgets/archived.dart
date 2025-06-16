@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../utils/constants/constants.dart';
 import '../../../../utils/helpers/navigator/strings.dart';
 import '../../../../utils/theme/app_colors.dart';
 
@@ -39,7 +38,7 @@ class Archived extends StatelessWidget {
             ),
           ),
         ),
-        AppConstants.getMediaItemDivider(),
+        // AppConstants.getMediaItemDivider(),
       ],
     );
   }
